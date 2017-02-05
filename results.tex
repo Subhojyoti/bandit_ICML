@@ -94,7 +94,7 @@ The most significant term in the bound above is $\sum_{i\in A:\Delta_{i}\geq b}\
 %$\frac{T^{K-1}\Delta^{2K-2}}{K^{K}} > \frac{1}{\sqrt{\log(KT)}}$, which is equivalent to $\Delta > \frac{2}{\sqrt{T}(\log 2T)^{\frac{1}{4}}}$ for
 %$K\geq 2$. Since Corollary \ref{Result:Corollary:1} holds for all $\Delta \geq \sqrt{\frac{e}{T}} > \frac{2}{\sqrt{T}(\log 2T)^{\frac{1}{4}}}$, it can be clearly seen that for all $\sqrt{\frac{e}{T}} \leq \Delta\leq 1$ and $K\geq 2$, the gap-dependent bound is better than MOSS.
 
-Since Corollary \ref{Result:Corollary:1} holds for all $\Delta \geq \sqrt{\frac{K}{7T}} $, it can be clearly seen that for all $\sqrt{\frac{K}{7T}} \leq \Delta\leq 1$ and $K\geq 2$, the gap-dependent bound is better than that of MOSS and UCB-Improved. Also, since UCB-Improved holds for $\sqrt{\frac{e}{T}}\leq \Delta\leq 1$, in ClusUCB if we take $\gamma$ such that $\frac{K}{\gamma}\approx e$ then $\Delta\geq\sqrt{\frac{K}{\gamma T}}\geq \sqrt{\frac{e}{T}}$ and we can easily mimic the same guarantee as UCB-Improved. In the theoretical results as well as in the experiments we have take $\gamma =7$. 
+Since Corollary \ref{Result:Corollary:1} holds for all $\Delta \geq \sqrt{\frac{K}{7T}} $, it can be clearly seen that for all $\sqrt{\frac{K}{7T}} \leq \Delta\leq 1$ and $K\geq 2$, the gap-dependent bound is better than that of MOSS and UCB-Improved. Also, since UCB-Improved holds for $\sqrt{\frac{e}{T}}\leq \Delta\leq 1$, in ClusUCB if we take $\gamma$ such that $\frac{K}{\gamma}\approx e$ then $\Delta\geq\sqrt{\frac{K}{\gamma T}}\geq \sqrt{\frac{e}{T}}$ and we can easily mimic the same guarantee as UCB-Improved. In the theoretical results as well as in the experiments we have taken $\gamma =7$. 
 
 
 \begin{corollary}[\textbf{\textit{Gap-independent bound}}]
@@ -121,7 +121,7 @@ Considering the same gap of $\Delta_{i} = \Delta =\sqrt{\frac{K\log K}{T}}$ for 
 \end{proof}
 
 
-From the above result, we observe that the order of the regret upper bound of ClusUCB is $O(\sqrt{KT\log K})$ and this matches the order of UCB-Improved. However, this is not as low as the order $O(\sqrt{KT})$ of MOSS or OCUCB. 
+From the above result, we observe that the order of the regret upper bound of ClusUCB is $O(\sqrt{KT\log K})$, and this matches the order of UCB-Improved. However, this is not as low as the order $O(\sqrt{KT})$ of MOSS or OCUCB. 
 
 %\begin{corollary}[\textbf{\textit{Gap-independent bound}}]
 %\label{Result:Corollary:3}
@@ -147,10 +147,10 @@ From the above result, we observe that the order of the regret upper bound of Cl
 %\end{proof}
 
 \subsection*{Analysis of elimination error}
-Let $\tilde R_T$ denote the contribution  to the expected regret in the case when the optimal arm $*$ gets eliminated during one of the rounds of ClusUCB. This can happen if a sub-optimal arm eliminates $*$ or if a sub-optimal cluster eliminates the cluster $s^*$ that contains $*$ - these correspond to cases b2 and b3 in the proof of Theorem \ref{Result:Theorem:1} (see Section \ref{sec:proofTheorem}). 
+Let $\widetilde R_T$ denote the contribution  to the expected regret in the case when the optimal arm $*$ gets eliminated during one of the rounds of ClusUCB. This can happen if a sub-optimal arm eliminates $*$ or if a sub-optimal cluster eliminates the cluster $s^*$ that contains $*$ -- these correspond to cases b2 and b3 in the proof of Theorem \ref{Result:Theorem:1} (see Section \ref{sec:proofTheorem}). 
 We shall denote variant of ClusUCB that includes arm elimination condition only as ClusUCB-AE while ClusUCB corresponds to Algorithm \ref{alg:clusucb}, which uses both arm and cluster elimination conditions.
 
-For ClusUCB-AE, the quantity $\tilde R_T$ can be extracted from the proofs (in particular, case b2 in Appendix \ref{App:A}) and simplified using the values $\rho_{a}=\frac{1}{2}$ and $\psi=\frac{T}{\log K}$, to obtain $\tilde R_T = 2\sqrt{KT\log K}$. 
+For ClusUCB-AE, the quantity $\widetilde R_T$ can be extracted from the proofs (in particular, case b2 in Appendix \ref{App:A}) and simplified using the values $\rho_{a}=\frac{1}{2}$ and $\psi=\frac{T}{\log K}$, to obtain $\widetilde R_T = 2\sqrt{KT\log K}$. 
 %A similar exercise for ClusUCB-CE (see Case b2 in Appendix \ref{App:B}) with $\rho_{s}=\frac{1}{2}$ and $\psi=\frac{T}{\log K}$ yields $\tilde R_T = 4\sqrt{KT\log K}$. 
-Finally, for ClusUCB, the relevant terms from Theorem \ref{Result:Theorem:1} that corresponds to $\tilde R_T$ can be simplified with $\rho_{a}=\frac{1}{2}$, $\rho_{s}=\frac{1}{2},p=\big\lceil \frac{K}{\log K} \big\rceil$ and $\psi=\frac{T}{\log K}$ (as in Corollary \ref{Result:Corollary:2} to obtain  
+Finally, for ClusUCB, the relevant terms from Theorem \ref{Result:Theorem:1} that corresponds to $\widetilde R_T$ can be simplified with $\rho_{a}=\frac{1}{2}$, $\rho_{s}=\frac{1}{2},p=\big\lceil \frac{K}{\log K} \big\rceil$ and $\psi=\frac{T}{\log K}$ (as in Corollary \ref{Result:Corollary:2} to obtain  
 $\tilde R_T = \frac{5.3 \sqrt{T}\log K^{\frac{3}{2}} }{\sqrt{K}} + \frac{5.3 \sqrt{T}\log K}{\sqrt{K}} + 10.6 \frac{K}{K+\log K}\sqrt{KT\log K} + 10.6 \frac{K}{K+\log K}\sqrt{KT}$. Hence, in comparison to ClusUCB-AE which has an elimination regret bound of $O(\sqrt{KT\log K})$, the elimination error contribution to regret is lower in ClusUCB which has a bound of $O(\frac{K}{K+\log K}\sqrt{KT\log K})$. Thus, we observe that clustering in conjunction with improved exploration via $\rho_{a},\rho_{s}$,$p$ and $\psi$ helps in reducing the factor associated with $\sqrt{KT}$ for the gap-independent error regret bound for ClusUCB. A table containing the regret error bound is shown in Appendix \ref{App:E}. 
