@@ -2,7 +2,7 @@
 \label{sec:prelims}
 \input{prelims}
 
-\subsubsection*{The algorithm}
+%\subsubsection*{The algorithm}
 
 
 %%%%%%%%%%%%%%%% alg-custom-block %%%%%%%%%%%%
@@ -26,34 +26,34 @@
 \algrenewtext{ResParam}[1]{\algorithmicResParam\ #1}
 \algrenewtext{EndResParam}{\algorithmicendResParam}
 
-\begin{algorithm}
+\begin{algorithm}[!h]
 \caption{ClusUCB}
 \label{alg:clusucb}
 \begin{algorithmic}
 \State {\bf Input:} Number of clusters $p$, time horizon $T$, exploration parameters $\rho_a$, $\rho_s$ and $\psi$.
 \State {\bf Initialization:} Set $B_{0}:=A$, $S_0 = S$ and $\epsilon_{0}:=1$.
-\State Create a partition $S_0$ of the arms at random into $p$ clusters of size up to $\ell=\bigg\lceil \dfrac{K}{p} \bigg\rceil$ each.
-\For{$m=0,1,..\big \lfloor \dfrac{1}{2}\log_{2} \dfrac{7T}{K}\big\rfloor$}	
-\State Pull each arm in $B_m$ so that the total number of times it has been pulled is $n_{m}=\bigg\lceil\dfrac{2\log{(\psi T\epsilon_{m}^{2})}}{\epsilon_{m}}\bigg\rceil$. 
+\State Create a partition $S_0$ of the arms at random into $p$ clusters of size up to $\ell=\bigg\lceil \frac{K}{p} \bigg\rceil$ each.
+\For{$m=0,1,..\big \lfloor \frac{1}{2}\log_{2} \frac{7T}{K}\big\rfloor$}	
+\State Pull each arm in $B_m$ so that the total number of times it has been pulled is $n_{m}=\bigg\lceil\frac{2\log{(\psi T\epsilon_{m}^{2})}}{\epsilon_{m}}\bigg\rceil$. 
 % A partition of $A$ into clusters from Algorithm \ref{alg:rua}
-%\State \hspace*{2em} Calculate $w_{s_{i}}=\bigg\lceil\dfrac{1}{\ell\hat{\Delta}_{s_{i}}}\bigg\rceil$,if $\hat{\Delta}_{s_{i}}\neq 0, \forall s_{i}\in S$
+%\State \hspace*{2em} Calculate $w_{s_{i}}=\bigg\lceil\frac{1}{\ell\hat{\Delta}_{s_{i}}}\bigg\rceil$,if $\hat{\Delta}_{s_{i}}\neq 0, \forall s_{i}\in S$
 %\newline\hspace*{8em}$=1$, otherwise, and $\hat{\Delta}_{s_{i}}=\max_{i\in s_{i}}{\lbrace\hat{r}_{i}\rbrace}-\min_{j\in s_{i}}{\lbrace\hat{r}_{j}\rbrace}, i\neq j$
 \ArmElim
 \State For each cluster $s_k \in S_{m}$, delete arm ${i}\in s_{k}$ from $B_{m}$ if
 \begin{align*}
-\hat{r}_{i} + \sqrt{\dfrac{\rho_{a}\log{(\psi T\epsilon_{m}^{2})}}{2 n_{m}}}  < \max_{{j}\in s_{k}}\bigg\lbrace\hat{r}_{j} -\sqrt{\dfrac{\rho_{a}\log{(\psi T\epsilon_{m}^{2})}}{2 n_{m}}} \bigg\rbrace
+\hat{r}_{i} + \sqrt{\frac{\rho_{a}\log{(\psi T\epsilon_{m}^{2})}}{2 n_{m}}}  < \max_{{j}\in s_{k}}\bigg\lbrace\hat{r}_{j} -\sqrt{\frac{\rho_{a}\log{(\psi T\epsilon_{m}^{2})}}{2 n_{m}}} \bigg\rbrace
 \end{align*}
-% where $\rho_{a}=\dfrac{1}{w_{m}}$ and remove all such arms from $B_{m}$.
+% where $\rho_{a}=\frac{1}{w_{m}}$ and remove all such arms from $B_{m}$.
 \EndArmElim
 \ClusElim
 \State Delete cluster $s_{k}\in S_{m}$ and remove all arms $i\in s_{k}$ from $B_{m}$ if 
 \begin{align*}
- \max_{{i}\in s_{k}}\bigg\lbrace\hat{r}_{i} + \sqrt{\dfrac{\rho_{s}\log{(\psi T\epsilon_{m}^{2})}}{2 n_{m}}}\bigg\rbrace  \\
- < \max_{{j}\in B_{m}} \bigg\lbrace\hat{r}_{j} - \sqrt{\dfrac{\rho_{s} \log{(\psi T\epsilon_{m}^{2})}}{2 n_{m}}}\bigg\rbrace.
+ \max_{{i}\in s_{k}}\bigg\lbrace\hat{r}_{i} + \sqrt{\frac{\rho_{s}\log{(\psi T\epsilon_{m}^{2})}}{2 n_{m}}}\bigg\rbrace  \\
+ < \max_{{j}\in B_{m}} \bigg\lbrace\hat{r}_{j} - \sqrt{\frac{\rho_{s} \log{(\psi T\epsilon_{m}^{2})}}{2 n_{m}}}\bigg\rbrace.
 \end{align*}
 %  and remove all such arms in the cluster $s_{k}$ from $B_{m}$ to obtain $B_{m+1}$.
 \EndClusElim
-\State Set $\epsilon_{m+1}:=\dfrac{\epsilon_{m}}{2}$\vspace{0.5ex}
+\State Set $\epsilon_{m+1}:=\frac{\epsilon_{m}}{2}$\vspace{0.5ex}
 \State Set $B_{m+1}:=B_{m}$
 %\State \hspace*{2em} $\ell_{m+1}:=\min\lbrace 2\ell_{m}, K\rbrace$
 %\State \hspace*{2em} $w_{m+1}:=2w_{m}$
@@ -64,16 +64,16 @@
 
 %\todos[inline]{Shouldn't there be a $\psi$ inside the log term on RHS of both elim conditions of Algorithm \ref{alg:clusucb}? (Subho) Addressed: $\psi$ has to be there}
 
-As mentioned in a recent work \cite{liu2016modification}, UCB-Improved has two shortcomings: 	\\
+\textbf{The algorithm.} As mentioned in a recent work \cite{liu2016modification}, UCB-Improved has two shortcomings: 	\\
 \begin{inparaenum}[\bfseries(i)]
-\item A significant number of pulls are spent in early exploration, since each round $m$ of UCB-Improved involves pulling every arm an identical $n_{m}=\bigg\lceil \dfrac{ 2\log(T\epsilon^{2}_{m})}{\epsilon^{2}_{m}} \bigg\rceil$ number of times. The quantity $\epsilon_{m}$ is initialized to $1$ and halved after every round.\\
-\item In UCB-Improved, arms are eliminated conservatively, i.e, only after $\epsilon_{m}<\dfrac{\Delta_{i}}{2}$, the sub-optimal arm $i$ is discarded with high probability. This is disadvantageous when $K$ is large and the gaps are identical ($r_{1}=r_{2}=..=r_{K-1}<r^{*}$) and small.\\
+\item A significant number of pulls are spent in early exploration, since each round $m$ of UCB-Improved involves pulling every arm an identical $n_{m}=\bigg\lceil \frac{ 2\log(T\epsilon^{2}_{m})}{\epsilon^{2}_{m}} \bigg\rceil$ number of times. The quantity $\epsilon_{m}$ is initialized to $1$ and halved after every round.\\
+\item In UCB-Improved, arms are eliminated conservatively, i.e, only after $\epsilon_{m}<\frac{\Delta_{i}}{2}$, the sub-optimal arm $i$ is discarded with high probability. This is disadvantageous when $K$ is large and the gaps are identical ($r_{1}=r_{2}=..=r_{K-1}<r^{*}$) and small.\\
 \end{inparaenum}
-To reduce early exploration, the number $n_m$ of times each arm is pulled per round in ClusUCB is lower than that of UCB-Improved and also that of Median-Elimination, which used $n_m=\dfrac{4}{\epsilon^{2}}\log\big(\dfrac{3}{\delta}\big)$, where $\epsilon,\delta$ are confidence parameters.
+To reduce early exploration, the number $n_m$ of times each arm is pulled per round in ClusUCB is lower than that of UCB-Improved and also that of Median-Elimination, which used $n_m=\frac{4}{\epsilon^{2}}\log\big(\frac{3}{\delta}\big)$, where $\epsilon,\delta$ are confidence parameters.
 To handle the second problem mentioned above, ClusUCB partitions the larger problem into several small sub-problems using clustering and then performs local exploration aggressively to eliminate sub-optimal arms within each clusters with high probability.
 
 
-As described in the pseudocode in Algorithm~\ref{alg:clusucb}, ClusUCB begins with a initial clustering of arms that is performed by random uniform allocation. The set of clusters $S$ thus obtained satisfies $|S|=p$, with individual clusters having a size that is bounded above by $\ell=\bigg\lceil \dfrac{K}{p} \bigg\rceil$.
+As described in the pseudocode in Algorithm~\ref{alg:clusucb}, ClusUCB begins with a initial clustering of arms that is performed by random uniform allocation. The set of clusters $S$ thus obtained satisfies $|S|=p$, with individual clusters having a size that is bounded above by $\ell=\big\lceil \frac{K}{p} \big\rceil$.
 Each round of ClusUCB involves both individual arm as well as cluster elimination conditions. These elimination conditions are inspired by UCB-Improved. Notice that, unlike UCB-Improved, there is no longer a single point of reference based on which we are eliminating arms. Instead now we have as many reference points to eliminate arms as number of clusters formed. 
 %Further, the exploration factors $\rho_{a}\in (0,1]$ and $\rho_{s}\in (0,1]$ governing the arm and cluster elimination conditions, respectively, are relatively more aggressive than that in UCB-Improved. 
 
@@ -91,12 +91,12 @@ Unlike \cite{liu2016modification}, we employ cluster as well as arm elimination 
 %since with time, $t_{i}$ increases and only the numerator decides how fast the exploration must decrease.
 
 %Discussion on UCB-V, not quite sure
-%In this context we must also point out a similar discussion on the arm elimination parameters was handled in \cite{audibert2009exploration}(section $5.1$). There the authors proved that by introducing the factor $\rho$ in the confidence interval term of UCB1 such that $c=\sqrt{\dfrac{\rho\log T}{n_{i}}}$, where $n_{i}$ is the number of times the arm $a_{i}$ has been sampled, we can make the expected regret $\E [R_{T}]$ linearly dependent on $\rho$. So this $\rho$ in the confidence term controls the exploration and larger the $\rho$, higher is the exploration. In the original UCB1 algorithm this coefficient was set to $\rho=2$. In ClusUCB, both $\rho_{a}$ and $\rho_{s}$ are taken to be $\leq 1$. 
+%In this context we must also point out a similar discussion on the arm elimination parameters was handled in \cite{audibert2009exploration}(section $5.1$). There the authors proved that by introducing the factor $\rho$ in the confidence interval term of UCB1 such that $c=\sqrt{\frac{\rho\log T}{n_{i}}}$, where $n_{i}$ is the number of times the arm $a_{i}$ has been sampled, we can make the expected regret $\E [R_{T}]$ linearly dependent on $\rho$. So this $\rho$ in the confidence term controls the exploration and larger the $\rho$, higher is the exploration. In the original UCB1 algorithm this coefficient was set to $\rho=2$. In ClusUCB, both $\rho_{a}$ and $\rho_{s}$ are taken to be $\leq 1$. 
 
 
 %For creating these clusters we rely on the parameter $\epsilon_{m}$, which is initialized at $1$ and halved after every round. 
 %$\hat{\Delta}_{m}$(in which all $\hat{r}_{i}$ lies) divided by $\ell$. 
-%If the range before any round is found to be $0$ then we conduct a small exploration with the alternate definition of $\epsilon_{m}=\dfrac{1}{D_{m}}$. 
+%If the range before any round is found to be $0$ then we conduct a small exploration with the alternate definition of $\epsilon_{m}=\frac{1}{D_{m}}$. 
 %Thus, we see that as the rounds progresses, $\epsilon_{m}$ gets smaller and smaller resulting in tighter and tighter clusters with high purity level. Single link clustering tends to create large clusters with many elements in a single cluster. To avoid this behavior, mainly because we are conducting exploration inside a cluster based on its size, we bound the maximum cluster size possible in any round by $\ell=\min\lbrace 2^{m}, K \rbrace$. Hence as $\epsilon_{m}$ tends to $\Delta$ the upper limit on the cluster size gets fixed. 
 
 
@@ -111,7 +111,7 @@ Unlike \cite{liu2016modification}, we employ cluster as well as arm elimination 
 %\caption{Clustering by random uniform allocation}
 %\label{alg:rua}
 %\begin{algorithmic}
-%\State Set $\ell=\bigg\lceil \dfrac{K}{p} \bigg\rceil$
+%\State Set $\ell=\bigg\lceil \frac{K}{p} \bigg\rceil$
 %\State Permute arms in $A$ randomly to create $A_{random}$.
 %\State Create clusters $s_{i}=\lbrace {i}\rbrace, \forall i\in A_{random}$
 %\For{ $i=1$ to $K$}

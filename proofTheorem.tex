@@ -334,11 +334,6 @@ Using $A'\supset C_{g}^{'}$ and $A''\supset C_{g}^{''}$, we can bound the regret
 \textbf{Case b4:} \textit{${*}$ is not in $C_{\max(m_{i},g_{s_{k}})}$, but belongs to $B_{\max(m_{i},g_{s_{k}})}$.}
 
 In this case the optimal arm ${*}\in s^{*}$ is not eliminated, also $s^{*}$ is not eliminated. So, for all sub-optimal arms $i$ in $A_{s^*}^{'}$ which gets eliminated on or before $\max \lbrace m_{i},g_{s_{k}} \rbrace$ will get pulled no less than $\bigg\lceil\dfrac{2\log{(\psi T\epsilon_{m_{i}}^{2})}}{\epsilon_{m_{i}}}\bigg\rceil$ number of times, which leads to the following bound the contribution to the expected regret, as in Case $b1$:
-% 
-% \begin{align*}
-%  &\sum_{i\in A^{'}}\Delta_{i}\bigg\lceil\dfrac{2\log{(\psi T\epsilon_{m_{i}}^{2})}}{\epsilon_{m_{i}}}\bigg\rceil
-% \end{align*}
-% Since $a^{*}$ is definitely in $B_{\max(m_{i},g_{s_{k}})}$ then following the same way as Case $b1$ we can show that can be no worse than,
 \begin{align*}
  &\sum_{i\in A_{s^*}^{'}}\bigg\lbrace \Delta_{i}+\dfrac{32\rho_{a}\log{(\psi T\dfrac{\Delta_{i}^{4}}{16\rho_{a}^{2}})}}{\Delta_{i}} \bigg\rbrace 
 \end{align*} 
@@ -367,22 +362,28 @@ for all $b\geq\sqrt{\frac{K}{7T}}$. In the above, $C_1, C_2$ are as defined in T
 % (x) = \frac{2^{1+4x}x^{2x}}{\psi^{x}}$,  $C_2(x) = \frac{2^{2x+\frac{3}{2}}x^{2x}}{\psi^{x}}$, $\rho_{a}=\frac{1}{2}$ is the arm elimination parameter, $\psi=K^{2}T$ is the exploration regulatory factor, $p$ is the number of clusters and $T$ is the horizon.
 \end{proposition}
 \begin{proof}
-%Follows in a similar fashion as the proof of Theorem $1$ in \cite{auer2010ucb}. For the sake of completeness, the proof is given in Appendix \ref{App:A}.
 See Appendix \ref{App:A}.
 \end{proof}
 
-\begin{proposition}
-\label{proofTheorem:Prop:2}
-The regret $R_T$ for ClusUCB-CE satisfies,
-\begin{align*}
-&\E [R_{T}]\leq \sum\limits_{\substack{i\in A: \\ \Delta_{i} > b}}\bigg\lbrace\dfrac{C_{1}(\rho_{s})T^{1-\rho_{s}}}{\Delta_{i}^{4\rho_{s}-1}} +\dfrac{64\rho_{s}\log{(\psi T\dfrac{\Delta_{i}^{4}}{16\rho_{s}^{2}})}}{\Delta_{i}} \\  
-& + 2\Delta_{i} \bigg\rbrace + \sum\limits_{\substack{i\in A\setminus A_{s^*}: \\ \Delta_{i} > b}} \dfrac{2C_{2}(\rho_{s})T^{1-\rho_{s}}}{\Delta_{i}^{4\rho_{s} -1}} \\ 
-& + \sum\limits_{\substack{i\in A\setminus A_{s^*}: \\ 0 <\Delta_{i}\leq b}}\dfrac{2C_{2}(\rho_{s})T^{1-\rho_{s}}}{b^{4\rho_{s} -1}} 
- + \max_{i\in A:\Delta_{i}\leq b}\Delta_{i}T,
-\end{align*}
- for all $b\geq \sqrt{\frac{K}{7T}}$, with $C_1$ and $C_2$ as defined in Theorem \ref{Result:Theorem:1}.
-%  (x) = \frac{2^{1+4x}x^{2x}}{\psi^{x}}$,  $C_2(x) = \frac{2^{2x+\frac{3}{2}}x^{2x}}{\psi^{x}}$, $\rho_{s}=\frac{1}{2} $ is the cluster elimination parameter, $\psi=K^{2}T$ is the exploration regulatory factor, $p$ is the number of clusters and $T$ is the horizon.
-\end{proposition}
-\begin{proof}
-See Appendix \ref{App:B}.
-\end{proof}
+EClusucb has the same regret guarantees as ClusUCB and its regret upper bound is shown in Theorem \ref{Result:Theorem:2} in Appendix \ref{App:EClusUCB}. Also EClusUCB is an anytime algorithm and its simple regret guarantee is weaker than CCB(\cite{liu2016modification}) and that is shown in Appendix \ref{App:SR_EClusUCB} in Corollary \ref{App:Corollary:3}.
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%
+%Not giving ClusUCB-CE	
+%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%\begin{proposition}
+%\label{proofTheorem:Prop:2}
+%The regret $R_T$ for ClusUCB-CE satisfies,
+%\begin{align*}
+%&\E [R_{T}]\leq \sum\limits_{\substack{i\in A: \\ \Delta_{i} > b}}\bigg\lbrace\dfrac{C_{1}(\rho_{s})T^{1-\rho_{s}}}{\Delta_{i}^{4\rho_{s}-1}} +\dfrac{64\rho_{s}\log{(\psi T\dfrac{\Delta_{i}^{4}}{16\rho_{s}^{2}})}}{\Delta_{i}} \\  
+%& + 2\Delta_{i} \bigg\rbrace + \sum\limits_{\substack{i\in A\setminus A_{s^*}: \\ \Delta_{i} > b}} \dfrac{2C_{2}(\rho_{s})T^{1-\rho_{s}}}{\Delta_{i}^{4\rho_{s} -1}} \\ 
+%& + \sum\limits_{\substack{i\in A\setminus A_{s^*}: \\ 0 <\Delta_{i}\leq b}}\dfrac{2C_{2}(\rho_{s})T^{1-\rho_{s}}}{b^{4\rho_{s} -1}} 
+% + \max_{i\in A:\Delta_{i}\leq b}\Delta_{i}T,
+%\end{align*}
+% for all $b\geq \sqrt{\frac{K}{7T}}$, with $C_1$ and $C_2$ as defined in Theorem \ref{Result:Theorem:1}.
+%%  (x) = \frac{2^{1+4x}x^{2x}}{\psi^{x}}$,  $C_2(x) = \frac{2^{2x+\frac{3}{2}}x^{2x}}{\psi^{x}}$, $\rho_{s}=\frac{1}{2} $ is the cluster elimination parameter, $\psi=K^{2}T$ is the exploration regulatory factor, $p$ is the number of clusters and $T$ is the horizon.
+%\end{proposition}
+%\begin{proof}
+%See Appendix \ref{App:B}.
+%\end{proof}
