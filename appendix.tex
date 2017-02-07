@@ -980,7 +980,7 @@ The third experiment is conducted over a testbed of $20-90$ (interval of $10$) a
 
 \begin{figure}[!tbp]
     \centering
-    \begin{tabular}{cc}
+    \begin{tabular}{ccc}
     \subfigure[0.32\textwidth][Experiment $3$: Experiment $3$: $20$ to $90$ Bernoulli-distributed arms with $r_{i_{{i}\neq {*}}}=0.05$ and $r^{*}=0.1$. ]
     {
     	\pgfplotsset{
@@ -998,16 +998,44 @@ The third experiment is conducted over a testbed of $20-90$ (interval of $10$) a
 		clip=true,
   		legend style={at={(0.5,1.3)},anchor=north, legend columns=3} ]
         % UCB
-		\addplot table{results/Expt3_1/EclUCB20_90.txt};
-		\addplot table{results/Expt3_1/MOSS20_90.txt};
-		\addplot table{results/Expt3_1/OCUCB20_90.txt};
+		\addplot table{results/NewExpt/Expt3_1/EclUCB20_90.txt};
+		\addplot table{results/NewExpt/Expt3_1/MOSS20_90.txt};
+		\addplot table{results/NewExpt/Expt3_1/OCUCB20_90.txt};
       	\legend{EClusUCBA,MOSS,OCUCB}
       	\end{axis}
         \end{tikzpicture}
         \label{fig:3}
     }
     &
-    \subfigure[0.32\textwidth][Experiment $4$: Cumulative regret for ClusUCB variants: $1,3,5,10,15,25$ correspond to number $p$ of clusters]
+    \subfigure[0.32\textwidth][Experiment $4$: Cumulative regret for ClusUCB for various clusters]
+    {
+    		\pgfplotsset{
+		tick label style={font=\Huge},
+		label style={font=\Huge},
+		legend style={font=\Large},
+		ylabel style={yshift=32pt},
+		}
+        \begin{tikzpicture}[scale=0.5]
+      	\begin{axis}[
+		ylabel={Cumulative Regret},
+		xlabel={Clusters},
+		grid=major,
+        %clip mode=individual,grid,grid style={gray!30},
+        clip=true,
+        %clip mode=individual,grid,grid style={gray!30},
+  		legend style={at={(0.5,1.5)},anchor=north, legend columns=3} ]
+      	% UCB
+      	\addplot table{results/NewExpt/Expt4/plotFinalEclUCB01.txt};
+		\addplot table{results/NewExpt/Expt4/plotFinalAclUCB01.txt};
+		\addplot table{results/NewExpt/Expt4/plotFinalEclUCB011.txt};
+		\addplot table{results/NewExpt/Expt4/plotFinalAclUCB011.txt};
+      	\legend{EClusUCBA,AClusUCBA,EClusUCB,AClusUCB} 
+      	\end{axis}
+      	\end{tikzpicture}
+  		\label{fig:4}
+    }
+    &
+    \subfigure[0.32\textwidth][Experiment $5$: Error Percentage of EClusUCB and CCB]
     {
     		\pgfplotsset{
 		tick label style={font=\Huge},
@@ -1018,30 +1046,23 @@ The third experiment is conducted over a testbed of $20-90$ (interval of $10$) a
         \begin{tikzpicture}[scale=0.5]
       	\begin{axis}[
 		xlabel={timestep},
-		ylabel={Cumulative Regret},
+		ylabel={Error Percentage},
 		grid=major,
         %clip mode=individual,grid,grid style={gray!30},
         clip=true,
         %clip mode=individual,grid,grid style={gray!30},
   		legend style={at={(0.5,1.5)},anchor=north, legend columns=3} ]
       	% UCB
-      	\addplot table{results/NewExpt/Expt4/plotFinalEclUCB01.txt};
-		\addplot table{results/NewExpt/Expt4/plotFinalAclUCB01.txt};
-      	\legend{EClusUCBA,AClusUCB} 
-%		\addplot table{results/Expt4_1/clucb1_comp_subsampled.txt};
-%		\addplot table{results/Expt4_1/clucb3_comp_subsampled.txt};
-%		\addplot table{results/Expt4_1/clucb5_comp_subsampled.txt};
-%		\addplot table{results/Expt4_1/clucb10_comp_subsampled.txt};
-%		\addplot table{results/Expt4_1/clucb15_comp_subsampled.txt};
-%		\addplot table{results/Expt4_1/clucb25_comp_subsampled.txt};
-%      	\legend{ClusUCB(1),ClusUCB(3),ClusUCB(5),ClusUCB(10),ClusUCB(15),ClusUCB(25)} 
+      	\addplot table{results/NewExpt/Expt5/EclUCB01_comp_subsampled.txt};
+		\addplot table{results/NewExpt/Expt5/CCB01_comp_subsampled.txt};
+      	\legend{EClusUCB,CCB} 
       	\end{axis}
       	\end{tikzpicture}
   		\label{fig:4}
     }
 	\end{tabular}
 	\label{fig:furtherExpt1}
-    \caption{Cumulative regret for ClusUCB variants}
+    \caption{Cumulative regret and Error Percentage for ClusUCB variants}
 \end{figure}
 
 
