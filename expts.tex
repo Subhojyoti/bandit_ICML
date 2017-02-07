@@ -21,14 +21,16 @@
         %clip mode=individual,grid,grid style={gray!30},
   		legend style={at={(0.5,1.5)},anchor=north, legend columns=3} ]
       	% UCB
-		\addplot table{results/NewExpt/Expt1/UCB_Vcomp_subsampled1.txt};
-		\addplot table{results/NewExpt/Expt1/DMEDcomp_subsampled1.txt};
-		\addplot table{results/NewExpt/Expt1/KLUCBcomp_subsampled1.txt};
-		\addplot table{results/NewExpt/Expt1/MOSScomp_subsampled1.txt};
-		\addplot table{results/NewExpt/Expt1/UCB1comp_subsampled1.txt};
-		\addplot table{results/NewExpt/Expt1/TScomp_subsampled1.txt};
-		\addplot table{results/NewExpt/Expt1/EclUCB01comp_subsampled1.txt};
-      	\legend{UCB-V,DMED,KL-UCB,MOSS,UCB1,TS,EClusUCB}      	
+		\addplot table{results/NewExpt/Expt1/UCBV01_comp_subsampled.txt};
+		\addplot table{results/NewExpt/Expt1/DMED01_comp_subsampled.txt};
+		\addplot table{results/NewExpt/Expt1/KLUCB01_comp_subsampled.txt};
+		\addplot table{results/NewExpt/Expt1/MOSS01_comp_subsampled.txt};
+		\addplot table{results/NewExpt/Expt1/UCB01_comp_subsampled.txt};
+		\addplot table{results/NewExpt/Expt1/OCUCB01_comp_subsampled.txt};
+		\addplot table{results/NewExpt/Expt1/TS01_comp_subsampled.txt};
+		\addplot table{results/NewExpt/Expt1/EclUCB01_comp_subsampled.txt};
+		\addplot table{results/NewExpt/Expt1/EclUCB011_comp_subsampled.txt};
+      	\legend{UCB-V,DMED,KL-UCB,MOSS,UCB1,OCUCB,TS,EClusUCBA,EClusUCB}      	
       	\end{axis}
       	\end{tikzpicture}
   		\label{fig:1}
@@ -50,14 +52,15 @@
        	clip=true,
   		legend style={at={(0.5,1.5)},anchor=north, legend columns=3} ]
       	% UCB
-        \addplot table{results/NewExpt/Expt2/UCB1comp_subsampled1.txt};
-		\addplot table{results/NewExpt/Expt2/clucb_p_10_comp_subsampled1.txt};
-		\addplot table{results/NewExpt/Expt2/Med_Elimcomp_subsampled1.txt};
-		\addplot table{results/NewExpt/Expt2/AclUCB01_comp_subsampled1.txt};
-		\addplot table{results/NewExpt/Expt2/MOSScomp_subsampled1.txt};
-		\addplot table{results/NewExpt/Expt2/EclUCB02_comp_subsampled1.txt};
-		\addplot table{results/NewExpt/Expt2/UCB_Improvedcomp_subsampled1.txt};
-      	\legend{UCB1,ClusUCB,Med-Elim,AClusUCB,MOSS,EClusUCB,UCB-Improved}
+        \addplot table{results/NewExpt/Expt2_1/UCB01_comp_subsampled.txt};
+		\addplot table{results/NewExpt/Expt2_1/clUCB01_comp_subsampled.txt};
+		\addplot table{results/NewExpt/Expt2_1/MedElim01_comp_subsampled.txt};
+		%\addplot table{results/NewExpt/Expt2/AclUCB01_comp_subsampled1.txt};
+		\addplot table{results/NewExpt/Expt2_1/MOSS01_comp_subsampled.txt};
+		\addplot table{results/NewExpt/Expt2_1/EclUCB01_comp_subsampled.txt};
+		\addplot table{results/NewExpt/Expt2_1/OCUCB01_comp_subsampled.txt};
+		\addplot table{results/NewExpt/Expt2_1/UCBR01_comp_subsampled.txt};
+      	\legend{UCB1,ClusUCB,Med-Elim,MOSS,EClusUCBA,OCUCB,UCB-Improved}
       	\end{axis}
       	\end{tikzpicture}
    		\label{fig:2}
@@ -67,7 +70,7 @@
     \label{fig:karmed}
 \end{figure}
 
-For the purpose of performance comparison using cumulative regret as the metric, we implement the following algorithms:  KL-UCB\cite{garivier2011kl}, DMED\cite{honda2010asymptotically}, MOSS\cite{audibert2009minimax}, UCB1\cite{auer2002finite}, UCB-Improved\cite{auer2010ucb}, Median Elimination\cite{even2006action}, Thompson Sampling(TS)\cite{agrawal2011analysis} and UCB-V\cite{audibert2009exploration}\footnote{The implementation for KL-UCB and DMED were taken from \cite{CapGarKau12}}. The parameters of ClusUCB algorithm for all the experiments are set as follows: $\psi=\log T$, $\rho_{s}=0.5$, $\rho_{a}=0.25$ and $p=\lceil\frac{K}{\log K}\rceil$ as in Corollary \ref{Result:Corollary:2}). 
+For the purpose of performance comparison using cumulative regret as the metric, we implement the following algorithms:  KL-UCB\cite{garivier2011kl}, DMED\cite{honda2010asymptotically}, MOSS\cite{audibert2009minimax}, UCB1\cite{auer2002finite}, UCB-Improved\cite{auer2010ucb}, Median Elimination\cite{even2006action}, Thompson Sampling(TS)\cite{agrawal2011analysis} and UCB-V\cite{audibert2009exploration}\footnote{The implementation for KL-UCB and DMED were taken from \cite{CapGarKau12}}. The parameters of ClusUCB algorithm for all the experiments are set as follows: $\psi=\log T$, $\rho_{s}=0.5$, $\rho_{a}=0.5$ and $p=\lceil\frac{K}{\log K}\rceil$ as in Corollary \ref{Result:Corollary:2}). 
 %When $K$ is large an2d $p$ is small, it is advantageous to run $\rho_{a} < \rho_{s}$(see 
 %Corollary \ref{Result:Corollary:}) because this will aggressively eliminate arms within each cluster while full cluster elimination will be more conservative.
 %So in all the experiments $\rho_{a}$ and $\rho_{s}$ are initialized to $1$ and then reduced after every round. By this definition of $\rho_{a},\rho_{s}$ we have made sure that their value always remain bounded $\in(0,1]$. 

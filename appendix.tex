@@ -1001,7 +1001,7 @@ The third experiment is conducted over a testbed of $20-90$ (interval of $10$) a
 		\addplot table{results/Expt3_1/EclUCB20_90.txt};
 		\addplot table{results/Expt3_1/MOSS20_90.txt};
 		\addplot table{results/Expt3_1/OCUCB20_90.txt};
-      	\legend{EClusUCB,MOSS,OCUCB}
+      	\legend{EClusUCBA,MOSS,OCUCB}
       	\end{axis}
         \end{tikzpicture}
         \label{fig:3}
@@ -1025,13 +1025,16 @@ The third experiment is conducted over a testbed of $20-90$ (interval of $10$) a
         %clip mode=individual,grid,grid style={gray!30},
   		legend style={at={(0.5,1.5)},anchor=north, legend columns=3} ]
       	% UCB
-		\addplot table{results/Expt4_1/clucb1_comp_subsampled.txt};
-		\addplot table{results/Expt4_1/clucb3_comp_subsampled.txt};
-		\addplot table{results/Expt4_1/clucb5_comp_subsampled.txt};
-		\addplot table{results/Expt4_1/clucb10_comp_subsampled.txt};
-		\addplot table{results/Expt4_1/clucb15_comp_subsampled.txt};
-		\addplot table{results/Expt4_1/clucb25_comp_subsampled.txt};
-      	\legend{ClusUCB(1),ClusUCB(3),ClusUCB(5),ClusUCB(10),ClusUCB(15),ClusUCB(25)} 
+      	\addplot table{results/NewExpt/Expt4/plotFinalEclUCB01.txt};
+		\addplot table{results/NewExpt/Expt4/plotFinalAclUCB01.txt};
+      	\legend{EClusUCBA,AClusUCB} 
+%		\addplot table{results/Expt4_1/clucb1_comp_subsampled.txt};
+%		\addplot table{results/Expt4_1/clucb3_comp_subsampled.txt};
+%		\addplot table{results/Expt4_1/clucb5_comp_subsampled.txt};
+%		\addplot table{results/Expt4_1/clucb10_comp_subsampled.txt};
+%		\addplot table{results/Expt4_1/clucb15_comp_subsampled.txt};
+%		\addplot table{results/Expt4_1/clucb25_comp_subsampled.txt};
+%      	\legend{ClusUCB(1),ClusUCB(3),ClusUCB(5),ClusUCB(10),ClusUCB(15),ClusUCB(25)} 
       	\end{axis}
       	\end{tikzpicture}
   		\label{fig:4}
@@ -1046,136 +1049,77 @@ The third experiment is conducted over a testbed of $20-90$ (interval of $10$) a
 	The fourth experiment is performed over a testbed having $50$ Gaussian-distributed arms with $r_{i_{:{{i}\neq {*}}}}=0.8,\forall i\in A$, $r^{*}=0.9$ and $\sigma^{2}=1.0$. In Figure \ref{fig:4}, we report the results with $T=400000$ averaged over $100$ independent runs for ClusUCB with  $p=\lbrace 1,3,5,10,15,25\rbrace$. Also, in this experiment we take $\psi = K^{2}T$, $\rho_a=0.25$ and $\rho_{s}=0.5$ as stated in Corollary \ref{Result:Corollary:2}. The high variance leads to a greater number of errors committed by ClusUCB-AE that is ClusUCB($p=1$) but as proved in Proposition \ref{proofTheorem:Prop:1} the cumulative regret is lesser than  ClusUCB. But because of the increased errors committed in predicting the optimal arm and because of the large horizon, we eventually see that ClusUCB(p=$5,10,25,25$) outperforms ClusUCB-AE while ClusUCB($p=3$) regret is worse than ClusUCB-AE. The error percentage in the $6$ cases (in the order as shown in legend of Fig \ref{fig:4}) are $14,12,5,3,3$ and $3$. The range of p is shown to be between $\sqrt{\log K}$ to $\frac{K}{2}$ and as we approach $\frac{K}{2}$ we see that the error percentage stabilizes to $3\%$.
 
 
-	In the fifth experiment, we check the performance of EClusUCB against $4$ algorithms, UCB1, OCUCB\cite{lattimore2015optimally}, MOSS and TS. The testbed is similar to Experiment $1$, with $20$ arms involving Bernoulli reward distribution with expected rewards of the arms $r_{i_{{i}\neq {*}}}=0.07$ and $r^{*}=0.1$ and horizon $T$ is set to $60000$. The number of clusters $p$ is set to $5$ and the result is shown in Figure \ref{fig:5}. Here, we choose the $\psi=\lbrace \frac{T}{\log (KT)}, \log T\rbrace$. From the result we see that EClusUCB is sensitive to the exploratory regulatory factor $\psi$. The first choice of $\psi$ is conservative and does too much exploration while the second choice is optimistic and explores less. Both $\rho_{a}$ and $\rho_{s}$ is set to $\frac{1}{2}$ in all the cases. We see that OCUCB will eventually perform better than MOSS which does not stabilize in $60000$ timesteps but both of them is beaten by EClusUCB. The careful choosing of $\rho_{a}$, $\rho_{s}$ and $\psi$ enables this.
-	
-	In the sixth Experiment the testbed is same as above and we check the performance of EClusUCB with various parameters against MOSS and TS and the result is shown in Figure \ref{fig:6}. In all the cases the number of clusters is set at $5$. Here we see that a lesser exploration regulatory factor $\psi=\log T$ and $\rho_{a}=\rho_{s}=0.25$ outperforms most of the other variants. Infact EClusUCB1, EClusUCB3 and EClusUCB4 are better than MOSS. In both the figures we see that EClusUCB($\log T$) performance is almost similar to AClusUCB.
-
-\begin{figure}[!tbp]
-    \centering
-    \begin{tabular}{cc}
-    \subfigure[0.32\textwidth][Experiment $5$: Cumulative regret for EClusUCB and AClusUCB against various other UCB variants and Thompson Sampling]
-    {
-    		\pgfplotsset{
-		tick label style={font=\Huge},
-		label style={font=\Huge},
-		legend style={font=\Large},
-		ylabel style={yshift=32pt},
-		}
-        \begin{tikzpicture}[scale=0.5]
-      	\begin{axis}[
-		xlabel={timestep},
-		ylabel={Cumulative Regret},
-		grid=major,
-        %clip mode=individual,grid,grid style={gray!30},
-        clip=true,
-        %clip mode=individual,grid,grid style={gray!30},
-  		legend style={at={(0.5,1.5)},anchor=north, legend columns=3} ]
-      	% UCB
-		\addplot table{results/Expt5/CLUCBo1comp_subsampled.txt};
-		\addplot table{results/Expt5/CLUCBo2comp_subsampled.txt};
-		\addplot table{results/Expt5/OCUCBcomp_subsampled.txt};
-		\addplot table{results/Expt5/ACLUCB2comp_subsampled.txt};
-		\addplot table{results/Expt5/UCB1comp_subsampled.txt};
-		\addplot table{results/Expt5/MOSScomp_subsampled.txt};
-		\addplot table{results/Expt5/TScomp_subsampled.txt};
-      	\legend{EClusUCB($\log T$),EClusUCB($\frac{T}{\log(KT)}$),OCUCB,AClusUCB,UCB1,MOSS,TS}
-      	\end{axis}
-      	\end{tikzpicture}
-  		\label{fig:5}
-    }
-    &
-    \subfigure[0.32\textwidth][Experiment $6$: Cumulative regret for EClusUCB with different parameters and AClusUCB. EClusUCB1: $\psi=log T, \rho_{a}=\rho_{s}=0.5$. EClusUCB2: $\psi=\frac{T}{\log(KT)}, \rho_{a}=\rho_{s}=0.5$. EClusUCB3: $\psi=log T, \rho_{a}=\rho_{s}=0.25$. EClusUCB4: $\psi=\frac{T}{\log(KT)}, \rho_{a}=\rho_{s}=0.25$ ]
-    {
-    	\pgfplotsset{
-		tick label style={font=\Huge},
-		label style={font=\Huge},
-		legend style={font=\Large},
-		ylabel style={yshift=32pt},
-		}
-        \begin{tikzpicture}[scale=0.5]
-        \begin{axis}[
-		xlabel={timestep},
-		ylabel={Cumulative Regret},
-        %clip mode=individual,grid,grid style={gray!30},
-		grid=major,
-		clip=true,
-  		legend style={at={(0.5,1.5)},anchor=north, legend columns=3} ]
-        % UCB
-		\addplot table{results/Expt5/CLUCBo1comp_subsampled.txt};
-		\addplot table{results/Expt5/CLUCBo2comp_subsampled.txt};
-		\addplot table{results/Expt5/CLUCB1comp_subsampled.txt};
-		\addplot table{results/Expt5/CLUCB2comp_subsampled.txt};
-		\addplot table{results/Expt5/UCB1comp_subsampled.txt};
-		\addplot table{results/Expt5/MOSScomp_subsampled.txt};
-		\addplot table{results/Expt5/TScomp_subsampled.txt};
-		\addplot table{results/Expt5/ACLUCB2comp_subsampled.txt};
-	 	\legend{EClusUCB1,EClusUCB2,EClusUCB3,EClusUCB4,UCB1,MOSS,TS,AClusUCB}
-      	\end{axis}
-        \end{tikzpicture}
-        \label{fig:6}
-    }
-    \end{tabular}
-   \label{fig:furtherExpt2}
-  	\caption{Cumulative regret for various bandit algorithms on two stochastic K-armed bandit environments. }
-\end{figure}
-
-
-%\begin{figure}
-%\centering
-%  \begin{tabular}{cc}
-%  %%%%%%Expt5
-%  \begin{subfigure}{0.45\textwidth}
-% \tabl{c}{\scalebox{0.7}{\begin{tikzpicture}
-%      \begin{axis}[
-%	xlabel={timestep},
-%	ylabel={Cumulative regret},
-%       clip mode=individual,grid,grid style={gray!30},
-%  legend style={at={(0.5,-0.2)},anchor=north, legend columns=3} ]
-%      % UCB
-%\addplot table[x index=0,y index=1,col sep=tab,each nth point={10}] {results/Expt5/CLUCBo1comp_subsampled.txt};
-%\addplot table[x index=0,y index=1,col sep=tab,each nth point={10}] {results/Expt5/CLUCBo2comp_subsampled.txt};
-%\addplot table[x index=0,y index=1,col sep=tab,each nth point={10}] {results/Expt5/OCUCBcomp_subsampled.txt};
-%\addplot table[x index=0,y index=1,col sep=tab,each nth point={10}] {results/Expt5/ACLUCB2comp_subsampled.txt};
-%\addplot table[x index=0,y index=1,col sep=tab,each nth point={10}] {results/Expt5/UCB1comp_subsampled.txt};
-%\addplot table[x index=0,y index=1,col sep=tab,each nth point={10}] {results/Expt5/MOSScomp_subsampled.txt};
-%\addplot table[x index=0,y index=1,col sep=tab,each nth point={10}] {results/Expt5/TScomp_subsampled.txt};
-%      \legend{EClusUCB($\log T$),EClusUCB($\frac{T}{\log(KT)}$),OCUCB,AClusUCB,UCB1,MOSS,TS}
-%      %\legend{ClusUCB (NC, p=1),ClusUCB (C, p=4),ClusUCB(C, p=10) ,MOSS, ClusUCB(C, p=5, NAE), ClusUCB(C, p=10, NAE)}
-%      %\legend{ClusUCB(1,A),ClusUCB(4,B),ClusUCB(10,B), MOSS,ClusUCB(5,S), ClusUCB(10,A)}
-%      \end{axis}
-%      \end{tikzpicture}}\\}
-%			\caption{Experiment $5$: Cumulative regret for EClusUCB and AClusUCB against various other UCB variants and Thompson Sampling}
-%  \label{Fig:EClusUCBexpt1}
-%  \end{subfigure}
-%	&
-%  %%%%%%Expt6
-%  \begin{subfigure}{0.45\textwidth}
-% \tabl{c}{\scalebox{0.7}{\begin{tikzpicture}
-%      \begin{axis}[
-%	xlabel={timestep},
-%	ylabel={Cumulative regret},
-%       clip mode=individual,grid,grid style={gray!30},
-%  legend style={at={(0.5,-0.2)},anchor=north, legend columns=3} ]
-%      % UCB
-%\addplot table[x index=0,y index=1,col sep=tab,each nth point={10}] {results/Expt5/CLUCBo1comp_subsampled.txt};
-%\addplot table[x index=0,y index=1,col sep=tab,each nth point={10}] {results/Expt5/CLUCBo2comp_subsampled.txt};
-%\addplot table[x index=0,y index=1,col sep=tab,each nth point={10}] {results/Expt5/CLUCB1comp_subsampled.txt};
-%\addplot table[x index=0,y index=1,col sep=tab,each nth point={10}] {results/Expt5/CLUCB2comp_subsampled.txt};
-%\addplot table[x index=0,y index=1,col sep=tab,each nth point={10}] {results/Expt5/UCB1comp_subsampled.txt};
-%\addplot table[x index=0,y index=1,col sep=tab,each nth point={10}] {results/Expt5/MOSScomp_subsampled.txt};
-%\addplot table[x index=0,y index=1,col sep=tab,each nth point={10}] {results/Expt5/TScomp_subsampled.txt};
-%\addplot table[x index=0,y index=1,col sep=tab,each nth point={10}] {results/Expt5/ACLUCB2comp_subsampled.txt};
-%	 \legend{EClusUCB1,EClusUCB2,EClusUCB3,EClusUCB4,UCB1,MOSS,TS,AClusUCB}
-%	%\legend{EClusUCB($\psi=\log T,$),EClusUCB($\psi=\frac{T}{\log(KT)}$),OCUCB,UCB1,MOSS,TS}
-%      %\legend{EClusUCB($\log T, 0.5, 0.5$),EClusUCB($\frac{T}{\log(KT)},0.5,0.5$),EClusUCB($\log T, 0.25, 0.25$),EClusUCB($\frac{T}{\log(KT)},0.25,0.25$)}
-%      \end{axis}
-%      \end{tikzpicture}}\\}
-%			\caption{Experiment $6$: Cumulative regret for EClusUCB with different parameters and AClusUCB. EClusUCB1: $\psi=log T, \rho_{a}=\rho_{s}=0.5$. EClusUCB2: $\psi=\frac{T}{\log(KT)}, \rho_{a}=\rho_{s}=0.5$. EClusUCB3: $\psi=log T, \rho_{a}=\rho_{s}=0.25$. EClusUCB4: $\psi=\frac{T}{\log(KT)}, \rho_{a}=\rho_{s}=0.25$ }
-%  \label{Fig:EClusUCBexpt2}
-%  \end{subfigure}  
-%  \end{tabular}
-%  \label{fig:furtherExpt}
-%  \caption{Cumulative regret for various bandit algorithms on two stochastic K-armed bandit environments. }
+%	In the fifth experiment, we check the performance of EClusUCB against $4$ algorithms, UCB1, OCUCB\cite{lattimore2015optimally}, MOSS and TS. The testbed is similar to Experiment $1$, with $20$ arms involving Bernoulli reward distribution with expected rewards of the arms $r_{i_{{i}\neq {*}}}=0.07$ and $r^{*}=0.1$ and horizon $T$ is set to $60000$. The number of clusters $p$ is set to $5$ and the result is shown in Figure \ref{fig:5}. Here, we choose the $\psi=\lbrace \frac{T}{\log (KT)}, \log T\rbrace$. From the result we see that EClusUCB is sensitive to the exploratory regulatory factor $\psi$. The first choice of $\psi$ is conservative and does too much exploration while the second choice is optimistic and explores less. Both $\rho_{a}$ and $\rho_{s}$ is set to $\frac{1}{2}$ in all the cases. We see that OCUCB will eventually perform better than MOSS which does not stabilize in $60000$ timesteps but both of them is beaten by EClusUCB. The careful choosing of $\rho_{a}$, $\rho_{s}$ and $\psi$ enables this.
+%	
+%	In the sixth Experiment the testbed is same as above and we check the performance of EClusUCB with various parameters against MOSS and TS and the result is shown in Figure \ref{fig:6}. In all the cases the number of clusters is set at $5$. Here we see that a lesser exploration regulatory factor $\psi=\log T$ and $\rho_{a}=\rho_{s}=0.25$ outperforms most of the other variants. Infact EClusUCB1, EClusUCB3 and EClusUCB4 are better than MOSS. In both the figures we see that EClusUCB($\log T$) performance is almost similar to AClusUCB.
+%
+%\begin{figure}[!tbp]
+%    \centering
+%    \begin{tabular}{cc}
+%    \subfigure[0.32\textwidth][Experiment $5$: Cumulative regret for EClusUCB and AClusUCB against various other UCB variants and Thompson Sampling]
+%    {
+%    		\pgfplotsset{
+%		tick label style={font=\Huge},
+%		label style={font=\Huge},
+%		legend style={font=\Large},
+%		ylabel style={yshift=32pt},
+%		}
+%        \begin{tikzpicture}[scale=0.5]
+%      	\begin{axis}[
+%		xlabel={timestep},
+%		ylabel={Cumulative Regret},
+%		grid=major,
+%        %clip mode=individual,grid,grid style={gray!30},
+%        clip=true,
+%        %clip mode=individual,grid,grid style={gray!30},
+%  		legend style={at={(0.5,1.5)},anchor=north, legend columns=3} ]
+%      	% UCB
+%		\addplot table{results/Expt5/CLUCBo1comp_subsampled.txt};
+%		\addplot table{results/Expt5/CLUCBo2comp_subsampled.txt};
+%		\addplot table{results/Expt5/OCUCBcomp_subsampled.txt};
+%		\addplot table{results/Expt5/ACLUCB2comp_subsampled.txt};
+%		\addplot table{results/Expt5/UCB1comp_subsampled.txt};
+%		\addplot table{results/Expt5/MOSScomp_subsampled.txt};
+%		\addplot table{results/Expt5/TScomp_subsampled.txt};
+%      	\legend{EClusUCB($\log T$),EClusUCB($\frac{T}{\log(KT)}$),OCUCB,AClusUCB,UCB1,MOSS,TS}
+%      	\end{axis}
+%      	\end{tikzpicture}
+%  		\label{fig:5}
+%    }
+%    &
+%    \subfigure[0.32\textwidth][Experiment $6$: Cumulative regret for EClusUCB with different parameters and AClusUCB. EClusUCB1: $\psi=log T, \rho_{a}=\rho_{s}=0.5$. EClusUCB2: $\psi=\frac{T}{\log(KT)}, \rho_{a}=\rho_{s}=0.5$. EClusUCB3: $\psi=log T, \rho_{a}=\rho_{s}=0.25$. EClusUCB4: $\psi=\frac{T}{\log(KT)}, \rho_{a}=\rho_{s}=0.25$ ]
+%    {
+%    	\pgfplotsset{
+%		tick label style={font=\Huge},
+%		label style={font=\Huge},
+%		legend style={font=\Large},
+%		ylabel style={yshift=32pt},
+%		}
+%        \begin{tikzpicture}[scale=0.5]
+%        \begin{axis}[
+%		xlabel={timestep},
+%		ylabel={Cumulative Regret},
+%        %clip mode=individual,grid,grid style={gray!30},
+%		grid=major,
+%		clip=true,
+%  		legend style={at={(0.5,1.5)},anchor=north, legend columns=3} ]
+%        % UCB
+%		\addplot table{results/Expt5/CLUCBo1comp_subsampled.txt};
+%		\addplot table{results/Expt5/CLUCBo2comp_subsampled.txt};
+%		\addplot table{results/Expt5/CLUCB1comp_subsampled.txt};
+%		\addplot table{results/Expt5/CLUCB2comp_subsampled.txt};
+%		\addplot table{results/Expt5/UCB1comp_subsampled.txt};
+%		\addplot table{results/Expt5/MOSScomp_subsampled.txt};
+%		\addplot table{results/Expt5/TScomp_subsampled.txt};
+%		\addplot table{results/Expt5/ACLUCB2comp_subsampled.txt};
+%	 	\legend{EClusUCB1,EClusUCB2,EClusUCB3,EClusUCB4,UCB1,MOSS,TS,AClusUCB}
+%      	\end{axis}
+%        \end{tikzpicture}
+%        \label{fig:6}
+%    }
+%    \end{tabular}
+%   \label{fig:furtherExpt2}
+%  	\caption{Cumulative regret for various bandit algorithms on two stochastic K-armed bandit environments. }
 %\end{figure}
-%
-%
+
+
