@@ -82,8 +82,8 @@ The exploration regulatory factor $\psi$ governing the arm and cluster eliminati
 %and the gaps $\Delta_i$ are small, it is efficient to remove sub-optimal arms quickly. 
 
 In \cite{liu2016modification}, the authors recommend incorporating a factor of $d_i$ inside the log-term of the UCB values, i.e., $\max \lbrace\hat{r}_{i}+\sqrt{\frac{d_{i}\log T{\epsilon}_{m}^{2}}{2n_{m}}}\rbrace$. 
-The authors there examine the following choices for $d_i$: $\frac{T}{t_{i}}$, $\frac{\sqrt{T}}{t_{i}}$ and $\frac{\log T}{t_{i}}$, where $t_{i}$ is the number of times an arm ${i}$ has been sampled.
-Unlike \cite{liu2016modification}, we employ cluster as well as arm elimination and establish from a theoretical analysis that the choice $\psi=\frac{T}{\log (K)}$ helps in achieving a better gap-dependent regret upper bound for ClusUCB as compared to UCB-Improved and MOSS (see Corollary \ref{Result:Corollary:1} in the next section). 
+The authors there examine the following choices for $d_i$: $\frac{T}{z_{i}}$, $\frac{\sqrt{T}}{z_{i}}$ and $\frac{\log T}{z_{i}}$, where $z_{i}$ is the number of times an arm ${i}$ has been sampled.
+Unlike \cite{liu2016modification}, we employ cluster as well as arm elimination and establish from a theoretical analysis that the choice $\psi=\frac{T}{\log (K)}$ helps in achieving a better gap-dependent regret upper bound for ClusUCB as compared to UCB-Improved and MOSS (see Corollary \ref{Result:Corollary:1} in section \ref{sec:results}). 
 
 
 %Like our exploration regulatory factor $\psi$, a similar topic has already been handled in \cite{liu2016modification} where they have introduced mainly three types of regulatory factors($d_{i}$) to the term $\max \lbrace\hat{r}_{i}+\sqrt{\frac{d_{i}\log T\tilde{\Delta}_{m}^{2}}{2n_{m}}}$ which is used for selecting an arbitrary arm ${i}$ in the $t$-th timestep. This regulatory term $d_{i}$ can be of the form as $\frac{T}{t_{i}}$, $\frac{\sqrt{T}}{t_{i}}$ and $\frac{\log T}{t_{i}}$, where $t_{i}$ is the number of times an arm ${i}$ has been sampled. One has to choose a regulatory factor based on how fast the algorithm should taper its exploration in the later rounds.
