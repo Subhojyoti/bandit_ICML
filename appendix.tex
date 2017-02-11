@@ -9,7 +9,7 @@ The Appendix is organized as follows. In Appendix \ref{App:A} we prove Propositi
 \label{App:A}
 
 \begin{proof}
-Let $p=1$ whereby we put all the arms in set $A$ into one cluster, that is we have one UCB-Improved running throughout. So, for each sub-optimal arm ${i}$, $m_{i}=\min{\lbrace m|\sqrt{\rho_{a}\epsilon_{m}} < \dfrac{\Delta_{i}}{2} \rbrace}$ be the first round when $\sqrt{\rho_{a}\epsilon_{m}} < \dfrac{\Delta_{i}}{2}$. Also in this proof, since the clusters are fixed, so throughout the rounds each $m_{i}$ is tied to a single arm. We also take $\rho_{a}\in (0,1]$ as a constant in this proof whereby in Corollary \ref{Result:Corollary:1} and \ref{Result:Corollary:2} we use the different definitions. The theoretical analysis remains same as we have always bounded the values of $\rho_{a}\in (0,1]$. Let $A^{'}=\lbrace i\in A: \Delta_{i} > b \rbrace$ and $A^{''}=\lbrace i\in A: \Delta_{i} > 0 \rbrace$.
+Let $p=1$ whereby we put all the arms in set $A$ into one cluster. So, for each sub-optimal arm ${i}$, $m_{i}=\min{\lbrace m|\sqrt{\rho_{a}\epsilon_{m}} < \dfrac{\Delta_{i}}{2} \rbrace}$ be the first round when $\sqrt{\rho_{a}\epsilon_{m}} < \dfrac{\Delta_{i}}{2}$. Also in this proof, since the clusters are fixed, so throughout the rounds each $m_{i}$ is tied to a single arm. We also take $\rho_{a}\in (0,1]$ as a constant in this proof whereby in Corollary \ref{Result:Corollary:1} and \ref{Result:Corollary:2} we use the different definitions. The theoretical analysis remains same as we have always bounded the values of $\rho_{a}\in (0,1]$. Let $A^{'}=\lbrace i\in A: \Delta_{i} > b \rbrace$ and $A^{''}=\lbrace i\in A: \Delta_{i} > 0 \rbrace$.
 
 
 \subsection*{Case a: \textit{Some sub-optimal arm ${i}$ is not eliminated in round $m_{i}$ or before and the optimal arm ${*}\in B_{m_{i}}$}}
@@ -339,7 +339,7 @@ Summing up \textbf{Case a} and \textbf{Case b}, the total regret till round $m$ 
 \section{Proof of Corollary 1}
 \label{App:Proof:Corollary:1}
 \begin{proof}
-Here we take $\psi=\dfrac{T}{\log(K)}$, $\rho_{a}=\dfrac{1}{2}$ and $\rho_{s}=\dfrac{1}{2}$. Taking into account Theorem \ref{Result:Theorem:1} below for all $b\geq \sqrt{\dfrac{e}{T}}$
+Here we take $\psi=\dfrac{T}{\log(K)}$, $\rho_{a}=\dfrac{1}{2}$ and $\rho_{s}=\dfrac{1}{2}$. Taking into account Theorem \ref{Result:Theorem:1} below for all $b\geq \sqrt{\dfrac{K}{7T}}$
 
 \begin{align*}
 &\E [R_{T}]\leq 
@@ -413,7 +413,7 @@ As stated in \cite{auer2010ucb}, we can have a bound on regret of the order of $
 \end{align*}
 So, this bound is worse than the non-stochastic setting and is clearly improvable and an upper bound regret of $\sqrt{KT}$ is possible as shown in \cite{audibert2009minimax} for MOSS which is consistent with the lower bound as proposed by Mannor and Tsitsiklis(\cite{mannor2004sample}).
 
-	Hence, we take $b\approx\sqrt{\dfrac{K\log K}{T}} > \sqrt{\dfrac{e}{T}}$(the minimum value for $b$), $\psi=\dfrac{T}{\log K}$, $\rho_{a}=\dfrac{1}{2}$ and $\rho_{s}=\dfrac{1}{2}$.
+	Hence, we take $b\approx\sqrt{\dfrac{K\log K}{T}} > \sqrt{\dfrac{K}{7T}}$(the minimum value for $b$), $\psi=\dfrac{T}{\log K}$, $\rho_{a}=\dfrac{1}{2}$ and $\rho_{s}=\dfrac{1}{2}$.
 	
 	Taking into account Theorem \ref{Result:Theorem:1} below, 
 	
@@ -527,7 +527,7 @@ Only Arm Elimination (ClusUCB-AE)	& \begin{align*}\underbrace{\sum_{i\in A:\Delt
 %\hline\\
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 Arm \& Cluster Elimination (ClusUCB) 	& \begin{align*}  \underbrace{\sum_{i\in A_{s^{*}}:\Delta_{i} > b}\bigg(\dfrac{C_{2}(\rho_{a})T^{1-\rho_{a}}}{\Delta_{i}^{4\rho_{a}-1}} \bigg)+ \sum_{i\in A_{s^{*}}:0\leq\Delta_{i}\leq b}\bigg(\dfrac{C_{2}(\rho_{a})T^{1-\rho_{a}}}{b^{4\rho_{a} -1}} \bigg)}_{\text{Case b2, Arm Elim, Theorem \ref{Result:Theorem:1}}}\\   
- + \underbrace{\sum_{i\in A\setminus A_{s^*}:\Delta_{i} > b}\bigg(\dfrac{2C_{2}(\rho_{s})T^{1-\rho_{s}}}{\Delta_{i}^{4\rho_{s}-1}} \bigg)+ \sum_{i\in A\setminus A_{s^*}:0\leq\Delta_{i}\leq b}\bigg(\dfrac{2C_{2}(\rho_{s})T^{1-\rho_{s}}}{b^{4\rho_{s} -1}} \bigg)}_{\text{Case b3+b4, Clus Elim, Theorem \ref{Result:Theorem:1}}} \end{align*} & With $\rho_{a}=\frac{1}{2}$, $\rho_{s}=\frac{1}{2}, p=\lceil \frac{K}{\log K}\rceil$ and $\psi=\frac{T}{\log K}$ this gives $\frac{5.3 \sqrt{T}\log K^{\frac{3}{2}} }{\sqrt{K}} + \frac{5.3 \sqrt{T}\log K}{\sqrt{K}} + 10.6 \frac{K}{K+\log K}\sqrt{KT\log K} + 10.6 \frac{K}{K+\log K}\sqrt{KT}$. So we can reduce the error bound to $O(\frac{K}{\log K}\sqrt{KT\log K})$.
+ + \underbrace{\sum_{i\in A\setminus A_{s^*}:\Delta_{i} > b}\bigg(\dfrac{2C_{2}(\rho_{s})T^{1-\rho_{s}}}{\Delta_{i}^{4\rho_{s}-1}} \bigg)+ \sum_{i\in A\setminus A_{s^*}:0\leq\Delta_{i}\leq b}\bigg(\dfrac{2C_{2}(\rho_{s})T^{1-\rho_{s}}}{b^{4\rho_{s} -1}} \bigg)}_{\text{Case b3+b4, Clus Elim, Theorem \ref{Result:Theorem:1}}} \end{align*} & With $\rho_{a}=\frac{1}{2}$, $\rho_{s}=\frac{1}{2}, p=\lceil \frac{K}{\log K}\rceil$ and $\psi=\frac{T}{\log K}$ this gives $\frac{5.3 \sqrt{T}\log K^{\frac{3}{2}} }{\sqrt{K}} + \frac{5.3 \sqrt{T}\log K}{\sqrt{K}} + 10.6 \frac{K}{K+\log K}\sqrt{KT\log K} + 10.6 \frac{K}{K+\log K}\sqrt{KT}$. So we can reduce the error bound to $O(\frac{K}{K+\log K}\sqrt{KT\log K})$.
 \end{tabular}
 \end{center}	
 \end{table}
@@ -670,7 +670,7 @@ The regret $R_T$ of EClusUCB satisfies
 & \!+\! \max\limits_{i:\Delta_{i}\leq b}\Delta_{i}T, 
 \end{align*}
 
-where $b\geq \sqrt{\frac{K}{\gamma T}}$, $C_1(x) = \frac{2^{1+4x}x^{2x}}{\psi^{x}}$, $C_2(x) = \frac{2^{2x+\frac{3}{2}}x^{2x}}{\psi^{x}}$, $\rho_{a}\leq \rho_{s}$, $\gamma$ is a constant and $A_{s^{*}}$ is the subset of arms in cluster $s^{*}$ containing optimal arm $a^{*}$.
+where $b\geq \sqrt{\frac{K}{7 T}}$, $C_1(x) = \frac{2^{1+4x}x^{2x}}{\psi^{x}}$, $C_2(x) = \frac{2^{2x+\frac{3}{2}}x^{2x}}{\psi^{x}}$ and $A_{s^{*}}$ is the subset of arms in cluster $s^{*}$ containing optimal arm $a^{*}$.
 %, $\rho_{a}=\dfrac{1}{2},\rho_{s}=\dfrac{1}{2}$ and $\psi=K^{2}T$.
 \end{theorem}
 
@@ -681,7 +681,7 @@ We can see from the result of this theorem that the regret upper bound for EClus
 %$\Delta_{i}^{'}=r_{a_{\max_{s_{k}}}} - r_{i}$ such that $a_{i}\in s_{k}$,
 % m_{i}^{'}=\min{\lbrace m|\sqrt{\rho_{a}\epsilon_{m}} < \frac{\Delta_{i}^{'}}{2} \rbrace}
 Let $A^{'}=\lbrace i \in A,\Delta_{i}> b\rbrace$,  $A^{''}=\lbrace i \in A, \Delta_{i} > 0\rbrace$, $A^{'}_{s_{k}}=\lbrace i \in A_{s_{k}},\Delta_{i}> b\rbrace$ and $A^{''}_{s_{k}}=\lbrace i \in A_{s_{k}}, \Delta_{i} > 0 \rbrace$. $C_{g}$ is the cluster set containing max payoff arm from each cluster in $g$-th round. The arm having the highest payoff in a cluster $s_{k}$ is denote by $a_{\max_{s_{k}}}$. Let for each sub-optimal arm ${i}\in A$, $m_{i}=\min{\lbrace m|\sqrt{\rho_{a}\epsilon_{m}} < \frac{\Delta_{i}}{2} \rbrace}$ and let for each cluster $s_{k}\in S$, $g_{s_{k}}=\min{\lbrace g|\sqrt{\rho_{s}\epsilon_{g}} < \frac{\Delta_{a_{\max_{s_{k}}}}}{2} \rbrace}$. 
-Let $\check{A}=\lbrace {i}\in A^{'} | {i}\in s_{k} , \forall s_{k}\in S \rbrace$. Also $n_{i}$ denotes total number of times an arm $i$ has been pulled from time $t=1$ to $T$. In the $m$-th round, $n_{m}$ denotes the number of pulls allocated to the surviving arms in $B_{m}$. The analysis proceeds by considering the contribution to the regret in each of the following cases:
+Let $\check{A}=\lbrace {i}\in A^{'} | {i}\in s_{k} , \forall s_{k}\in S \rbrace$. Also $z_{i}$ denotes total number of times an arm $i$ has been pulled from $1$ to $(t-1)$-th timestep. In the $m$-th round, $n_{m}$ denotes the number of pulls allocated to the surviving arms in $B_{m}$. The analysis proceeds by considering the contribution to the regret in each of the following cases:
 
 \textbf{Case a:} \textit{Some sub-optimal arm ${i}$ is not eliminated in round $\max(m_{i},g_{s_{k}})$ or before, with the optimal arm ${*}\in C_{\max(m_{i},g_{s_{k}})}$.}
 
@@ -694,19 +694,19 @@ This case is similar to Case a1, Theorem \ref{Result:Theorem:1}. Let $c_{i}=\sqr
 \hat{r}^{*}\geq  r^{*} - c^{*}, \label{eq:armelim-casea2}
 \end{align}
 
-Since each round now consist of $|B_{m}|n_{m}$ timesteps and since at every timestep the arm elimination condition is being checked, following a parallel arguement as in Case a1, Theorem $\ref{Result:Theorem:1}$ we can show that when $z_{i} = n_{m_{i}}$ then \\ $c_{i} = c_{m_{i}} = \sqrt{\dfrac{\rho_{a}\log{(\psi T\epsilon_{m}^{2})}}{2 n_{m{i}}}} = \sqrt{\rho_{a}\epsilon_{m_{i}+1}} < \frac{\Delta_{i}}{4}$, since $z_{i} = n_{m_{i}}=\frac{2\log{(\psi T\epsilon_{m_{i}}^{2})}}{\epsilon_{m_{i}}}$ and $\rho_{a}\in (0,1]$.
+Since each round now consist of $|B_{m}|n_{m}$ timesteps and since at every timestep the arm elimination condition is being checked, following a parallel arguement as in Case a1, Theorem $\ref{Result:Theorem:1}$ we can show that when $z_{i} \geq n_{m_{i}}$ then \\ $c_{i} \leq c_{m_{i}} \leq \sqrt{\dfrac{\rho_{a}\log{(\psi T\epsilon_{m}^{2})}}{2 n_{m_{i}}}} = \sqrt{\rho_{a}\epsilon_{m_{i}+1}} < \frac{\Delta_{i}}{4}$, since $z_{i} \geq n_{m_{i}}=\frac{2\log{(\psi T\epsilon_{m_{i}}^{2})}}{\epsilon_{m_{i}}}$ and $\rho_{a}\in (0,1]$.
 
 Subsequently following the steps of Case a1, Theorem \ref{Result:Theorem:1} we can upper bound the probability of the complementary of the events in \ref{eq:armelim-casea2} and show that the probability that a sub-optimal arm ${i}$ is not eliminated in any round on or before $m_{i}$ is bounded above by  $\bigg(\frac{2}{(\psi T\epsilon_{m_{i}}^{2})^{\rho_{a}}}\bigg)$.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%   
 \textbf{Case a2:} \textit{In round $\max(m_{i},g_{s_{k}})$, ${i} \in s_k$ for some $s_k \ne s^{*}$.}
 
-Let $c_{a_{\max_{s_{k}}}}=\sqrt{\dfrac{\rho_{s}\log{(\psi T\epsilon_{m}^{2})}}{2 z_{a_{max_{s_{k}}}}}}$ and $z_{a_{max_{s_{k}}}}$ is the number of times $a_{max_{s_{k}}}$ is pulled from time $t=1$ to $T$. Following a parallel argument like in Case $a1$, we have to bound the following two events of arm $a_{\max_{s_{k}}}$ not getting eliminated on or before $g_{s_{k}}$-th round,
+Let $c_{a_{\max_{s_{k}}}}=\sqrt{\dfrac{\rho_{s}\log{(\psi T\epsilon_{m}^{2})}}{2 z_{a_{max_{s_{k}}}}}}$ and $z_{a_{max_{s_{k}}}}$ is the number of times $a_{max_{s_{k}}}$ has been pulled. Following a parallel argument like in Case $a1$, we have to bound the following two events of arm $a_{\max_{s_{k}}}$ not getting eliminated on or before $g_{s_{k}}$-th round,
 \begin{align*}
   \hat{r}_{a_{\max_{s_{k}}}} \geq r_{a_{\max_{s_{k}}}} +c_{a_{\max_{s_{k}}}} \text{ and } \hat{r}^{*} \leq r^{*} -c^{*}  
 \end{align*} 
 
-As we argued in previous case, since cluster elimination condition being verified in each timestep, the above two conditions are possible when $z_{a_{max_{s_{k}}}} = n_{g_{s_{k}}}$. We can prove using Chernoff-Hoeffding bounds and considering independence of events mentioned above, that for $c_{a_{\max_{s_{k}}}} = c_{g_{s_{k}}}=\sqrt{\frac{\rho_{s} \log (\psi T\epsilon_{g_{s_{k}}}^{2})}{2 n_{g_{s_{k}}}}}$ and  $n_{g_{s_{k}}}=\frac{2\log{(\psi T\epsilon_{g_{s_{k}}}^{2})}}{\epsilon_{g_{s_{k}}}}$ the probability of the above two events is bounded by $\bigg(\dfrac{2}{(\psi  T\epsilon_{g_{s_{k}}}^{2})^{\rho_{s}}}\bigg)$.
+As we argued in previous case, since cluster elimination condition being verified in each timestep, the above two conditions are possible when $z_{a_{max_{s_{k}}}} \geq n_{g_{s_{k}}}$. We can prove using Chernoff-Hoeffding bounds and considering independence of events mentioned above, that for $c_{a_{\max_{s_{k}}}} \leq c_{g_{s_{k}}} \leq \sqrt{\frac{\rho_{s} \log (\psi T\epsilon_{g_{s_{k}}}^{2})}{2 n_{g_{s_{k}}}}}$ and  $n_{g_{s_{k}}}=\frac{2\log{(\psi T\epsilon_{g_{s_{k}}}^{2})}}{\epsilon_{g_{s_{k}}}}$ the probability of the above two events is bounded by $\bigg(\dfrac{2}{(\psi  T\epsilon_{g_{s_{k}}}^{2})^{\rho_{s}}}\bigg)$.
 %Summing, the two up, the probability that a sub-optimal cluster arm $a_{\max_{s_{k}}}\in C_{g_{s_{k}}}$ is not eliminated
   Now, for any round $g_{s_{k}}$, all the elements of $C_{\max(m_{i},g_{s_{k}})}$ are the respective maximum payoff arms of their cluster $s_{k}, \forall s_{k}\in S$, and since clusters are fixed so we can bound the maximum probability that a sub-optimal arm ${i}\in A^{'}$  and ${i}\in s_{k}$ such that $a_{\max_{s_{k}}}\in C_{g_{s_{k}}}$ is not eliminated on or before the $g_{s_{k}}$-th round by the same probability as above. 
 
@@ -735,8 +735,8 @@ Summing the bounds in Cases $a1-a2$ and observing that the bounds in the aforeme
 
 The condition in the case description above implies the following: \\
 \begin{inparaenum}[\bfseries (i)]
-\item each sub-optimal arm ${i}\in A^{'}$ is  eliminated on or before $\max (m_{i},g_{s_{k}})$ and hence  pulled not more than $z_{i}$ number of times. But according to the condition of Case a1, $z_{i} \leq n_{m_{i}}$ number of times.\\
-\item each sub-optimal cluster $s_k \in \check A$ is eliminated on or before $\max (m_{i},g_{s_{k}})$ and hence  pulled not more than $n_{a_{\max_{s_{k}}}}$ number of times. But again according to condition Case a2,  $z_{a_{\max_{s_{k}}}} \leq n_{g_{s_{k}}}$ number of times.
+\item each sub-optimal arm ${i}\in A^{'}$ is  eliminated on or before $\max (m_{i},g_{s_{k}})$ and hence  pulled not more than $z_{i}$ number of times. But according to the condition of Case a1, $z_{i} < n_{m_{i}}$ number of times.\\
+\item each sub-optimal cluster $s_k \in \check A$ is eliminated on or before $\max (m_{i},g_{s_{k}})$ and hence  pulled not more than $n_{a_{\max_{s_{k}}}}$ number of times. But again according to condition Case a2,  $z_{a_{\max_{s_{k}}}} < n_{g_{s_{k}}}$ number of times.
 \end{inparaenum}
 
 Hence, following the same steps as in Case b1, Theorem \ref{Result:Theorem:1}, the maximum regret suffered due to pulling of a sub-optimal arm or a sub-optimal cluster is no more than the following:
@@ -756,7 +756,7 @@ Optimal arm $a^*$ can get eliminated by some sub-optimal arm $i$ only if arm eli
 \begin{align*}
 \hat r_{i} - c_{i} > \hat{r}^{*}+ c^{*},
 \end{align*}
-where, as mentioned before, $c_{i}=c_{m_{i}}=\sqrt{\frac{\rho_{a}\log (\psi T\epsilon_{m_{i}}^{2})}{2 n_{m_{i}}}}$.
+where, as mentioned before, $c_{i} \leq c_{m_{i}} \leq \sqrt{\frac{\rho_{a}\log (\psi T\epsilon_{m_{i}}^{2})}{2 n_{m_{i}}}}$.
 From analysis in Case $a1$, notice that, if \eqref{eq:armelim-casea2} holds in conjunction with the above, arm $i$ gets eliminated. Also, recall from Case $a1$ that the events complementary to \eqref{eq:armelim-casea2} have low-probability and can be upper bounded by $\frac{2}{(\psi  T\epsilon_{m_{*}}^{2})^{\rho_{a}}}$. Moreover, a sub-optimal arm that eliminates $*$ has to survive until round $m_*$. In other words, 
 all arms ${j}\in s^{*}$ such that $m_{j} < m_{*}$ are eliminated on or before $m_*$ (this corresponds to case b1). 
 Let, the arms surviving till $m_{*}$ round be denoted by $A^{'}_{s^{*}}$. This leaves any arm $a_{b}$ such that $m_{b}\geq m_{*} $ to still survive and eliminate arm ${*}$ in round $m_{*}$. Let, such arms that survive ${*}$ belong to $A^{''}_{s^{*}}$. Also maximal regret per step after eliminating ${*}$ is the maximal $\Delta_{j}$ among the remaining arms in $A^{''}_{s^{*}}$ with $m_{j}\geq m_{*}$.  Let $m_{b}=\min\lbrace m|\sqrt{\rho_{a}\epsilon_{m}}<\frac{\Delta_{b}}{2}\rbrace$. Let $C_2(x) = \frac{2^{2x+\frac{3}{2}}x^{2x}}{\psi^{x}}$. Hence, the maximal regret after eliminating the arm ${*}$ is upper bounded by, 
@@ -799,7 +799,7 @@ Using $A'\supset C_{g}^{'}$ and $A''\supset C_{g}^{''}$, we can bound the regret
  
 \textbf{Case b4:} \textit{${*}$ is not in $C_{\max(m_{i},g_{s_{k}})}$, but belongs to $B_{\max(m_{i},g_{s_{k}})}$.}
 
-In this case the optimal arm ${*}\in s^{*}$ is not eliminated, also $s^{*}$ is not eliminated. So, for all sub-optimal arms $i$ in $A_{s^*}^{'}$ which gets eliminated on or before $\max \lbrace m_{i},g_{s_{k}} \rbrace$ will get pulled no less than $z_{i}\leq \bigg\lceil\dfrac{2\log{(\psi T\epsilon_{m_{i}}^{2})}}{\epsilon_{m_{i}}}\bigg\rceil$ number of times, which leads to the following bound the contribution to the expected regret, as in Case $b1$:
+In this case the optimal arm ${*}\in s^{*}$ is not eliminated, also $s^{*}$ is not eliminated. So, for all sub-optimal arms $i$ in $A_{s^*}^{'}$ which gets eliminated on or before $\max \lbrace m_{i},g_{s_{k}} \rbrace$ will get pulled no less than $z_{i} < \bigg\lceil\dfrac{2\log{(\psi T\epsilon_{m_{i}}^{2})}}{\epsilon_{m_{i}}}\bigg\rceil$ number of times, which leads to the following bound the contribution to the expected regret, as in Case $b1$:
 % 
 % \begin{align*}
 %  &\sum_{i\in A^{'}}\Delta_{i}\bigg\lceil\dfrac{2\log{(\psi T\epsilon_{m_{i}}^{2})}}{\epsilon_{m_{i}}}\bigg\rceil
@@ -828,7 +828,7 @@ The main claim follows by summing the contributions to the expected regret from 
 
 For every $0<\eta <1$ and $\gamma > 1$, there exists $\tau$ such that for all $T>\tau$ the simple regret of EClusUCB is upper bounded by,
 \begin{align*}
-SR_{EClusUCB} \leq 4K \gamma  \sum_{i=1}^{K} \Delta_{i} \bigg \lbrace \exp(\frac{1}{2}- \rho_{a} -\dfrac{c_{0}\sqrt{e}}{4}) \bigg(\dfrac{\log (\psi T )}{T^{\frac{3}{2}}(\psi T^2)^{\rho_{a}}}\bigg) + \exp(\frac{1}{2}- \rho_{s} -\dfrac{c_{0}\sqrt{e}}{4}) \bigg(\dfrac{\log (\psi T )}{T^{\frac{3}{2}}(\psi T^2)^{\rho_{s}}}\bigg) \bigg\rbrace
+SR_{EClusUCB} \leq 4\log_{2}\dfrac{7T}{K}\gamma \sum_{i=1}^{K} \Delta_{i} \exp(-\dfrac{c_{0}\sqrt{e}}{4}) \bigg\lbrace K^{\frac{3}{2} +2\rho_{a}} \bigg(\dfrac{\log (\psi T )}{T^{\frac{3}{2}}(\psi T^2)^{\rho_{a}}}\bigg) + K^{\frac{3}{2} +2\rho_{s}} \bigg(\dfrac{\log (\psi T )}{T^{\frac{3}{2}}(\psi T^2)^{\rho_{s}}}\bigg) \bigg\rbrace
 \end{align*}
 
 with probability at least $1-\eta$, where $c_{0}>0$ is a constant.
@@ -841,13 +841,13 @@ We follow the same steps as in Theorem 2, \cite{liu2016modification}. First we w
 
 \begin{enumerate}
 \item \emph{Fact 1:} From Theorem \ref{Result:Theorem:2} we know that the probability of elimination of a sub-optimal arm in the $\max(m_{i},g_{s_{k}})$ round is $\bigg(\dfrac{2}{(\psi T\epsilon_{m_{i}}^{2})^{\rho_{a}}}\bigg)$ and of a sub-optimal cluster is $\bigg(\dfrac{2}{(\psi  T\epsilon_{g_{s_{k}}}^{2})^{\rho_{s}}}\bigg)$.
-\item \emph{Fact 2:} From \cite{tolpin2012mcts} we know that, for every $0<\eta <1$ and $\gamma > 1$, there exists $\tau$ such that for all $T>\tau$ the probability of a sub-optimal arm $i$ being sampled in the $m$-th round is bounded by $P_{m}\leq 2\gamma \exp(-c_{m}\dfrac{\sqrt{T}}{2})$, where $c_{m}=\dfrac{c_{0}}{2^{m}}$.
+\item \emph{Fact 2:} From \cite{tolpin2012mcts} we know that, for every $0<\eta <1$ and $\gamma > 1$, there exists $\tau$ such that for all $T>\tau$ the probability of a sub-optimal arm $i$ being sampled in the $m$-th round is bounded by $Q_{m}\leq 2\gamma \exp(-c_{m}\dfrac{\sqrt{T}}{2})$, where $c_{m}=\dfrac{c_{0}}{2^{m}}$.
 \end{enumerate}
 
 We start with an upper bound on the number of plays $\delta_{\max(m_{i},g_{s_{k}})}$ in the $\max(m_{i},g_{s_{k}})$-th round divided by the total number of plays $T$. We know  from Fact $1$  that the total number of arms surviving in the $\max(m_{i},g_{s_{k}})$-th arm is 
 
 \begin{align*}
-|B_{\max(m_{i},g_{s_{k}})}|=\bigg(\dfrac{2K}{(\psi T\epsilon_{m_{i}}^{2})^{\rho_{a}}}\bigg) + \bigg(\dfrac{2K}{(\psi  T\epsilon_{g_{s_{k}}}^{2})^{\rho_{s}}}\bigg)
+|B_{\max(m_{i},g_{s_{k}})}|\leq\bigg(\dfrac{2K}{(\psi T\epsilon_{m_{i}}^{2})^{\rho_{a}}}\bigg) + \bigg(\dfrac{2K}{(\psi  T\epsilon_{g_{s_{k}}}^{2})^{\rho_{s}}}\bigg)
 \end{align*}     
 
 Again in EClusUCB, we know that the number of pulls allocated for each surviving arm $i$ in the $\max(m_{i},g_{s_{k}})$-th round is $n_{\max(m_{i},g_{s_{k}})}=\dfrac{2\log (\psi T \epsilon_{\max(m_{i},g_{s_{k}})}^{2})}{\epsilon_{\max(m_{i},g_{s_{k}})}}$. Therefore, the proportion of plays $\delta_{\max(m_{i},g_{s_{k}})}$ in the $\max(m_{i},g_{s_{k}})$-th round can be written as,
@@ -857,27 +857,31 @@ Again in EClusUCB, we know that the number of pulls allocated for each surviving
 & \leq \bigg(\dfrac{4K\log (\psi T \epsilon_{m_{i}}^{2})}{T\epsilon_{m_{i}}(\psi T\epsilon_{m_{i}}^{2})^{\rho_{a}}}\bigg) + \bigg(\dfrac{4K\log (\psi T \epsilon_{g_{s_{k}}}^{2})}{T\epsilon_{g_{s_{k}}}(\psi  T\epsilon_{g_{s_{k}}}^{2})^{\rho_{s}}}\bigg)
 \end{align*}
 
-Now, $\epsilon_{m_{i}}\geq \sqrt{\dfrac{e}{T}}$ and $\epsilon_{g_{s_{k}}}\geq \sqrt{\dfrac{e}{T}}$ for all rounds $m=0,1,2,...,\big \lfloor \dfrac{1}{2}\log_{2} \dfrac{T}{e}\big\rfloor$.
+Now, $\epsilon_{m_{i}}\geq \sqrt{\dfrac{K}{7T}}$ and $\epsilon_{g_{s_{k}}}\geq \sqrt{\dfrac{K}{7T}}$ for all rounds $m=0,1,2,...,\big \lfloor \dfrac{1}{2}\log_{2} \dfrac{7T}{K}\big\rfloor$.
 
 \begin{align*}
 \delta_{\max(m_{i},g_{s_{k}})} &\leq \bigg(\dfrac{4K\log (\psi T \epsilon_{m_{i}}^{2})}{T\epsilon_{m_{i}}(\psi T\epsilon_{m_{i}}^{2})^{\rho_{a}}}\bigg) + \bigg(\dfrac{4K\log (\psi T \epsilon_{g_{s_{k}}}^{2})}{T\epsilon_{g_{s_{k}}}(\psi  T\epsilon_{g_{s_{k}}}^{2})^{\rho_{s}}}\bigg)\\
 & \leq \bigg(\dfrac{4K\log (\psi T )}{T\epsilon_{M}(\psi T\epsilon_{M}^{2})^{\rho_{a}}}\bigg) + \bigg(\dfrac{4K\log (\psi T )}{T\epsilon_{M}(\psi  T\epsilon_{M}^{2})^{\rho_{s}}}\bigg)\\
-& \leq \bigg(\dfrac{4Ke^{\frac{1}{2}-\rho_{a}}\log (\psi T )}{T^{\frac{3}{2}}(\psi T^2)^{\rho_{a}}}\bigg) + \bigg(\dfrac{4Ke^{\frac{1}{2}-\rho_{s}}\log (\psi T )}{T^{\frac{3}{2}}(\psi T^2)^{\rho_{s}}}\bigg)
+%& \leq \bigg(\dfrac{4Ke^{\frac{1}{2}-\rho_{a}}\log (\psi T )}{T^{\frac{3}{2}}(\psi T^2)^{\rho_{a}}}\bigg) + \bigg(\dfrac{4Ke^{\frac{1}{2}-\rho_{s}}\log (\psi T )}{T^{\frac{3}{2}}(\psi T^2)^{\rho_{s}}}\bigg)
+& \leq \bigg(\dfrac{4K^{\frac{3}{2} +2\rho_a}\log (\psi T )}{T^{\frac{3}{2}}(\psi T^2)^{\rho_{a}}}\bigg) + \bigg(\dfrac{4K^{\frac{3}{2} +2\rho_s}\log (\psi T )}{T^{\frac{3}{2}}(\psi T^2)^{\rho_{s}}}\bigg)
 \end{align*}
 
 Now, applying the bound from Fact 2, we can show that the probability of the sub-optimal arm $i$ being pulled is bounded above by,
 
 \begin{align*}
-P_{i} = \sum_{m=0}^{M} \delta_{m}.P_{m} &\leq \sum_{m=0}^{M} \bigg\lbrace\bigg(\dfrac{4Ke^{\frac{1}{2}-\rho_{a}}\log (\psi T )}{T^{\frac{3}{2}}(\psi T^2)^{\rho_{a}}}\bigg) + \bigg(\dfrac{4Ke^{\frac{1}{2}-\rho_{s}}\log (\psi T )}{T^{\frac{3}{2}}(\psi T^2)^{\rho_{s}}}\bigg)\bigg\rbrace 2\gamma \exp(-\dfrac{c_{m}\sqrt{T}}{4})\\
-& \leq M.\bigg\lbrace\bigg(\dfrac{4Ke^{\frac{1}{2}-\rho_{a}}\log (\psi T )}{T^{\frac{3}{2}}(\psi T^2)^{\rho_{a}}}\bigg) + \bigg(\dfrac{4Ke^{\frac{1}{2}-\rho_{s}}\log (\psi T )}{T^{\frac{3}{2}}(\psi T^2)^{\rho_{s}}}\bigg)\bigg\rbrace 2\gamma \exp(-\dfrac{c_{0}\sqrt{T}}{2^{M}.4})\\
-& \leq \log_{2}\dfrac{T}{e}\gamma \exp(\dfrac{c_{0}\sqrt{e}}{4})\bigg\lbrace\bigg(\dfrac{4Ke^{\frac{1}{2}-\rho_{a}}\log (\psi T )}{T^{\frac{3}{2}}(\psi T^2)^{\rho_{a}}}\bigg) + \bigg(\dfrac{4Ke^{\frac{1}{2}-\rho_{s}}\log (\psi T )}{T^{\frac{3}{2}}(\psi T^2)^{\rho_{s}}}\bigg)\bigg\rbrace \text{, for $M=\big \lfloor \dfrac{1}{2}\log_{2} \dfrac{T}{e}\big\rfloor$}
+P_{i} = \sum_{m=0}^{M} \delta_{m}.Q_{m} &\leq \sum_{m=0}^{M} \bigg\lbrace\bigg(\dfrac{4K^{\frac{3}{2} +2\rho_a}\log (\psi T )}{T^{\frac{3}{2}}(\psi T^2)^{\rho_{a}}}\bigg) + \bigg(\dfrac{4K^{\frac{3}{2} +2\rho_{s}}\log (\psi T )}{T^{\frac{3}{2}}(\psi T^2)^{\rho_{s}}}\bigg)\bigg\rbrace 2\gamma \exp(-\dfrac{c_{m}\sqrt{T}}{4})\\
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+& \leq M.\bigg\lbrace\bigg(\dfrac{4K^{\frac{3}{2} +2\rho_a}\log (\psi T )}{T^{\frac{3}{2}}(\psi T^2)^{\rho_{a}}}\bigg) + \bigg(\dfrac{4K^{\frac{3}{2} +2\rho_{s}}\log (\psi T )}{T^{\frac{3}{2}}(\psi T^2)^{\rho_{s}}}\bigg)\bigg\rbrace 2\gamma \exp(-\dfrac{c_{0}\sqrt{T}}{2^{M}.4})\\
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+& \leq \log_{2}\dfrac{7T}{K}\gamma \exp(\dfrac{c_{0}\sqrt{e}}{4})\bigg\lbrace\bigg(\dfrac{4K^{\frac{3}{2} +2\rho_{a}}\log (\psi T )}{T^{\frac{3}{2}}(\psi T^2)^{\rho_{a}}}\bigg) + \bigg(\dfrac{K^{\frac{3}{2} +2\rho_{s}}\log (\psi T )}{T^{\frac{3}{2}}(\psi T^2)^{\rho_{s}}}\bigg)\bigg\rbrace \text{, for $M=\big \lfloor \dfrac{1}{2}\log_{2} \dfrac{7T}{K}\big\rfloor$}
 \end{align*}
 
 Hence, the simple regret of EClusUCB is upper bounded by,
 
 \begin{align*}
-SR_{EClusUCB} &= \sum_{i=1}^{K} \Delta_{i}. P_{i} \leq \sum_{i=1}^{K} \Delta_{i}. \log_{2}\dfrac{T}{e}\gamma \exp(\dfrac{c_{0}\sqrt{e}}{4})\bigg\lbrace\bigg(\dfrac{4Ke^{\frac{1}{2}-\rho_{a}}\log (\psi T )}{T^{\frac{3}{2}}(\psi T^2)^{\rho_{a}}}\bigg) + \bigg(\dfrac{4Ke^{\frac{1}{2}-\rho_{s}}\log (\psi T )}{T^{\frac{3}{2}}(\psi T^2)^{\rho_{s}}}\bigg)\bigg\rbrace \\
-&\leq 4K \gamma \exp(\frac{1}{2}- \rho_{a} -\dfrac{c_{0}\sqrt{e}}{4}) \sum_{i=1}^{K} \Delta_{i} \bigg(\dfrac{\log (\psi T )}{T^{\frac{3}{2}}(\psi T^2)^{\rho_{a}}}\bigg) + 4K \gamma \exp(\frac{1}{2}- \rho_{s} -\dfrac{c_{0}\sqrt{e}}{4}) \sum_{i=1}^{K} \Delta_{i} \bigg(\dfrac{\log (\psi T )}{T^{\frac{3}{2}}(\psi T^2)^{\rho_{s}}}\bigg) 
+SR_{EClusUCB} &= \sum_{i=1}^{K} \Delta_{i}. P_{i} \leq \sum_{i=1}^{K} \Delta_{i}. \log_{2}\dfrac{T}{e}\gamma \exp(-\dfrac{c_{0}\sqrt{e}}{4})\bigg\lbrace\bigg(\dfrac{4K^{\frac{3}{2} +2\rho_{a}}\log (\psi T )}{T^{\frac{3}{2}}(\psi T^2)^{\rho_{a}}}\bigg) + \bigg(\dfrac{4K^{\frac{3}{2} +2\rho_{s}}\log (\psi T )}{T^{\frac{3}{2}}(\psi T^2)^{\rho_{s}}}\bigg)\bigg\rbrace \\
+%%%%%%%%%%%%%%%%%%%%%%%%%%%
+&\leq 4\log_{2}\dfrac{7T}{K}\gamma \sum_{i=1}^{K} \Delta_{i} \exp(-\dfrac{c_{0}\sqrt{e}}{4}) \bigg\lbrace K^{\frac{3}{2} +2\rho_{a}} \bigg(\dfrac{\log (\psi T )}{T^{\frac{3}{2}}(\psi T^2)^{\rho_{a}}}\bigg) + K^{\frac{3}{2} +2\rho_{s}} \bigg(\dfrac{\log (\psi T )}{T^{\frac{3}{2}}(\psi T^2)^{\rho_{s}}}\bigg) \bigg\rbrace
 \end{align*}
 
 \end{proof}
@@ -889,16 +893,18 @@ SR_{EClusUCB} &= \sum_{i=1}^{K} \Delta_{i}. P_{i} \leq \sum_{i=1}^{K} \Delta_{i}
 \label{Result:Corollary:3}
 For $\psi=\dfrac{T}{\log (K)}$, $\rho_a=\frac{1}{2}$ and $\rho_s=\frac{1}{2}$, the simple regret of EClusUCB is given by,
 \begin{align*}
-SR_{EClusUCB} \leq  8K \gamma \exp(-\dfrac{c_{0}\sqrt{e}}{4}) \sum_{i=1}^{K} \Delta_{i}  \bigg(\dfrac{2 \sqrt{\log (K)} \log (\dfrac{T}{\sqrt{\log (K)}} )}{T^{3}}\bigg)
+SR_{EClusUCB} \leq  \leq 8 \log_{2}\dfrac{7T}{K} \log_{2}\dfrac{7T}{K} K^{\frac{5}{2}} \gamma \sum_{i=1}^{K} \Delta_{i} \exp(-\dfrac{c_{0}\sqrt{e}}{4})   \bigg(\dfrac{2 \sqrt{\log (K)} \log (\dfrac{T}{\sqrt{\log (K)}} )}{T^{3}}\bigg)
 \end{align*}
 \end{corollary}
 
 \begin{proof}
 Putting $\psi=\dfrac{T}{\log (K)}$, $\rho_a=\frac{1}{2}$ and $\rho_s=\frac{1}{2}$ in the simple regret obtained in Theorem \ref{Result:Theorem:3}, we get
 \begin{align*}
-SR_{EClusUCB} &\leq 8K \gamma \exp(-\dfrac{c_{0}\sqrt{e}}{4}) \sum_{i=1}^{K} \Delta_{i}  \bigg(\dfrac{\log (\dfrac{T^{2}}{\log (KT)} )}{T^{\frac{3}{2}}(\frac{T^3}{\log (KT)})^{\frac{1}{2}}}\bigg)\\
-& \leq 8K \gamma \exp(-\dfrac{c_{0}\sqrt{e}}{4}) \sum_{i=1}^{K} \Delta_{i}  \bigg(\dfrac{2 \sqrt{\log (K)} \log (\dfrac{T}{\sqrt{\log (K)}} )}{T^{3}}\bigg)
+SR_{EClusUCB} &\leq 8 \log_{2}\dfrac{7T}{K} K^{\frac{5}{2}} \gamma \sum_{i=1}^{K} \Delta_{i} \exp(-\dfrac{c_{0}\sqrt{e}}{4})   \bigg(\dfrac{\log (\dfrac{T^{2}}{\log (K)} )}{T^{\frac{3}{2}}(\frac{T^3}{\log (K)})^{\frac{1}{2}}}\bigg)\\
+& \leq 8 \log_{2}\dfrac{7T}{K} K^{\frac{5}{2}} \gamma  \sum_{i=1}^{K} \Delta_{i} \exp(-\dfrac{c_{0}\sqrt{e}}{4}) \bigg(\dfrac{2 \sqrt{\log (K)} \log (\dfrac{T}{\sqrt{\log (K)}} )}{T^{3}}\bigg)
 \end{align*} 
+
+Thus, we see that while the simple regret of CCB decreases at the rate of $O\left( \dfrac{(\log T)^2}{T^4} \right)$, the simple regret of EClusUCB decreases at the rate of $O\left( \dfrac{(\sqrt{\log K}\log T)^2}{T^3} \right)$. A table for the simple regret of CCB and EClusUCB is given in Table \ref{tab:regret-bds1}.
 
 \end{proof}
 
@@ -910,8 +916,8 @@ SR_{EClusUCB} &\leq 8K \gamma \exp(-\dfrac{c_{0}\sqrt{e}}{4}) \sum_{i=1}^{K} \De
 \toprule
 Algorithm  & Upper bound \\
 \midrule
-CCB &$O\left(K\gamma\sum_{i=1}^{K}\Delta_{i} \exp(2-\dfrac{c_{0}\sqrt{e}}{4})\log_{2}\big(\dfrac{T}{e}\big)\dfrac{log T}{T^4}\right)$ \\\midrule
-EClusUCB      &$O\left(K \gamma \exp(-\dfrac{c_{0}\sqrt{e}}{4}) \sum_{i=1}^{K} \Delta_{i}  \bigg(\dfrac{ \sqrt{\log (K)} \log (\dfrac{T}{\sqrt{\log (K)}} )}{T^{3}}\bigg)\right)$\\\bottomrule
+CCB &$O\left(K\gamma\sum_{i=1}^{K}\Delta_{i} \exp(2-\dfrac{c_{0}\sqrt{e}}{4})\log_{2}\big(\dfrac{T}{e}\big)\dfrac{\log T}{T^4}\right)$ \\\midrule
+EClusUCB      &$O\left( 8 \log_{2}\dfrac{7T}{K} K^{\frac{5}{2}} \gamma  \sum_{i=1}^{K} \Delta_{i} \exp(-\dfrac{c_{0}\sqrt{e}}{4}) \bigg(\dfrac{2 \sqrt{\log (K)} \log (\dfrac{T}{\sqrt{\log (K)}} )}{T^{3}}\bigg) \right)$\\\bottomrule
 \end{tabular}
 \end{center}
 \end{table}
@@ -953,8 +959,8 @@ EClusUCB      &$O\left(K \gamma \exp(-\dfrac{c_{0}\sqrt{e}}{4}) \sum_{i=1}^{K} \
 \State $\epsilon_{m+1}:=\dfrac{\epsilon_{m}}{2}$\vspace{0.5ex}
 \State $\ell_{m+1}=2\ell_{m}$
 \State $B_{m+1}:=B_{m}$
-\State $n_{m}:=\bigg\lceil\dfrac{2\log{(\psi T\epsilon_{m}^{2})}}{\epsilon_{m}}\bigg\rceil$
-\State $N_{m}:=t+|B_{m}| n_{m}$
+\State $n_{m+1}:=\bigg\lceil\dfrac{2\log{(\psi T\epsilon_{m+1}^{2})}}{\epsilon_{m+1}}\bigg\rceil$
+\State $N_{m+1}:=t+|B_{m+1}| n_{m+1}$
 \State $m:=m+1$
 \EndResParam
 %\State \hspace*{2em} $\ell_{m+1}:=\min\lbrace 2\ell_{m}, K\rbrace$
@@ -1063,7 +1069,7 @@ The third experiment is conducted over a testbed of $20-90$ (interval of $10$) a
     \caption{Cumulative regret and Error Percentage for ClusUCB variants}
 \end{figure}
 
-	The fourth experiment is conducted the to show that our choice of $p=\lceil\frac{K}{\log K}\rceil$ which we use to reduce the elimination error, is indeed close to optimal. The experiment is performed over a testbed having $30$ Bernoulli-distributed arms with $r_{i_{:{{i}\neq {*}}}}=0.07,\forall i\in A$ and $r^{*}=0.1$. In Figure \ref{fig:4}, we report the cumulative regret over $T=80000$ timesteps averaged over $100$ independent runs plotted against the number of clusters $p=1$ to $\frac{K}{2}$. Also, in this experiment we take $\psi = \log T$, $\rho_a=0.5$ and $\rho_{s}=0.5$ for AClusUCBA and ECLusUCBA whereas AClusUCBA and EClusUCBA have $\psi=\frac{T}{\log K}$. We see that for $p=\lceil\frac{K}{\log K}\rceil=9$, the cumulative regret of EClusuCB and EClusUCBA are almost the lowest over the entire range of clusters. Also, we show cumulative regret for AClusUCB or AClusUCBA (which does not have $p$ as parameter) as a straight line, constant over the number of clusters. AClusUCB or AClusUCBA consistently performs poorly as compared to EClusUCB or EClusUCBA. We conjecture that this happens because AClusUCB conducts a significant amount of initial exploration to find the number of clusters as opposed to EClusUCB which has an uniform clustering scheme from the very start. 
+	The fourth experiment is conducted the to show that our choice of $p=\lceil\frac{K}{\log K}\rceil$ which we use to reduce the elimination error, is indeed close to optimal. The experiment is performed over a testbed having $30$ Bernoulli-distributed arms with $r_{i_{:{{i}\neq {*}}}}=0.07,\forall i\in A$ and $r^{*}=0.1$. In Figure \ref{fig:4}, we report the cumulative regret over $T=80000$ timesteps averaged over $100$ independent runs plotted against the number of clusters $p=1$ to $\frac{K}{2}$. Also, in this experiment we take $\psi = \log T$, $\rho_a=0.5$ and $\rho_{s}=0.5$ for AClusUCBA and ECLusUCBA whereas AClusUCB and EClusUCB have $\psi=\frac{T}{\log K}$. We see that for $p=\lceil\frac{K}{\log K}\rceil=9$, the cumulative regret of EClusuCB and EClusUCBA are almost the lowest over the entire range of clusters. Also, we show cumulative regret for AClusUCB or AClusUCBA (which does not have $p$ as an input parameter) as a straight line, constant over the number of clusters. AClusUCB or AClusUCBA performs poorly as compared to EClusUCB or EClusUCBA. We conjecture that this happens because AClusUCB conducts a significant amount of initial exploration to find the number of clusters or till the optimal arm settles in its own cluster which will eliminate all the other clusters as opposed to EClusUCB which has an uniform clustering scheme from the very start. 
 
 %	The fourth experiment is performed over a testbed having $50$ Gaussian-distributed arms with $r_{i_{:{{i}\neq {*}}}}=0.8,\forall i\in A$, $r^{*}=0.9$ and $\sigma^{2}=1.0$. In Figure \ref{fig:4}, we report the results with $T=400000$ averaged over $100$ independent runs for ClusUCB with  $p=\lbrace 1,3,5,10,15,25\rbrace$. Also, in this experiment we take $\psi = K^{2}T$, $\rho_a=0.25$ and $\rho_{s}=0.5$ as stated in Corollary \ref{Result:Corollary:2}. The high variance leads to a greater number of errors committed by ClusUCB-AE that is ClusUCB($p=1$) but as proved in Proposition \ref{proofTheorem:Prop:1} the cumulative regret is lesser than  ClusUCB. But because of the increased errors committed in predicting the optimal arm and because of the large horizon, we eventually see that ClusUCB(p=$5,10,25,25$) outperforms ClusUCB-AE while ClusUCB($p=3$) regret is worse than ClusUCB-AE. The error percentage in the $6$ cases (in the order as shown in legend of Fig \ref{fig:4}) are $14,12,5,3,3$ and $3$. The range of p is shown to be between $\sqrt{\log K}$ to $\frac{K}{2}$ and as we approach $\frac{K}{2}$ we see that the error percentage stabilizes to $3\%$.
 	

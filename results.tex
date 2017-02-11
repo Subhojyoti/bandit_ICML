@@ -39,23 +39,14 @@ The regret $R_T$ of ClusUCB satisfies
 %& + \!\sum\limits_{\substack{i\in A,\\0\leq\Delta_{i}\leq b}}\! \! \frac{2C_2(\rho_{s})T^{1-\rho_{s}}}{b^{4\rho_{s} -1}}  
 %\!+\! \max\limits_{i:\Delta_{i}\leq b}\Delta_{i}T, 
 %\end{align*}
-where $b\geq \sqrt{\frac{K}{\gamma T}}$, $C_1(x) = \frac{2^{1+4x}x^{2x}}{\psi^{x}}$, $C_2(x) = \frac{2^{2x+\frac{3}{2}}x^{2x}}{\psi^{x}}$, $\gamma$ is a constant and $A_{s^{*}}$ is the subset of arms in cluster $s^{*}$ containing optimal arm $a^{*}$.
+where $b\geq \sqrt{\frac{K}{7 T}}$, $C_1(x) = \frac{2^{1+4x}x^{2x}}{\psi^{x}}$, $C_2(x) = \frac{2^{2x+\frac{3}{2}}x^{2x}}{\psi^{x}}$, and $A_{s^{*}}$ is the subset of arms in cluster $s^{*}$ containing optimal arm $a^{*}$.
 %, $\rho_{a}=\frac{1}{2},\rho_{s}=\frac{1}{2}$ and $\psi=K^{2}T$.
 \end{theorem}
 \begin{proof}
  See Section \ref{sec:proofTheorem}.
 \end{proof}
-
-%, $\Delta_{i}^{'}=r_{a_{\max_{s_{k}}}} - r_{i}$, such that $a_{i}\in s_{k}$
-	
-%\begin{remark}
-%\label{Result:Rem:1}
-%By setting $b=\sqrt{\frac{e}{T}}$, the term $max_{i:\Delta_{i}\leq b}\Delta_{i}T$ gets trivially bounded by $\sqrt{KT}$ as mentioned in UCB-Improved.
-%%which makes the logarithmic term  the main term for suitable $b$
-%\end{remark}
-
 We now specialize the result in the theorem above by substituting specific values for the exploration constants $\rho_{s}$, $\rho_{a}$ and $\psi$. 
-%and how these values are reduced after every round significantly affects our regret bound. A discussion on their various definitions are given in Appendix \ref{App:E}. A discussion on exploration regulatory factor($\psi$) and its effect is deferred to Appendix \ref{App:D}. A discussion on the three approaches of using only arm elimination in Algorithm 1 or using only cluster elimination or using both is deferred to Remark \ref{App:E:Rem:1}(Appendix \ref{App:E}).
+
 
 %%%% Gap dependent bound
 \begin{corollary}[\textbf{\textit{Gap-dependent bound}}]
@@ -94,8 +85,12 @@ The most significant term in the bound above is $\sum_{i\in A:\Delta_{i}\geq b}\
 %$\frac{T^{K-1}\Delta^{2K-2}}{K^{K}} > \frac{1}{\sqrt{\log(KT)}}$, which is equivalent to $\Delta > \frac{2}{\sqrt{T}(\log 2T)^{\frac{1}{4}}}$ for
 %$K\geq 2$. Since Corollary \ref{Result:Corollary:1} holds for all $\Delta \geq \sqrt{\frac{e}{T}} > \frac{2}{\sqrt{T}(\log 2T)^{\frac{1}{4}}}$, it can be clearly seen that for all $\sqrt{\frac{e}{T}} \leq \Delta\leq 1$ and $K\geq 2$, the gap-dependent bound is better than MOSS.
 
-Since Corollary \ref{Result:Corollary:1} holds for all $\Delta \geq \sqrt{\frac{K}{\gamma T}} $, it can be clearly seen that for all $\sqrt{\frac{K}{\gamma T}} \leq \Delta\leq 1$ and $K\geq 2$, the gap-dependent bound is better than that of MOSS and UCB-Improved. Also, since UCB-Improved holds for $\sqrt{\frac{e}{T}}\leq \Delta\leq 1$, in ClusUCB if we take $\gamma$ such that $\frac{K}{\gamma}\approx e$ then $\Delta\geq\sqrt{\frac{K}{\gamma T}}\geq \sqrt{\frac{e}{T}}$ and we can easily mimic the same guarantee as UCB-Improved. %In the theoretical results as well as in the experiments we have taken $\gamma =7$. 
-In the experiments we have taken $\gamma =7$. 
+Since Corollary \ref{Result:Corollary:1} holds for all $\Delta \geq \sqrt{\frac{K}{7 T}} $, it can be clearly seen that for all $\sqrt{\frac{K}{7 T}} \leq \Delta\leq 1$ and $K\geq 2$, the gap-dependent bound is better than that of MOSS and UCB-Improved. 
+
+%Also, the gap-independent bound of UCB-Improved holds for $ \sqrt{\frac{K\log K}{T}} \Delta \leq 1$, 
+
+%in ClusUCB if we take $\gamma$ such that $\frac{K}{\gamma}\approx e$ then $\Delta\geq\sqrt{\frac{K}{\gamma T}}\geq \sqrt{\frac{e}{T}}$ and we can easily mimic the same guarantee as UCB-Improved. %In the theoretical results as well as in the experiments we have taken $\gamma =7$. 
+%In the experiments we have taken $\gamma =7$. 
 
 
 \begin{corollary}[\textbf{\textit{Gap-independent bound}}]
@@ -122,7 +117,7 @@ Considering the same gap of $\Delta_{i} = \Delta =\sqrt{\frac{K\log K}{T}}$ for 
 \end{proof}
 
 
-From the above result, we observe that the order of the regret upper bound of ClusUCB is $O(\sqrt{KT\log K})$, and this matches the order of UCB-Improved. However, this is not as low as the order $O(\sqrt{KT})$ of MOSS or OCUCB. 
+From the above result, we observe that the order of the regret upper bound of ClusUCB is $O(\sqrt{KT\log K})$, and this matches the order of UCB-Improved. However, this is not as low as the order $O(\sqrt{KT})$ of MOSS or OCUCB. Also, the gap-independent bound of UCB-Improved holds for $ \sqrt{\frac{e}{T}} \leq \Delta \leq 1$ while in our case the gap independent bound holds for $\sqrt{\frac{K}{7T}} \leq \Delta \leq 1$.
 
 %\begin{corollary}[\textbf{\textit{Gap-independent bound}}]
 %\label{Result:Corollary:3}
