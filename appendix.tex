@@ -469,7 +469,7 @@ and putting the parameter values in the above Theorem \ref{Result:Theorem:1} res
  	\sum_{i\in A\setminus A_{s^*}: 0 < \Delta_{i} \leq b}\bigg(\dfrac{T^{1-\rho_{s}}\rho_{s}^{2\rho_{s}}2^{2\rho_{s}+\frac{3}{2}}}{(\psi^{\rho_{s}})b^{4\rho_{s} -1}} \bigg) < 40(K-\dfrac{K}{p})\sqrt{\dfrac{T\log K}{K}}
 	\end{align*} 	
 	
-	Now, $K-\dfrac{K}{p}= K\left( \dfrac{p-1}{p} \right) =K\left(  \dfrac{\frac{K}{\log K}+1-1}{\frac{K}{\log K}+1 }\right) = \dfrac{K^2}{K+\log K}$. So, after putting the value of $p=\bigg\lceil \dfrac{K}{\log K} \bigg\rceil$, we get,
+	Now, $K-\dfrac{K}{p}= K\left( \dfrac{p-1}{p} \right) < K\left(  \dfrac{\frac{K}{\log K}+1-1}{\frac{K}{\log K}+1 }\right) < \dfrac{K^2}{K+\log K}$. So, after putting the value of $p=\bigg\lceil \dfrac{K}{\log K} \bigg\rceil$, we get,
 	
 	\begin{align*}
 	\E[R_{T}]\leq & 56\dfrac{\sqrt{T}\log K}{\sqrt{K}} + 64\dfrac{\sqrt{T}\log K}{\sqrt{K}} + \dfrac{32\sqrt{T\log K}\log{(\log K)}}{\sqrt{K}} + 56\sqrt{KT} + 128\sqrt{KT\log K}\\
@@ -909,7 +909,7 @@ Thus, we see that while the simple regret of CCB decreases at the rate of $O\lef
 
 \end{proof}
 
-\begin{table}[!h]
+\begin{table}[ht!]
 \caption{Simple regret upper bounds for different bandit algorithms}
 \label{tab:regret-bds1}
 \begin{center}
@@ -927,7 +927,7 @@ EClusUCB      &$O\left( 8 \log_{2}\dfrac{7T}{K} K^{\frac{5}{2}} \gamma  \sum_{i=
 \section{Adaptive Clustered UCB}
 \label{App:AClusUCB}
 
-\begin{algorithm}[!h]
+\begin{algorithm}[th!]
 \caption{AClusUCB}
 \label{alg:aclusucb}
 \begin{algorithmic}
@@ -1072,7 +1072,7 @@ The third experiment is conducted over a testbed of $20-90$ (interval of $10$) a
 
 %	The fourth experiment is performed over a testbed having $50$ Gaussian-distributed arms with $r_{i_{:{{i}\neq {*}}}}=0.8,\forall i\in A$, $r^{*}=0.9$ and $\sigma^{2}=1.0$. In Figure \ref{fig:4}, we report the results with $T=400000$ averaged over $100$ independent runs for ClusUCB with  $p=\lbrace 1,3,5,10,15,25\rbrace$. Also, in this experiment we take $\psi = K^{2}T$, $\rho_a=0.25$ and $\rho_{s}=0.5$ as stated in Corollary \ref{Result:Corollary:2}. The high variance leads to a greater number of errors committed by ClusUCB-AE that is ClusUCB($p=1$) but as proved in Proposition \ref{proofTheorem:Prop:1} the cumulative regret is lesser than  ClusUCB. But because of the increased errors committed in predicting the optimal arm and because of the large horizon, we eventually see that ClusUCB(p=$5,10,25,25$) outperforms ClusUCB-AE while ClusUCB($p=3$) regret is worse than ClusUCB-AE. The error percentage in the $6$ cases (in the order as shown in legend of Fig \ref{fig:4}) are $14,12,5,3,3$ and $3$. The range of p is shown to be between $\sqrt{\log K}$ to $\frac{K}{2}$ and as we approach $\frac{K}{2}$ we see that the error percentage stabilizes to $3\%$.
 	
-	The fifth experiment is conducted to check the anytime simple regret guarantee of EClusUCB and CCB. The testbed consists of $300$ Gaussian Distributed arms with $r_{i_{:{{i}\neq {*}}}}=0.6,\forall i\in A$, $r^{*}=0.9$ and $\sigma^{2}=0.5,\forall i\in A$. Each algorithm is run independently $100$ times for $30000$ timesteps and the arm with the maximum $\hat{r}_i,\forall i\in A$ as suggested by the algorithms at every timestep is recorded. The output is considered erroneous if the suggested arm is not the optimal arm. The error percentage over $100$ runs is plotted against $30000$ timesteps and shown in Figure \ref{fig:5}. The exploration regulatory factor for CCB is chosen as $d_i=\frac{\sqrt{T}}{z_{i}}$ (where $z_{i}$ is the number of times an arm ${i}$ has been sampled) as this was found to perform the best in \cite{liu2016modification}. Here we see that the performance of EClusUCB is slightly poorer than CCB towards the end of the horizon as CCB settles for a lower error percentage than EClusUCB.
+	The fifth experiment is conducted to check the anytime simple regret guarantee of EClusUCB and CCB. The testbed consists of $300$ Gaussian Distributed arms with $r_{i_{:{{i}\neq {*}}}}=0.6,\forall i\in A$, $r^{*}=0.9$ and $\sigma_{i}^{2}=0.5,\forall i\in A$. Each algorithm is run independently $100$ times for $30000$ timesteps and the arm with the maximum $\hat{r}_i,\forall i\in A$ as suggested by the algorithms at every timestep is recorded. The output is considered erroneous if the suggested arm is not the optimal arm. The error percentage over $100$ runs is plotted against $30000$ timesteps and shown in Figure \ref{fig:5}. The exploration regulatory factor for CCB is chosen as $d_i=\frac{\sqrt{T}}{z_{i}}$ (where $z_{i}$ is the number of times an arm ${i}$ has been sampled) as this was found to perform the best in \cite{liu2016modification}. Here we see that the performance of EClusUCB is slightly poorer than CCB towards the end of the horizon as CCB settles for a lower error percentage than EClusUCB.
 
 %	In the fifth experiment, we check the performance of EClusUCB against $4$ algorithms, UCB1, OCUCB\cite{lattimore2015optimally}, MOSS and TS. The testbed is similar to Experiment $1$, with $20$ arms involving Bernoulli reward distribution with expected rewards of the arms $r_{i_{{i}\neq {*}}}=0.07$ and $r^{*}=0.1$ and horizon $T$ is set to $60000$. The number of clusters $p$ is set to $5$ and the result is shown in Figure \ref{fig:5}. Here, we choose the $\psi=\lbrace \frac{T}{\log (KT)}, \log T\rbrace$. From the result we see that EClusUCB is sensitive to the exploratory regulatory factor $\psi$. The first choice of $\psi$ is conservative and does too much exploration while the second choice is optimistic and explores less. Both $\rho_{a}$ and $\rho_{s}$ is set to $\frac{1}{2}$ in all the cases. We see that OCUCB will eventually perform better than MOSS which does not stabilize in $60000$ timesteps but both of them is beaten by EClusUCB. The careful choosing of $\rho_{a}$, $\rho_{s}$ and $\psi$ enables this.
 %	

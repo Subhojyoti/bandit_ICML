@@ -22,15 +22,15 @@
   		legend style={at={(0.5,1.5)},anchor=north, legend columns=3} ]
       	% UCB
 		\addplot table{results/NewExpt/Expt1/UCBV01_comp_subsampled.txt};
-		\addplot table{results/NewExpt/Expt1/DMED01_comp_subsampled.txt};
+		\addplot table{results/NewExpt/Expt1/UCB01_comp_subsampled.txt};
 		\addplot table{results/NewExpt/Expt1/KLUCB01_comp_subsampled.txt};
 		\addplot table{results/NewExpt/Expt1/MOSS01_comp_subsampled.txt};
-		\addplot table{results/NewExpt/Expt1/UCB01_comp_subsampled.txt};
-		\addplot table{results/NewExpt/Expt1/OCUCB01_comp_subsampled.txt};
-		\addplot table{results/NewExpt/Expt1/TS01_comp_subsampled.txt};
+		\addplot table{results/NewExpt/Expt1/DMED01_comp_subsampled.txt};
 		\addplot table{results/NewExpt/Expt1/EclUCB01_1_comp_subsampled.txt};
+		\addplot table{results/NewExpt/Expt1/TS01_comp_subsampled.txt};
+		\addplot table{results/NewExpt/Expt1/OCUCB01_comp_subsampled.txt};
 		%\addplot table{results/NewExpt/Expt1/EclUCB011_comp_subsampled.txt};
-      	\legend{UCB-V,DMED,KL-UCB,MOSS,UCB1,OCUCB,TS,EClusUCB}      	
+      	\legend{UCB-V,UCB1,KL-UCB,MOSS,DMED,EClusUCB,TS,OCUCB}      	
       	\end{axis}
       	\end{tikzpicture}
   		\label{fig:1}
