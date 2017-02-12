@@ -26,15 +26,13 @@
 \EndClusElim
 
 \If{$t\geq N_{m}$ and $m\leq M$}
-\ResParam
+%\ResParam
 \State $\epsilon_{m+1}:=\frac{\epsilon_{m}}{2}$\vspace{0.5ex}
 \State $B_{m+1}:=B_{m}$
 \State $n_{m+1}:=\bigg\lceil\frac{2\log{(\psi T\epsilon_{m+1}^{2})}}{\epsilon_{m+1}}\bigg\rceil$
 \State $N_{m+1}:=t+|B_{m+1}| n_{m+1}$
 \State $m:=m+1$
-\EndResParam
-%\State \hspace*{2em} $\ell_{m+1}:=\min\lbrace 2\ell_{m}, K\rbrace$
-%\State \hspace*{2em} $w_{m+1}:=2w_{m}$
+%\EndResParam
 \State Stop if $|B_{m}|=1$ and pull ${i}\in B_{m}$ till $T$ is reached.
 \EndIf
 \EndFor

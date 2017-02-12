@@ -339,7 +339,7 @@ Summing up \textbf{Case a} and \textbf{Case b}, the total regret till round $m$ 
 \section{Proof of Corollary 1}
 \label{App:Proof:Corollary:1}
 \begin{proof}
-Here we take $\psi=\dfrac{T}{\log(K)}$, $\rho_{a}=\dfrac{1}{2}$ and $\rho_{s}=\dfrac{1}{2}$. Taking into account Theorem \ref{Result:Theorem:1} below for all $b\geq \sqrt{\dfrac{K}{7T}}$
+Here we take $\psi=\dfrac{T}{196 \log(K)}$, $\rho_{a}=\dfrac{1}{2}$ and $\rho_{s}=\dfrac{1}{2}$. Taking into account Theorem \ref{Result:Theorem:1} below for all $b\geq \sqrt{\dfrac{K}{7T}}$
 
 \begin{align*}
 &\E [R_{T}]\leq 
@@ -359,18 +359,18 @@ Here we take $\psi=\dfrac{T}{\log(K)}$, $\rho_{a}=\dfrac{1}{2}$ and $\rho_{s}=\d
 
 and putting the parameter values in the above Theorem \ref{Result:Theorem:1} result,
 	\begin{align*}
-	\sum_{i\in A_{s^{*}}:\Delta_{i} > b}\bigg(\dfrac{T^{1-\rho_{a}}\rho_{a}^{2\rho_{a}}2^{1+4\rho_{a}}}{\psi^{\rho_{a}}\Delta_{i}^{4\rho_{a}-1}} \bigg)= \sum_{i\in A_{s^{*}}:\Delta_{i} > b}\bigg(\dfrac{T^{1-\frac{1}{2}}\frac{1}{2}^{2*\frac{1}{2}}2^{1+4*\frac{1}{2}}}{(\frac{T}{\log (K)})^{\frac{1}{2}}\Delta_{i}^{4*\frac{1}{2}-1}} \bigg)=\sum_{i\in A_{s^{*}}:\Delta_{i} > b}\dfrac{4\sqrt{\log (K)}}{\Delta_{i}}
+	\sum_{i\in A_{s^{*}}:\Delta_{i} > b}\bigg(\dfrac{T^{1-\rho_{a}}\rho_{a}^{2\rho_{a}}2^{1+4\rho_{a}}}{\psi^{\rho_{a}}\Delta_{i}^{4\rho_{a}-1}} \bigg)= \sum_{i\in A_{s^{*}}:\Delta_{i} > b}\bigg(\dfrac{T^{1-\frac{1}{2}}\frac{1}{2}^{2*\frac{1}{2}}2^{1+4*\frac{1}{2}}}{(\frac{T}{196 \log (K)})^{\frac{1}{2}}\Delta_{i}^{4*\frac{1}{2}-1}} \bigg)=\sum_{i\in A_{s^{*}}:\Delta_{i} > b}\dfrac{56\sqrt{\log (K)}}{\Delta_{i}}
 	\end{align*}
 	
 	Similarly for the term,
 	\begin{align*}
-	\sum_{i\in A:\Delta_{i} > b}\bigg(\dfrac{T^{1-\rho_{s}}\rho_{a}^{2\rho_{s}}2^{1+4\rho_{s}}}{\psi^{\rho_{s}}\Delta_{i}^{4\rho_{s}-1}} \bigg) = \sum_{i\in A:\Delta_{i} > b}\dfrac{4\sqrt{\log (K)}}{\Delta_{i}}
+	\sum_{i\in A:\Delta_{i} > b}\bigg(\dfrac{T^{1-\rho_{s}}\rho_{a}^{2\rho_{s}}2^{1+4\rho_{s}}}{\psi^{\rho_{s}}\Delta_{i}^{4\rho_{s}-1}} \bigg) = \sum_{i\in A:\Delta_{i} > b}\dfrac{56\sqrt{\log (K)}}{\Delta_{i}}
 	\end{align*}		
 			
 	
 	For the term involving arm pulls,
 	\begin{align*}
-	\sum_{i\in A:\Delta_{i} > b}\dfrac{32\rho_{s}\log{(\psi T\dfrac{\Delta_{i}^{4}}{16\rho_{s}^{2}})}}{\Delta_{i}}=\sum_{i\in A:\Delta_{i} > b}\dfrac{16\log{(T^{2}\dfrac{\Delta_{i}^{4}}{4\log (K)})}}{\Delta_{i}}\approx \sum_{i\in A:\Delta_{i} > b}\dfrac{32\log{(T\dfrac{\Delta_{i}^{2}}{\sqrt{\log (K)}})}}{\Delta_{i}}
+	\sum_{i\in A:\Delta_{i} > b}\dfrac{32\rho_{s}\log{(\psi T\dfrac{\Delta_{i}^{4}}{16\rho_{s}^{2}})}}{\Delta_{i}}=\sum_{i\in A:\Delta_{i} > b}\dfrac{16\log{(T^{2}\dfrac{\Delta_{i}^{4}}{784\log (K)})}}{\Delta_{i}}\approx \sum_{i\in A:\Delta_{i} > b}\dfrac{32\log{(T\dfrac{\Delta_{i}^{2}}{\sqrt{\log (K)}})}}{\Delta_{i}}
 	\end{align*}		
 	 Similarly the term, 
 	
@@ -381,22 +381,23 @@ and putting the parameter values in the above Theorem \ref{Result:Theorem:1} res
 
 	Lastly we can bound the error terms as, 
 	\begin{align*}
-	\sum\limits_{i\in A_{s^{*}}:0 < \Delta_{i}\leq b}\bigg(\dfrac{T^{1-\rho_{a}}\rho_{a}^{2\rho_{a}}2^{2\rho_{a}+\frac{3}{2}}}{\psi^{\rho_{a}}\Delta_{i}^{4\rho_{a}-1}} \bigg)= \sum\limits_{i\in A_{s^{*}}:0 < \Delta_{i}\leq b}\dfrac{2.8\sqrt{\log (K)}}{\Delta_{i}}
+	\sum\limits_{i\in A_{s^{*}}:0 < \Delta_{i}\leq b}\bigg(\dfrac{T^{1-\rho_{a}}\rho_{a}^{2\rho_{a}}2^{2\rho_{a}+\frac{3}{2}}}{\psi^{\rho_{a}}\Delta_{i}^{4\rho_{a}-1}} \bigg)= \sum\limits_{i\in A_{s^{*}}:0 < \Delta_{i}\leq b}\dfrac{40\sqrt{\log (K)}}{\Delta_{i}}
 	\end{align*}
 	
 	
 	Similarly for the term,
 	
 	\begin{align*}
-	\sum_{i\in A\setminus A_{s^*}: 0 < \Delta_{i} \leq b}\bigg(\dfrac{T^{1-\rho_{s}}\rho_{s}^{2\rho_{s}}2^{2\rho_{s}+\frac{3}{2}}}{(\psi^{\rho_{s}})\Delta_{i}^{4\rho_{s} -1}} \bigg)=\sum_{i\in A\setminus A_{s^*}: 0 < \Delta_{i} \leq b}\dfrac{2.8\sqrt{\log (K)}}{\Delta_{i}}
+	\sum_{i\in A\setminus A_{s^*}: 0 < \Delta_{i} \leq b}\bigg(\dfrac{T^{1-\rho_{s}}\rho_{s}^{2\rho_{s}}2^{2\rho_{s}+\frac{3}{2}}}{(\psi^{\rho_{s}})\Delta_{i}^{4\rho_{s} -1}} \bigg)=\sum_{i\in A\setminus A_{s^*}: 0 < \Delta_{i} \leq b}\dfrac{40\sqrt{\log (K)}}{\Delta_{i}}
 	\end{align*}	 
 		
 	
 	So, the total gap dependent regret bound for using both arm and cluster elimination comes of as
 	\begin{align*}
-	& \sum_{i\in A_{s^{*}}:\Delta_{i} > b}\bigg\lbrace \dfrac{4\sqrt{\log (K)}}{\Delta_{i}} + \Delta_{i} + \dfrac{32\log{(T\dfrac{\Delta_{i}^{2}}{\sqrt{\log (K)}})}}{\Delta_{i}} \bigg\rbrace + \sum_{i\in A:\Delta_{i} > b}\bigg\lbrace\dfrac{4\sqrt{\log (K)}}{\Delta_{i}} + 2\Delta_{i} + \dfrac{64\log{(T\dfrac{\Delta_{i}^{2}}{\sqrt{\log (K)}})}}{\Delta_{i}}\bigg\rbrace\\
-	 & + \sum\limits_{i\in A_{s^{*}}:\Delta_{i} > b}\dfrac{2.8\sqrt{\log (K)}}{\Delta_{i}} + \sum\limits_{i\in A_{s^{*}}:0< \Delta_{i} <\leq b}\dfrac{2.8\sqrt{\log (K)}}{\Delta_{i}}\\
-	& + \sum\limits_{i\in A\setminus A_{s^{*}}:\Delta_{i} > b}\dfrac{5.6\sqrt{\log (K)}}{\Delta_{i}} + \sum\limits_{i\in A\setminus A \cup A_{s^{*}} :0 < \Delta_{i}\leq b}\dfrac{5.6\sqrt{\log (K)}}{\Delta_{i}} + \max\limits_{i\in A:\Delta_{i}\leq b}\Delta_{i}T 
+	& \sum_{i\in A_{s^{*}}:\Delta_{i} > b}\bigg\lbrace \dfrac{56\sqrt{\log (K)}}{\Delta_{i}} + \Delta_{i} + \dfrac{32\log{(T\dfrac{\Delta_{i}^{2}}{\sqrt{\log (K)}})}}{\Delta_{i}} \bigg\rbrace + \sum_{i\in A:\Delta_{i} > b}\bigg\lbrace\dfrac{56\sqrt{\log (K)}}{\Delta_{i}} + 2\Delta_{i} + \dfrac{64\log{(T\dfrac{\Delta_{i}^{2}}{\sqrt{\log (K)}})}}{\Delta_{i}}\bigg\rbrace\\
+	 & + \sum\limits_{i\in A_{s^{*}}:\Delta_{i} > b}\dfrac{40\sqrt{\log (K)}}{\Delta_{i}} + \sum\limits_{i\in A_{s^{*}}:0< \Delta_{i} <\leq b}\dfrac{40\sqrt{\log (K)}}{\Delta_{i}}
+	+ \sum\limits_{i\in A\setminus A_{s^{*}}:\Delta_{i} > b}\dfrac{80\sqrt{\log (K)}}{\Delta_{i}}\\
+	& + \sum\limits_{i\in A\setminus A \cup A_{s^{*}} :0 < \Delta_{i}\leq b}\dfrac{80\sqrt{\log (K)}}{\Delta_{i}} + \max\limits_{i\in A:\Delta_{i}\leq b}\Delta_{i}T 
 	\end{align*}
 \end{proof}
 
@@ -413,7 +414,7 @@ As stated in \cite{auer2010ucb}, we can have a bound on regret of the order of $
 \end{align*}
 So, this bound is worse than the non-stochastic setting and is clearly improvable and an upper bound regret of $\sqrt{KT}$ is possible as shown in \cite{audibert2009minimax} for MOSS which is consistent with the lower bound as proposed by Mannor and Tsitsiklis(\cite{mannor2004sample}).
 
-	Hence, we take $b\approx\sqrt{\dfrac{K\log K}{T}} > \sqrt{\dfrac{K}{7T}}$(the minimum value for $b$), $\psi=\dfrac{T}{\log K}$, $\rho_{a}=\dfrac{1}{2}$ and $\rho_{s}=\dfrac{1}{2}$.
+	Hence, we take $b\approx\sqrt{\dfrac{K\log K}{T}} > \sqrt{\dfrac{K}{7T}}$(the minimum value for $b$), $\psi=\dfrac{T}{196 \log K}$, $\rho_{a}=\dfrac{1}{2}$ and $\rho_{s}=\dfrac{1}{2}$.
 	
 	Taking into account Theorem \ref{Result:Theorem:1} below, 
 	
@@ -436,51 +437,50 @@ So, this bound is worse than the non-stochastic setting and is clearly improvabl
 and putting the parameter values in the above Theorem \ref{Result:Theorem:1} result,	
 	
 	\begin{align*}
-	\sum_{i\in A_{s^{*}}:\Delta_{i} > b}\bigg(\dfrac{T^{1-\rho_{a}}\rho_{a}^{2\rho_{a}}2^{1+4\rho_{a}}}{\psi^{\rho_{a}}\Delta_{i}^{4\rho_{a}-1}} \bigg)=& \bigg(K\dfrac{T^{1-\frac{1}{2}}\frac{1}{2}^{2\frac{1}{2}}2^{1+4\frac{1}{2}}}{p(\frac{T}{\log K})^{\frac{1}{2}}\Delta_{i}^{4\frac{1}{2}-1}} \bigg)=4\dfrac{\sqrt{KT}}{p}
+	\sum_{i\in A_{s^{*}}:\Delta_{i} > b}\bigg(\dfrac{T^{1-\rho_{a}}\rho_{a}^{2\rho_{a}}2^{1+4\rho_{a}}}{\psi^{\rho_{a}}\Delta_{i}^{4\rho_{a}-1}} \bigg)=& \bigg(K\dfrac{T^{1-\frac{1}{2}}\frac{1}{2}^{2\frac{1}{2}}2^{1+4\frac{1}{2}}}{p(\frac{T}{196 \log K})^{\frac{1}{2}}\Delta_{i}^{4\frac{1}{2}-1}} \bigg)=56\dfrac{\sqrt{KT}}{p}
 	\end{align*}		
 	 Similarly, for the term, 
 	 \begin{align*}
-	 \sum_{i\in A:\Delta_{i} > b}\bigg(\dfrac{T^{1-\rho_{s}}\rho_{s}^{2\rho_{s}}2^{1+4\rho_{s}}}{\psi^{\rho_{s}}\Delta_{i}^{4\rho_{s}-1}} \bigg) = 4\sqrt{KT}
+	 \sum_{i\in A:\Delta_{i} > b}\bigg(\dfrac{T^{1-\rho_{s}}\rho_{s}^{2\rho_{s}}2^{1+4\rho_{s}}}{\psi^{\rho_{s}}\Delta_{i}^{4\rho_{s}-1}} \bigg) = 56\sqrt{KT}
 	 \end{align*}
 	 
 	
 	For the term regarding number of pulls,
 	\begin{align*}
-	\sum_{i\in A:\Delta_{i} > b}\dfrac{32\rho_{s}\log{(\psi T\dfrac{\Delta_{i}^{4}}{16\rho_{s}^{2}})}}{\Delta_{i}} &= \dfrac{32K\sqrt{T}\frac{1}{2}\log{(T^{2}\dfrac{K^{4}(\log K)^{2}}{T^{2}\log K})}}{\sqrt{K\log K}}\\
-	&\leq  \dfrac{32\sqrt{KT}\log{(K^{2}(\sqrt{\log K}))}}{\sqrt{\log K}}\\
-	&=64\sqrt{KT\log K} + \dfrac{32\sqrt{KT}\log{(\sqrt{\log K})}}{\sqrt{\log K}}
+	\sum_{i\in A:\Delta_{i} > b}\dfrac{32\rho_{s}\log{(\psi T\dfrac{\Delta_{i}^{4}}{16\rho_{s}^{2}})}}{\Delta_{i}} &= \dfrac{32K\sqrt{T}\frac{1}{2}\log{(T^{2}\dfrac{K^{4}(\log K)^{2}}{784 T^{2}\log K})}}{\sqrt{K\log K}} \leq  \dfrac{32\sqrt{KT}\log{(\frac{1}{28} K^{2}(\sqrt{\log K}))}}{\sqrt{\log K}}\\
+	&\leq 64\sqrt{KT\log K} + \dfrac{32\sqrt{KT}\log{(\sqrt{\log K})}}{\sqrt{\log K}}
 	\end{align*}		
 	
 	Similarly for the term,
 	\begin{align*}
-	\sum_{i\in A:\Delta_{i} > b}\dfrac{32\rho_{a}\log{(\psi T\dfrac{\Delta_{i}^{4}}{16\rho_{a}^{2}})}}{\Delta_{i}} = 64\sqrt{KT\log K} + \dfrac{32\sqrt{KT}\log{(\sqrt{\log K})}}{\sqrt{\log K}}
+	\sum_{i\in A:\Delta_{i} > b}\dfrac{32\rho_{a}\log{(\psi T\dfrac{\Delta_{i}^{4}}{16\rho_{a}^{2}})}}{\Delta_{i}} \leq 64\sqrt{KT\log K} + \dfrac{32\sqrt{KT}\log{(\sqrt{\log K})}}{\sqrt{\log K}}
 	\end{align*}		
 	
  	Lastly we can bound the error terms as, 
 	\begin{align*}
-	\sum\limits_{i\in A_{s^{*}}:0\leq\Delta_{i}\leq b}\bigg(\dfrac{T^{1-\rho_{a}}\rho_{a}^{2\rho_{a}}2^{2\rho_{a}+\frac{3}{2}}}{\psi^{\rho_{a}}\Delta_{i}^{4\rho_{a}-1}} \bigg)=\dfrac{K}{p}\bigg(\dfrac{T^{1-\frac{1}{2}}\frac{1}{2}^{2\frac{1}{2}}2^{2\frac{1}{2}+\frac{3}{2}}}{{(\frac{T}{\log K})^{\frac{1}{2}}}{(\Delta_{i})^{4*\frac{1}{2}-1}}} \bigg) < \dfrac{5.3 \sqrt{KT\log K} }{p}
+	\sum\limits_{i\in A_{s^{*}}:0\leq\Delta_{i}\leq b}\bigg(\dfrac{T^{1-\rho_{a}}\rho_{a}^{2\rho_{a}}2^{2\rho_{a}+\frac{3}{2}}}{\psi^{\rho_{a}}\Delta_{i}^{4\rho_{a}-1}} \bigg)=\dfrac{K}{p}\bigg(\dfrac{T^{1-\frac{1}{2}}\frac{1}{2}^{2\frac{1}{2}}2^{2\frac{1}{2}+\frac{3}{2}}}{{(\frac{T}{196 \log K})^{\frac{1}{2}}}{(\Delta_{i})^{4*\frac{1}{2}-1}}} \bigg) < \dfrac{40 \sqrt{KT\log K} }{p}
 	\end{align*}	 	
  	Similarly for the term,
  	\begin{align*}
- 	\sum_{i\in A\setminus A_{s^*}: \Delta_{i} > b}\bigg(\dfrac{T^{1-\rho_{s}}\rho_{s}^{2\rho_{s}}2^{2\rho_{s}+\frac{3}{2}}}{(\psi^{\rho_{s}})\Delta_{i}^{4\rho_{s} -1}} \bigg) < 5.6(K-\dfrac{K}{p})\sqrt{\dfrac{T}{K\log K}}
+ 	\sum_{i\in A\setminus A_{s^*}: \Delta_{i} > b}\bigg(\dfrac{T^{1-\rho_{s}}\rho_{s}^{2\rho_{s}}2^{2\rho_{s}+\frac{3}{2}}}{(\psi^{\rho_{s}})\Delta_{i}^{4\rho_{s} -1}} \bigg) < 40(K-\dfrac{K}{p})\sqrt{\dfrac{T}{K\log K}}
 	\end{align*} 	
 	Also, for all $b\geq \sqrt{\dfrac{K}{7T}}$,
 	\begin{align*}
- 	\sum_{i\in A\setminus A_{s^*}: 0 < \Delta_{i} \leq b}\bigg(\dfrac{T^{1-\rho_{s}}\rho_{s}^{2\rho_{s}}2^{2\rho_{s}+\frac{3}{2}}}{(\psi^{\rho_{s}})b^{4\rho_{s} -1}} \bigg) < 5.6(K-\dfrac{K}{p})\sqrt{\dfrac{T\log K}{K}}
+ 	\sum_{i\in A\setminus A_{s^*}: 0 < \Delta_{i} \leq b}\bigg(\dfrac{T^{1-\rho_{s}}\rho_{s}^{2\rho_{s}}2^{2\rho_{s}+\frac{3}{2}}}{(\psi^{\rho_{s}})b^{4\rho_{s} -1}} \bigg) < 40(K-\dfrac{K}{p})\sqrt{\dfrac{T\log K}{K}}
 	\end{align*} 	
 	
-	After putting the value of $p=\bigg\lceil \dfrac{K}{\log K} \bigg\rceil$, we get,
+	Now, $K-\dfrac{K}{p}= K\left( \dfrac{p-1}{p} \right) =K\left(  \dfrac{\frac{K}{\log K}+1-1}{\frac{K}{\log K}+1 }\right) = \dfrac{K^2}{K+\log K}$. So, after putting the value of $p=\bigg\lceil \dfrac{K}{\log K} \bigg\rceil$, we get,
 	
 	\begin{align*}
-	\E[R_{T}]\leq & 4\dfrac{\sqrt{T}\log K}{\sqrt{K}} + 64\dfrac{\sqrt{T}\log K}{\sqrt{K}} + \dfrac{32\sqrt{T\log K}\log{(\log K)}}{\sqrt{K}} + 4\sqrt{KT} + 128\sqrt{KT\log K}\\
-	& + \dfrac{64\sqrt{KT}\log{(\log K)}}{\sqrt{\log K}} + \dfrac{5.3 \sqrt{T}\log K^{\frac{3}{2}} }{\sqrt{K}} + \dfrac{5.3 \sqrt{T}\log K}{\sqrt{K}} + 10.6 \dfrac{K}{K+\log K}\sqrt{KT\log K} + 10.6 \dfrac{K}{K+\log K}\sqrt{KT}\\ 
+	\E[R_{T}]\leq & 56\dfrac{\sqrt{T}\log K}{\sqrt{K}} + 64\dfrac{\sqrt{T}\log K}{\sqrt{K}} + \dfrac{32\sqrt{T\log K}\log{(\log K)}}{\sqrt{K}} + 56\sqrt{KT} + 128\sqrt{KT\log K}\\
+	& + \dfrac{64\sqrt{KT}\log{(\log K)}}{\sqrt{\log K}} + \dfrac{40 \sqrt{T}\log K^{\frac{3}{2}} }{\sqrt{K}} + \dfrac{40 \sqrt{T}\log K}{\sqrt{K}} + 80 \dfrac{K}{K+\log K}\sqrt{KT\log K} + 80 \dfrac{K}{K+\log K}\sqrt{KT}\\ 
 	\end{align*}
  	
 	So, the total bound for using both arm and cluster elimination cannot be worse than,
 	
 	\begin{align*}
-	\E[R_{T}]\leq & 74\dfrac{\sqrt{T}\log K}{\sqrt{K}} + \dfrac{32\sqrt{T\log K}\log{(\log K)}}{\sqrt{K}} + 4\sqrt{KT} + 128\sqrt{KT\log K}\\
-	& + \dfrac{64\sqrt{KT}\log{(\log K)}}{\sqrt{\log K}} + \dfrac{5.3 \sqrt{T}\log K^{\frac{3}{2}} }{\sqrt{K}} + 10.6 \dfrac{K}{K+\log K}\sqrt{KT\log K} + 10.6 \dfrac{K}{K+\log K}\sqrt{KT}\\ 
+	\E[R_{T}]\leq & 160\dfrac{\sqrt{T}\log K}{\sqrt{K}} + \dfrac{32\sqrt{T\log K}\log{(\log K)}}{\sqrt{K}} + 56\sqrt{KT} + 128\sqrt{KT\log K}\\
+	& + \dfrac{64\sqrt{KT}\log{(\log K)}}{\sqrt{\log K}} + \dfrac{40 \sqrt{T}\log K^{\frac{3}{2}} }{\sqrt{K}} + 80 \dfrac{K}{K+\log K}\sqrt{KT\log K} + 80 \dfrac{K}{K+\log K}\sqrt{KT}\\ 
 	\end{align*}		
 \end{proof}
 
@@ -519,7 +519,7 @@ In this section we want to specify the apparent use of clustering. The error bou
 \begin{tabular}{p{1.4cm}p{10.3cm}p{3.5cm}}
 \multicolumn{1}{c}{\bf Elim Type} &\multicolumn{1}{c}{\bf Error Bound} &\multicolumn{1}{c}{\bf Remarks} \\
 \hline \\
-Only Arm Elimination (ClusUCB-AE)	& \begin{align*}\underbrace{\sum_{i\in A:\Delta_{i} > b}\bigg(\dfrac{C_{2}(\rho_{a})T^{1-\rho_{a}}}{\Delta_{i}^{4\rho_{a} -1}} \bigg)}_{\text{Case b2, Proposition \ref{proofTheorem:Prop:1}}} + \underbrace{\sum_{i\in A:0 < \Delta_{i}\leq b}\bigg( \dfrac{C_{2}(\rho_{a})T^{1-\rho_{a}}}{b^{4\rho_{a} -1}} \bigg)}_{\text{Case b2, Proposition \ref{proofTheorem:Prop:1}}}\end{align*}  & With $\rho_{a}=\frac{1}{2},$ and $\psi=\frac{T}{\log K}$ this gives $2\sqrt{KT}+2\sqrt{KT\log K}$. Hence, this has an order of $O(\sqrt{KT\log K})$.\\
+Only Arm Elimination (ClusUCB-AE)	& \begin{align*}\underbrace{\sum_{i\in A:\Delta_{i} > b}\bigg(\dfrac{C_{2}(\rho_{a})T^{1-\rho_{a}}}{\Delta_{i}^{4\rho_{a} -1}} \bigg)}_{\text{Case b2, Proposition \ref{proofTheorem:Prop:1}}} + \underbrace{\sum_{i\in A:0 < \Delta_{i}\leq b}\bigg( \dfrac{C_{2}(\rho_{a})T^{1-\rho_{a}}}{b^{4\rho_{a} -1}} \bigg)}_{\text{Case b2, Proposition \ref{proofTheorem:Prop:1}}}\end{align*}  & With $\rho_{a}=\frac{1}{2},$ and $\psi=\frac{T}{196 \log K}$ this gives $40\sqrt{KT}+40\sqrt{KT\log K}$. Hence, this has an order of $O(\sqrt{KT\log K})$.\\
 %$\underbrace{\sum_{i\in A:\Delta_{i}\geq b}\bigg(\dfrac{T^{1-\rho_{a}}\rho_{a}^{2\rho_{a}}2^{2\rho_{a}+\frac{3}{2}}}{(\psi)^{\rho_{a}}\Delta_{i}^{4\rho_{a} -1}} \bigg)}_{\text{Case b2, Proposition \ref{proofTheorem:Prop:1}}} + \underbrace{\sum_{i\in A:0\leq\Delta_{i}\leq b}\bigg( \dfrac{T^{1-\rho_{a}}\rho_{a}^{2\rho_{a}}2^{2\rho_{a}+\frac{3}{2}}}{(\psi)^{\rho_{a}}b^{4\rho_{a} -1}} \bigg)}_{\text{Case b2, Proposition \ref{proofTheorem:Prop:1}}}$
 \hline\\
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -527,7 +527,7 @@ Only Arm Elimination (ClusUCB-AE)	& \begin{align*}\underbrace{\sum_{i\in A:\Delt
 %\hline\\
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 Arm \& Cluster Elimination (ClusUCB) 	& \begin{align*}  \underbrace{\sum_{i\in A_{s^{*}}:\Delta_{i} > b}\bigg(\dfrac{C_{2}(\rho_{a})T^{1-\rho_{a}}}{\Delta_{i}^{4\rho_{a}-1}} \bigg)+ \sum_{i\in A_{s^{*}}:0\leq\Delta_{i}\leq b}\bigg(\dfrac{C_{2}(\rho_{a})T^{1-\rho_{a}}}{b^{4\rho_{a} -1}} \bigg)}_{\text{Case b2, Arm Elim, Theorem \ref{Result:Theorem:1}}}\\   
- + \underbrace{\sum_{i\in A\setminus A_{s^*}:\Delta_{i} > b}\bigg(\dfrac{2C_{2}(\rho_{s})T^{1-\rho_{s}}}{\Delta_{i}^{4\rho_{s}-1}} \bigg)+ \sum_{i\in A\setminus A_{s^*}:0\leq\Delta_{i}\leq b}\bigg(\dfrac{2C_{2}(\rho_{s})T^{1-\rho_{s}}}{b^{4\rho_{s} -1}} \bigg)}_{\text{Case b3+b4, Clus Elim, Theorem \ref{Result:Theorem:1}}} \end{align*} & With $\rho_{a}=\frac{1}{2}$, $\rho_{s}=\frac{1}{2}, p=\lceil \frac{K}{\log K}\rceil$ and $\psi=\frac{T}{\log K}$ this gives $\frac{5.3 \sqrt{T}\log K^{\frac{3}{2}} }{\sqrt{K}} + \frac{5.3 \sqrt{T}\log K}{\sqrt{K}} + 10.6 \frac{K}{K+\log K}\sqrt{KT\log K} + 10.6 \frac{K}{K+\log K}\sqrt{KT}$. So we can reduce the error bound to $O(\frac{K}{K+\log K}\sqrt{KT\log K})$.
+ + \underbrace{\sum_{i\in A\setminus A_{s^*}:\Delta_{i} > b}\bigg(\dfrac{2C_{2}(\rho_{s})T^{1-\rho_{s}}}{\Delta_{i}^{4\rho_{s}-1}} \bigg)+ \sum_{i\in A\setminus A_{s^*}:0\leq\Delta_{i}\leq b}\bigg(\dfrac{2C_{2}(\rho_{s})T^{1-\rho_{s}}}{b^{4\rho_{s} -1}} \bigg)}_{\text{Case b3+b4, Clus Elim, Theorem \ref{Result:Theorem:1}}} \end{align*} & With $\rho_{a}=\frac{1}{2}$, $\rho_{s}=\frac{1}{2}, p=\lceil \frac{K}{\log K}\rceil$ and $\psi=\frac{T}{196 \log K}$ this gives $\frac{40 \sqrt{T}\log K^{\frac{3}{2}} }{\sqrt{K}} + \frac{40 \sqrt{T}\log K}{\sqrt{K}} + 80 \frac{K}{K+\log K}\sqrt{KT\log K} + 80 \frac{K}{K+\log K}\sqrt{KT}$. So we can reduce the error bound to $O(\frac{K}{K+\log K}\sqrt{KT\log K})$.
 \end{tabular}
 \end{center}	
 \end{table}
@@ -891,24 +891,25 @@ SR_{EClusUCB} &= \sum_{i=1}^{K} \Delta_{i}. P_{i} \leq \sum_{i=1}^{K} \Delta_{i}
 
 \begin{corollary}
 \label{Result:Corollary:3}
-For $\psi=\dfrac{T}{\log (K)}$, $\rho_a=\frac{1}{2}$ and $\rho_s=\frac{1}{2}$, the simple regret of EClusUCB is given by,
+For $\psi=\dfrac{T}{196\log (K)}$, $\rho_a=\frac{1}{2}$ and $\rho_s=\frac{1}{2}$, the simple regret of EClusUCB is given by,
 \begin{align*}
-SR_{EClusUCB} \leq  \leq 8 \log_{2}\dfrac{7T}{K} \log_{2}\dfrac{7T}{K} K^{\frac{5}{2}} \gamma \sum_{i=1}^{K} \Delta_{i} \exp(-\dfrac{c_{0}\sqrt{e}}{4})   \bigg(\dfrac{2 \sqrt{\log (K)} \log (\dfrac{T}{\sqrt{\log (K)}} )}{T^{3}}\bigg)
+SR_{EClusUCB} \leq 8 \log_{2}\dfrac{7T}{K} \log_{2}\dfrac{7T}{K} K^{\frac{5}{2}} \gamma \sum_{i=1}^{K} \Delta_{i} \exp(-\dfrac{c_{0}\sqrt{e}}{4})   \bigg(\dfrac{2 \sqrt{14\log (K)} \log (\dfrac{T}{\sqrt{14\log (K)}} )}{T^{3}}\bigg)
 \end{align*}
 \end{corollary}
 
 \begin{proof}
-Putting $\psi=\dfrac{T}{\log (K)}$, $\rho_a=\frac{1}{2}$ and $\rho_s=\frac{1}{2}$ in the simple regret obtained in Theorem \ref{Result:Theorem:3}, we get
+Putting $\psi=\dfrac{T}{196 \log (K)}$, $\rho_a=\frac{1}{2}$ and $\rho_s=\frac{1}{2}$ in the simple regret obtained in Theorem \ref{Result:Theorem:3}, we get
 \begin{align*}
-SR_{EClusUCB} &\leq 8 \log_{2}\dfrac{7T}{K} K^{\frac{5}{2}} \gamma \sum_{i=1}^{K} \Delta_{i} \exp(-\dfrac{c_{0}\sqrt{e}}{4})   \bigg(\dfrac{\log (\dfrac{T^{2}}{\log (K)} )}{T^{\frac{3}{2}}(\frac{T^3}{\log (K)})^{\frac{1}{2}}}\bigg)\\
-& \leq 8 \log_{2}\dfrac{7T}{K} K^{\frac{5}{2}} \gamma  \sum_{i=1}^{K} \Delta_{i} \exp(-\dfrac{c_{0}\sqrt{e}}{4}) \bigg(\dfrac{2 \sqrt{\log (K)} \log (\dfrac{T}{\sqrt{\log (K)}} )}{T^{3}}\bigg)
+SR_{EClusUCB} &\leq 8 \log_{2}\dfrac{7T}{K} K^{\frac{5}{2}} \gamma \sum_{i=1}^{K} \Delta_{i} \exp(-\dfrac{c_{0}\sqrt{e}}{4})   \bigg(\dfrac{\log (\dfrac{T^{2}}{196 \log (K)} )}{T^{\frac{3}{2}}(\frac{T^3}{196\log (K)})^{\frac{1}{2}}}\bigg)\\
+& \leq 8 \log_{2}\dfrac{7T}{K} K^{\frac{5}{2}} \gamma  \sum_{i=1}^{K} \Delta_{i} \exp(-\dfrac{c_{0}\sqrt{e}}{4}) \bigg(\dfrac{2 \sqrt{14\log (K)} \log (\dfrac{T}{\sqrt{14\log (K)}} )}{T^{3}}\bigg)
 \end{align*} 
 
-Thus, we see that while the simple regret of CCB decreases at the rate of $O\left( \dfrac{(\log T)^2}{T^4} \right)$, the simple regret of EClusUCB decreases at the rate of $O\left( \dfrac{(\sqrt{\log K}\log T)^2}{T^3} \right)$. A table for the simple regret of CCB and EClusUCB is given in Table \ref{tab:regret-bds1}.
+Thus, we see that while the simple regret of CCB decreases at the rate of $O\left( \dfrac{(\log T)^2}{T^4} \right)$, the simple regret of EClusUCB decreases at the rate of $O\left( \dfrac{(\sqrt{\log K}\log T)^2}{T^3} \right)$. A table for the simple regret of CCB and EClusUCB is given in Table \ref{tab:regret-bds1}. But, this is expected as EClusUCB is geared towards minimizing cumulative regret whereas CCB is made for minimizing simple regret. Also we know from \cite{bubeck2009pure} that algorithms that tend to minimize cumulative regret necessarily ends up having a poorer simple regret guarantee.  
+
 
 \end{proof}
 
-\begin{table}
+\begin{table}[!h]
 \caption{Simple regret upper bounds for different bandit algorithms}
 \label{tab:regret-bds1}
 \begin{center}
@@ -917,7 +918,7 @@ Thus, we see that while the simple regret of CCB decreases at the rate of $O\lef
 Algorithm  & Upper bound \\
 \midrule
 CCB &$O\left(K\gamma\sum_{i=1}^{K}\Delta_{i} \exp(2-\dfrac{c_{0}\sqrt{e}}{4})\log_{2}\big(\dfrac{T}{e}\big)\dfrac{\log T}{T^4}\right)$ \\\midrule
-EClusUCB      &$O\left( 8 \log_{2}\dfrac{7T}{K} K^{\frac{5}{2}} \gamma  \sum_{i=1}^{K} \Delta_{i} \exp(-\dfrac{c_{0}\sqrt{e}}{4}) \bigg(\dfrac{2 \sqrt{\log (K)} \log (\dfrac{T}{\sqrt{\log (K)}} )}{T^{3}}\bigg) \right)$\\\bottomrule
+EClusUCB      &$O\left( 8 \log_{2}\dfrac{7T}{K} K^{\frac{5}{2}} \gamma  \sum_{i=1}^{K} \Delta_{i} \exp(-\dfrac{c_{0}\sqrt{e}}{4}) \bigg(\dfrac{ \sqrt{\log (K)} \log (\dfrac{T}{\sqrt{\log (K)}} )}{T^{3}}\bigg) \right)$\\\bottomrule
 \end{tabular}
 \end{center}
 \end{table}
@@ -955,16 +956,14 @@ EClusUCB      &$O\left( 8 \log_{2}\dfrac{7T}{K} K^{\frac{5}{2}} \gamma  \sum_{i=
 \EndClusElim
 
 \If{$t\geq N_{m}$ and $m\leq M$}
-\ResParam
+%\ResParam
 \State $\epsilon_{m+1}:=\dfrac{\epsilon_{m}}{2}$\vspace{0.5ex}
 \State $\ell_{m+1}=2\ell_{m}$
 \State $B_{m+1}:=B_{m}$
 \State $n_{m+1}:=\bigg\lceil\dfrac{2\log{(\psi T\epsilon_{m+1}^{2})}}{\epsilon_{m+1}}\bigg\rceil$
 \State $N_{m+1}:=t+|B_{m+1}| n_{m+1}$
 \State $m:=m+1$
-\EndResParam
-%\State \hspace*{2em} $\ell_{m+1}:=\min\lbrace 2\ell_{m}, K\rbrace$
-%\State \hspace*{2em} $w_{m+1}:=2w_{m}$
+%\EndResParam
 \State Stop if $|B_{m}|=1$ and pull ${i}\in B_{m}$ till $T$ is reached.
 \EndIf
 \EndFor
@@ -1057,7 +1056,7 @@ The third experiment is conducted over a testbed of $20-90$ (interval of $10$) a
         %clip mode=individual,grid,grid style={gray!30},
   		legend style={at={(0.5,1.3)},anchor=north, legend columns=3} ]
       	% UCB
-      	\addplot table{results/NewExpt/Expt5/EclUCB01_comp_subsampled.txt};
+      	\addplot table{results/NewExpt/Expt5/EclUCB011_comp_subsampled.txt};
 		\addplot table{results/NewExpt/Expt5/CCB01_comp_subsampled.txt};
       	\legend{EClusUCB,CCB} 
       	\end{axis}
@@ -1073,8 +1072,7 @@ The third experiment is conducted over a testbed of $20-90$ (interval of $10$) a
 
 %	The fourth experiment is performed over a testbed having $50$ Gaussian-distributed arms with $r_{i_{:{{i}\neq {*}}}}=0.8,\forall i\in A$, $r^{*}=0.9$ and $\sigma^{2}=1.0$. In Figure \ref{fig:4}, we report the results with $T=400000$ averaged over $100$ independent runs for ClusUCB with  $p=\lbrace 1,3,5,10,15,25\rbrace$. Also, in this experiment we take $\psi = K^{2}T$, $\rho_a=0.25$ and $\rho_{s}=0.5$ as stated in Corollary \ref{Result:Corollary:2}. The high variance leads to a greater number of errors committed by ClusUCB-AE that is ClusUCB($p=1$) but as proved in Proposition \ref{proofTheorem:Prop:1} the cumulative regret is lesser than  ClusUCB. But because of the increased errors committed in predicting the optimal arm and because of the large horizon, we eventually see that ClusUCB(p=$5,10,25,25$) outperforms ClusUCB-AE while ClusUCB($p=3$) regret is worse than ClusUCB-AE. The error percentage in the $6$ cases (in the order as shown in legend of Fig \ref{fig:4}) are $14,12,5,3,3$ and $3$. The range of p is shown to be between $\sqrt{\log K}$ to $\frac{K}{2}$ and as we approach $\frac{K}{2}$ we see that the error percentage stabilizes to $3\%$.
 	
-	The fifth experiment is conducted to check the anytime simple regret guarantee of EClusUCB and CCB. The testbed consists of $300$ Gaussian Distributed arms with $r_{i_{:{{i}\neq {*}}}}=0.6,\forall i\in A$, $r^{*}=0.9$ and $\sigma^{2}=0.5,\forall i\in A$.  Each algorithm is run independently $100$ times for $30000$ timesteps and the arm with the maximum $\hat{r}_i,\forall i\in A$ as suggested by the algorithms at every timestep is recorded. The output is considered erroneous if the suggested arm is not the optimal arm. The error percentage over $100$ runs is plotted against $30000$ timesteps and shown in Figure \ref{fig:5}. The exploration regulatory factor for CCB is chosen as $d_i=\frac{\sqrt{T}}{z_{i}}$ (where $z_{i}$ is the number of times an arm ${i}$ has been sampled) as this was found to perform the best in \cite{liu2016modification}. Here we see that the performance of EClusUCB is slightly poorer than CCB. But, this is expected as EClusUCB is geared towards minimizing cumulative regret whereas CCB is made for minimizing simple regret. Also we know from \cite{bubeck2009pure} that algorithms that tend to minimize cumulative regret necessarily ends up having a poorer simple regret guarantee.  
-
+	The fifth experiment is conducted to check the anytime simple regret guarantee of EClusUCB and CCB. The testbed consists of $300$ Gaussian Distributed arms with $r_{i_{:{{i}\neq {*}}}}=0.6,\forall i\in A$, $r^{*}=0.9$ and $\sigma^{2}=0.5,\forall i\in A$. Each algorithm is run independently $100$ times for $30000$ timesteps and the arm with the maximum $\hat{r}_i,\forall i\in A$ as suggested by the algorithms at every timestep is recorded. The output is considered erroneous if the suggested arm is not the optimal arm. The error percentage over $100$ runs is plotted against $30000$ timesteps and shown in Figure \ref{fig:5}. The exploration regulatory factor for CCB is chosen as $d_i=\frac{\sqrt{T}}{z_{i}}$ (where $z_{i}$ is the number of times an arm ${i}$ has been sampled) as this was found to perform the best in \cite{liu2016modification}. Here we see that the performance of EClusUCB is slightly poorer than CCB towards the end of the horizon as CCB settles for a lower error percentage than EClusUCB.
 
 %	In the fifth experiment, we check the performance of EClusUCB against $4$ algorithms, UCB1, OCUCB\cite{lattimore2015optimally}, MOSS and TS. The testbed is similar to Experiment $1$, with $20$ arms involving Bernoulli reward distribution with expected rewards of the arms $r_{i_{{i}\neq {*}}}=0.07$ and $r^{*}=0.1$ and horizon $T$ is set to $60000$. The number of clusters $p$ is set to $5$ and the result is shown in Figure \ref{fig:5}. Here, we choose the $\psi=\lbrace \frac{T}{\log (KT)}, \log T\rbrace$. From the result we see that EClusUCB is sensitive to the exploratory regulatory factor $\psi$. The first choice of $\psi$ is conservative and does too much exploration while the second choice is optimistic and explores less. Both $\rho_{a}$ and $\rho_{s}$ is set to $\frac{1}{2}$ in all the cases. We see that OCUCB will eventually perform better than MOSS which does not stabilize in $60000$ timesteps but both of them is beaten by EClusUCB. The careful choosing of $\rho_{a}$, $\rho_{s}$ and $\psi$ enables this.
 %	

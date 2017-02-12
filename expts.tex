@@ -28,15 +28,15 @@
 		\addplot table{results/NewExpt/Expt1/UCB01_comp_subsampled.txt};
 		\addplot table{results/NewExpt/Expt1/OCUCB01_comp_subsampled.txt};
 		\addplot table{results/NewExpt/Expt1/TS01_comp_subsampled.txt};
-		\addplot table{results/NewExpt/Expt1/EclUCB01_comp_subsampled.txt};
-		\addplot table{results/NewExpt/Expt1/EclUCB011_comp_subsampled.txt};
-      	\legend{UCB-V,DMED,KL-UCB,MOSS,UCB1,OCUCB,TS,EClusUCBA,EClusUCB}      	
+		\addplot table{results/NewExpt/Expt1/EclUCB01_1_comp_subsampled.txt};
+		%\addplot table{results/NewExpt/Expt1/EclUCB011_comp_subsampled.txt};
+      	\legend{UCB-V,DMED,KL-UCB,MOSS,UCB1,OCUCB,TS,EClusUCB}      	
       	\end{axis}
       	\end{tikzpicture}
   		\label{fig:1}
     }
     &
-    \subfigure[0.25\textwidth][Experiment $2$: $100$ Gaussian-distributed arms with $r_{i_{{i}\neq {*}:1-33}}=0.01$, $r_{i_{{i}\neq {*}:34-99}}=0.06$ and $r^{*}_{i=100}=0.1$. ]
+    \subfigure[0.25\textwidth][Experiment $2$: $100$ Gaussian-distributed arms with $r_{i_{{i}\neq {*}:1-33}}=0.1$, $r_{i_{{i}\neq {*}:34-99}}=0.6$ and $r^{*}_{i=100}=0.9$. ]
     {
     		\pgfplotsset{
 		tick label style={font=\Huge},
@@ -52,15 +52,16 @@
        	clip=true,
   		legend style={at={(0.5,1.5)},anchor=north, legend columns=3} ]
       	% UCB
-        \addplot table{results/NewExpt/Expt2_1/UCB01_comp_subsampled.txt};
-		\addplot table{results/NewExpt/Expt2_1/clUCB01_comp_subsampled.txt};
-		\addplot table{results/NewExpt/Expt2_1/MedElim01_comp_subsampled.txt};
-		\addplot table{results/NewExpt/Expt2_1/MOSS01_comp_subsampled.txt};
-		\addplot table{results/NewExpt/Expt2_1/EclUCB01_comp_subsampled.txt};
-		\addplot table{results/NewExpt/Expt2_1/UCBR01_comp_subsampled.txt};
-		\addplot table{results/NewExpt/Expt2_1/OCUCB01_comp_subsampled.txt};
-		\addplot table{results/NewExpt/Expt2_1/EclUCB01_p_1_comp_subsampled.txt};
-      	\legend{UCB1,ClusUCBA,Med-Elim,MOSS,EClusUCBA,UCB-Imp,OCUCB,EClusUCBA-AE}
+        \addplot table{results/NewExpt/Expt2_2/UCB01_comp_subsampled.txt};
+		\addplot table{results/NewExpt/Expt2_2/clUCB01_comp_subsampled.txt};
+		\addplot table{results/NewExpt/Expt2_2/MedElim_comp_subsampled.txt};
+		\addplot table{results/NewExpt/Expt2_2/MOSS01_comp_subsampled.txt};
+		\addplot table{results/NewExpt/Expt2_2/EclUCB01_comp_subsampled.txt};
+		\addplot table{results/NewExpt/Expt2_2/OCUCB01_comp_subsampled.txt};
+		\addplot table{results/NewExpt/Expt2_2/UCBR01_comp_subsampled.txt};
+		\addplot table{results/NewExpt/Expt2_2/EclUCB01_p_1_comp_subsampled.txt};
+      	%\legend{UCB1,ClusUCBA,Med-Elim,MOSS,EClusUCBA,UCB-Imp,OCUCB,EClusUCBA-AE}
+      	\legend{UCB1,ClusUCB,Med-Elim,MOSS,EClusUCB,OCUCB,UCB-Imp,EClusUCB-AE}
       	\end{axis}
       	\end{tikzpicture}
    		\label{fig:2}
@@ -70,19 +71,18 @@
     \label{fig:karmed}
 \end{figure}
 
-For the purpose of performance comparison using cumulative regret as the metric, we implement the following algorithms:  KL-UCB\cite{garivier2011kl}, DMED\cite{honda2010asymptotically}, MOSS\cite{audibert2009minimax}, UCB1\cite{auer2002finite}, UCB-Improved\cite{auer2010ucb}, Median Elimination\cite{even2006action}, Thompson Sampling(TS)\cite{agrawal2011analysis} and UCB-V\cite{audibert2009exploration}\footnote{The implementation for KL-UCB and DMED were taken from \cite{CapGarKau12}}. The parameters of EClusUCB algorithm for all the experiments are set as follows: $\psi=\frac{T}{\log K}$, $\rho_{s}=0.5$, $\rho_{a}=0.5$ and $p=\lceil\frac{K}{\log K}\rceil$ (as in Corollary \ref{Result:Corollary:2}) whereas for ClusUCB(Aggressive)$\big/$EClusUCB(Aggressive) or ClusUCBA$\big/$EClusUCBA algorithm the parameters are set as $\psi=\log T$, $\rho_{s}=0.5$, $\rho_{a}=0.5$ and $p=\lceil\frac{K}{\log K}\rceil$. We can clearly see that EClusUCBA has a lower exploration regulatory factor and conducts less exploration and is a riskier algorithm than EClusUCB.
-%When $K$ is large an2d $p$ is small, it is advantageous to run $\rho_{a} < \rho_{s}$(see 
-%Corollary \ref{Result:Corollary:}) because this will aggressively eliminate arms within each cluster while full cluster elimination will be more conservative.
-%So in all the experiments $\rho_{a}$ and $\rho_{s}$ are initialized to $1$ and then reduced after every round. By this definition of $\rho_{a},\rho_{s}$ we have made sure that their value always remain bounded $\in(0,1]$. 
-% The intuition here is that since each cluster contains a large number of arms it should be eliminated less aggressively. 
-%For parameter settings of ClusUCB and further experiments see Appendix \ref{App:Further:Expt}.
+For the purpose of performance comparison using cumulative regret as the metric, we implement the following algorithms:  KL-UCB\cite{garivier2011kl}, DMED\cite{honda2010asymptotically}, MOSS\cite{audibert2009minimax}, UCB1\cite{auer2002finite}, UCB-Improved\cite{auer2010ucb}, Median Elimination\cite{even2006action}, Thompson Sampling(TS)\cite{agrawal2011analysis} and UCB-V\cite{audibert2009exploration}\footnote{The implementation for KL-UCB and DMED were taken from \cite{CapGarKau12}}. The parameters of ClusUCB/EClusUCB algorithm for all the experiments are set as follows: $\psi=\frac{T}{196 \log K}$, $\rho_{s}=0.5$, $\rho_{a}=0.5$ and $p=\lceil\frac{K}{\log K}\rceil$ (as in Corollary \ref{Result:Corollary:2}).
+%whereas for ClusUCB(Aggressive)$\big/$EClusUCB(Aggressive) or ClusUCBA$\big/$EClusUCBA algorithm the parameters are set as $\psi=\log T$, $\rho_{s}=0.5$, $\rho_{a}=0.5$ and $p=\lceil\frac{K}{\log K}\rceil$. We can clearly see that EClusUCBA has a lower exploration regulatory factor and conducts less exploration and is a riskier algorithm than EClusUCB.
+
 
 The first experiment is conducted over a testbed of $20$ arms for the test-cases involving Bernoulli reward distribution with expected rewards of the arms $r_{i_{{i}\neq {*}}}=0.07$ and $r^{*}=0.1$. These type of cases are frequently encountered in web-advertising domain. The horizon $T$ is set to $60000$. 
 %After limited exploratory experimentation the number of clusters $p$ for ClusUCB is set to $4$. 
-The regret is averaged over $100$ independent runs and is shown in Figure \ref{fig:1}. EClusUCB,EClusUCBA, MOSS, UCB1, UCB-V, KL-UCB, TS and DMED are run in this experimental setup and we observe that EClusUCBA performs better than all the aforementioned algorithms. Because of the short horizon $T$, we do not implement UCB-Improved and Median Elimination on this test-case. 
+The regret is averaged over $100$ independent runs and is shown in Figure \ref{fig:1}. EClusUCB, MOSS, UCB1, UCB-V, KL-UCB, TS and DMED are run in this experimental setup and we observe that EClusUCB performs better than all the aforementioned algorithms except TS. Because of the small gaps and short horizon $T$, we do not implement UCB-Improved and Median Elimination on this test-case. 
 %We also observe that in this case the cumulative regret of EClusUCB and TS are almost similar to each other.
 
-	The second experiment is conducted over a testbed of $100$ arms involving Gaussian reward distribution with expected rewards of the arms $r_{i_{{i}\neq {*}:1-33}}=0.01$, $r_{i_{{i}\neq {*}:34-99}}=0.06$ and $r^{*}_{i=100}=0.1$ with variance set at $\sigma_{i}^{2} = 0.3,\forall i\in A$. The horizon $T$ is set for a large duration of $2\times 10^{6}$ and the regret is averaged over $100$ independent runs and is shown in Figure \ref{fig:2}. In this case, in addition to EClusUCBA, we also show the performance of ClusUCBA algorithm. From the results in Figure \ref{fig:2}, we observe that EClusUCBA outperforms ClusUCBA as well as MOSS, UCB1, UCB-Improved and Median-Elimination($\epsilon=0.03,\delta=0.1$). But as shown in Theorem \ref{Result:Theorem:1}, ClusUCBA is better than UCB-Improved even though both are round based methods. Also the performance of UCB-Improved is poor in comparison to other algorithms, which is probably because of pulls wasted in initial exploration whereas ClusUCBA with the choice of $\psi, \rho_{a}$ and $\rho_{s}$ performs much better. More experiments are shown in Appendix \ref{App:MoreExp}.
+The second experiment is conducted over a testbed of $100$ arms involving Gaussian reward distribution with expected rewards of the arms $r_{i_{{i}\neq {*}:1-33}}=0.1$, $r_{i_{{i}\neq {*}:34-99}}=0.6$ and $r^{*}_{i=100}=0.9$ with variance set at $\sigma_{i}^{2} = 0.3,\forall i\in A$. The horizon $T$ is set for a large duration of $2\times 10^{5}$ and the regret is averaged over $100$ independent runs and is shown in Figure \ref{fig:2}. In this case, in addition to EClusUCB, we also show the performance of ClusUCB algorithm. From the results in Figure \ref{fig:2}, we observe that EClusUCB outperforms ClusUCB as well as MOSS, UCB1, UCB-Improved and Median-Elimination($\epsilon=0.1,\delta=0.1$). But ClusUCB and UCB-Improved behaves almost similaryly in this environment. Also the performance of UCB-Improved is poor in comparison to other algorithms, which is probably because of pulls wasted in initial exploration whereas EClusUCB with the choice of $\psi, \rho_{a}$ and $\rho_{s}$ performs much better. More experiments are shown in Appendix \ref{App:MoreExp}.
+
+%The second experiment is conducted over a testbed of $100$ arms involving Gaussian reward distribution with expected rewards of the arms $r_{i_{{i}\neq {*}:1-33}}=0.01$, $r_{i_{{i}\neq {*}:34-99}}=0.06$ and $r^{*}_{i=100}=0.1$ with variance set at $\sigma_{i}^{2} = 0.3,\forall i\in A$. The horizon $T$ is set for a large duration of $2\times 10^{6}$ and the regret is averaged over $100$ independent runs and is shown in Figure \ref{fig:2}. In this case, in addition to EClusUCBA, we also show the performance of ClusUCBA algorithm. From the results in Figure \ref{fig:2}, we observe that EClusUCBA outperforms ClusUCBA as well as MOSS, UCB1, UCB-Improved and Median-Elimination($\epsilon=0.03,\delta=0.1$). But as shown in Theorem \ref{Result:Theorem:1}, ClusUCBA is better than UCB-Improved even though both are round based methods. Also the performance of UCB-Improved is poor in comparison to other algorithms, which is probably because of pulls wasted in initial exploration whereas ClusUCBA with the choice of $\psi, \rho_{a}$ and $\rho_{s}$ performs much better. More experiments are shown in Appendix \ref{App:MoreExp}.
 
 %	The third experiment is conducted over a testbed of $20-90$ (interval of $10$) arms with Bernoulli reward distribution, where the expected rewards of the arms are $r_{i_{{i}\neq {*}}}=0.05$ and $r^{*}=0.1$. The horizon $T$ is set to $10^{5} + K^{3}$ and the number of arms are increased from $K=20$ to $90$. The proposed algorithm EClusUCB is run with $p=K/10$. The regret is averaged over $100$ independent runs and is shown in Figure \ref{fig:3}. We report the performance of MOSS,OCUCB and EClusUCB only over this setup. From the results in Figure \ref{fig:3}, it is evident that the growth of regret for EClusUCB is lower than that of MOSS and OCUCB. 
 %
