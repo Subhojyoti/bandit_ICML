@@ -43,7 +43,7 @@ The clustering of arms provides two benefits. First, it creates a context where 
 %gap-dependent regret bound that is better than MOSS \cite{audibert2009minimax} and UCB-Improved \cite{auer2010ucb}, in particular, with a regret bound of the order 
 %$O\left(\frac{K\log (\frac{T}{H})}{\Delta}\right)$, where $H = \sum_{i:\Delta_i>0} \frac{1}{\Delta_i^2}$. 
 
-While ClusUCB does not achieve the gap-dependent regret bound of OCUCB, the theoretical analysis establishes that the gap-dependent regret of ClusUCB is always better than that of UCB-Improved and better than that of MOSS when $\sqrt{\frac{K}{7T}} \leq \Delta\leq 1$ (see Table \ref{tab:regret-bds}). Moreover, the gap-independent bound of ClusUCB is of the same order as UCB-Improved, i.e., $O\left(\sqrt{KT\log K}\right)$. However, ClusUCB is not able to match the gap-independent bound of $O(\sqrt{KT})$ for MOSS and OCUCB. We also establish the exact values for the exploration parameters and the number of clusters required for optimal behavior in the corollaries.
+While ClusUCB does not achieve the gap-dependent regret bound of OCUCB, the theoretical analysis establishes that the gap-dependent regret of ClusUCB is always better than that of UCB-Improved and better than that of MOSS when $\sqrt{\frac{K}{14T}} \leq \Delta\leq 1$ (see Table \ref{tab:regret-bds}). Moreover, the gap-independent bound of ClusUCB is of the same order as UCB-Improved, i.e., $O\left(\sqrt{KT\log K}\right)$. However, ClusUCB is not able to match the gap-independent bound of $O(\sqrt{KT})$ for MOSS and OCUCB. We also establish the exact values for the exploration parameters and the number of clusters required for optimal behavior in the corollaries.
 
 
 % 	To counter early exploration in \cite{liu2016modification} as well as in our algorithm we propose an exploration regulatory factor to control exploration. \textit{Our algorithm is also not an anytime algorithm}(neither is MOSS, UCB-Improved) and in this context we point out that knowledge of the horizon actually facilitates learning as it can exploit more information(as stated in \cite{lattimore2015optimally}). We also employ a couple of more strategies to bring down our regret as summarized below:-
@@ -65,8 +65,9 @@ ClusUCB$\big /$EClusUCB      &$O\left(\frac{K\log\left(\frac{T\Delta^{2}}{\sqrt{
 \end{center}
 \end{table}
 
-While ClusUCB is a round-based algorithm, we also introduce Efficient ClusUCB or EClusUCB which has the same theoretical guarantees as ClusUCB but empirically behaves much better. Following \cite{liu2016modification}, we claim that EClusUCB is an anytime algorithm and on five synthetic setups with small gaps, we observe empirically that EClusUCB outperforms UCB-Improved\cite{auer2010ucb}, MOSS\cite{audibert2009minimax} and OCUCB\cite{lattimore2015optimally} as well as other popular stochastic bandit algorithms such as DMED\cite{honda2010asymptotically}, UCB-V\cite{audibert2009exploration}, Median Elimination\cite{even2006action}, Thompson Sampling\cite{agrawal2011analysis} and KL-UCB\cite{garivier2011kl}.
+While ClusUCB is a round-based algorithm, we also introduce Efficient ClusUCB or EClusUCB which has the same theoretical guarantees as ClusUCB but empirically behaves much better. On five synthetic setups with small gaps, we observe empirically that EClusUCB outperforms UCB-Improved\cite{auer2010ucb}, MOSS\cite{audibert2009minimax} and OCUCB\cite{lattimore2015optimally} as well as other popular stochastic bandit algorithms such as DMED\cite{honda2010asymptotically}, UCB-V\cite{audibert2009exploration}, Median Elimination\cite{even2006action}, Thompson Sampling\cite{agrawal2011analysis} and KL-UCB\cite{garivier2011kl}.
 
+% Following \cite{liu2016modification}, we claim that EClusUCB is an anytime algorithm and 
 % 	Summarizing our contributions below:-
 % \begin{enumerate}
 % \item We propose a cluster based round-wise algorithm with two arm elimination conditions in each round.

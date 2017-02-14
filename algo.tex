@@ -33,7 +33,7 @@
 \State {\bf Input:} Number of clusters $p$, time horizon $T$, exploration parameters $\rho_a$, $\rho_s$ and $\psi$.
 \State {\bf Initialization:} Set $B_{0}:=A$, $S_0 = S$ and $\epsilon_{0}:=1$.
 \State Create a partition $S_0$ of the arms at random into $p$ clusters of size up to $\ell=\bigg\lceil \frac{K}{p} \bigg\rceil$ each.
-\For{$m=0,1,..\big \lfloor \frac{1}{2}\log_{2} \frac{7T}{K}\big\rfloor$}	
+\For{$m=0,1,..\big \lfloor \frac{1}{2}\log_{2} \frac{14T}{K}\big\rfloor$}	
 \State Pull each arm in $B_m$ so that the total number of times it has been pulled is $n_{m}=\bigg\lceil\frac{2\log{(\psi T\epsilon_{m}^{2})}}{\epsilon_{m}}\bigg\rceil$. 
 % A partition of $A$ into clusters from Algorithm \ref{alg:rua}
 %\State \hspace*{2em} Calculate $w_{s_{i}}=\bigg\lceil\frac{1}{\ell\hat{\Delta}_{s_{i}}}\bigg\rceil$,if $\hat{\Delta}_{s_{i}}\neq 0, \forall s_{i}\in S$
@@ -73,7 +73,7 @@ To reduce early exploration, the number of times $n_m$ each arm is pulled per ro
 To handle the second problem mentioned above, ClusUCB partitions the larger problem into several small sub-problems using clustering and then performs local exploration aggressively to eliminate sub-optimal arms within each clusters with high probability.
 
 
-As described in the pseudocode in Algorithm~\ref{alg:clusucb}, ClusUCB begins with a initial clustering of arms that is performed by random uniform allocation. The set of clusters $S$ thus obtained satisfies $|S|=p$, with individual clusters having a size that is bounded above by $\ell=\big\lceil \frac{K}{p} \big\rceil$.
+As described in the pseudocode in Algorithm~\ref{alg:clusucb}, ClusUCB begins with a initial clustering of arms that is performed by random uniform allocation. The set of clusters $S$ thus obtained satisfies $|S|=p$, with individual clusters having a size that is bounded above by $\ell=\left\lceil \frac{K}{p} \right\rceil$.
 Each round of ClusUCB involves both individual arm as well as cluster elimination conditions. These elimination conditions are inspired by UCB-Improved. Notice that, unlike UCB-Improved, there is no longer a single point of reference based on which we are eliminating arms. Instead we now have as many reference points to eliminate arms as number of clusters formed. 
 %Further, the exploration factors $\rho_{a}\in (0,1]$ and $\rho_{s}\in (0,1]$ governing the arm and cluster elimination conditions, respectively, are relatively more aggressive than that in UCB-Improved. 
 
