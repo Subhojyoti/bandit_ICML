@@ -1002,10 +1002,10 @@ The third experiment is conducted over a testbed of $20-100$ (interval of $10$) 
 		clip=true,
   		legend style={at={(0.5,1.3)},anchor=north, legend columns=3} ]
         % UCB
-		\addplot table{results/NewExpt/Expt3_1/plotFinalEclUCB20_100.txt};
 		\addplot table{results/NewExpt/Expt3_1/plotFinalMOSS20_100.txt};
+		\addplot table{results/NewExpt/Expt3_1/plotFinalEclUCB20_100.txt};
 		\addplot table{results/NewExpt/Expt3_1/plotFinalOCUCB20_100.txt};
-      	\legend{EClusUCB,MOSS,OCUCB}
+      	\legend{MOSS,EClusUCB,OCUCB}
       	\end{axis}
         \end{tikzpicture}
         \label{fig:3}
@@ -1031,10 +1031,10 @@ The third experiment is conducted over a testbed of $20-100$ (interval of $10$) 
       	% UCB
       	%\addplot table{results/NewExpt/Expt4/plotFinalEclUCB01.txt};
 		%\addplot table{results/NewExpt/Expt4/plotFinalAclUCB01.txt};
-		\addplot table{results/NewExpt/Expt4/plotFinalEclUCB012_1.txt};
 		\addplot table{results/NewExpt/Expt4/plotFinalAclUCB012_1.txt};
+		\addplot table{results/NewExpt/Expt4/plotFinalEclUCB012_1.txt};
       	%\legend{EClusUCBA,AClusUCBA,EClusUCB,AClusUCB} 
-      	\legend{EClusUCB,AClusUCB} 
+      	\legend{AClusUCB,EClusUCB} 
       	\end{axis}
       	\end{tikzpicture}
   		\label{fig:4}
@@ -1058,9 +1058,9 @@ The third experiment is conducted over a testbed of $20-100$ (interval of $10$) 
         %clip mode=individual,grid,grid style={gray!30},
   		legend style={at={(0.5,1.3)},anchor=north, legend columns=3} ]
       	% UCB
+      	\addplot table{results/NewExpt/Expt5/CCB01_comp_subsampled.txt};
       	\addplot table{results/NewExpt/Expt5/EclUCB011_comp_subsampled.txt};
-		\addplot table{results/NewExpt/Expt5/CCB01_comp_subsampled.txt};
-      	\legend{EClusUCB,CCB} 
+      	\legend{CCB,EClusUCB} 
       	\end{axis}
       	\end{tikzpicture}
   		\label{fig:5}
