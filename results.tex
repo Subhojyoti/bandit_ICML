@@ -79,13 +79,12 @@ With $\psi=\frac{T}{196\log (K)}$, $\rho_{a}=\frac{1}{2}$, and $\rho_{s}=\frac{1
 %Considering the same gap of $\Delta_{i} = \Delta_{i}^{'}, \forall i\in A$ and 
 %\begin{remark}
 %\label{Result:Rem:4}
-The most significant term in the bound above is $\sum_{i\in A:\Delta_{i}\geq b}\frac{64\log{\big(T\frac{\Delta_{i}^{2}}{\sqrt{\log (K)}}\big)}}{\Delta_{i}}$ and hence, the regret upper bound for ClusUCB is of the order $O\bigg(\frac{K\log \big(\frac{T\Delta^{2}}{\sqrt{\log (K)}}\big)}{\Delta}\bigg)$. As shown in Table \ref{tab:regret-bds}, the gap-dependent bound of ClusUCB is always better than UCB1 and UCB-Improved. 
-
+The most significant term in the bound above is $\sum_{i\in A:\Delta_{i}\geq b}\frac{64\log{\big(T\frac{\Delta_{i}^{2}}{\sqrt{\log (K)}}\big)}}{\Delta_{i}}$ and hence, the regret upper bound for ClusUCB is of the order $O\bigg(\frac{K\log \big(\frac{T\Delta^{2}}{\sqrt{\log (K)}}\big)}{\Delta}\bigg)$. 
+%As shown in Table \ref{tab:regret-bds}, the gap-dependent bound of ClusUCB is always better than UCB1 and UCB-Improved. 
 %In comparison to the gap-dependent bound of MOSS, we observe that ClusUCB will be better if 
 %$\frac{T^{K-1}\Delta^{2K-2}}{K^{K}} > \frac{1}{\sqrt{\log(KT)}}$, which is equivalent to $\Delta > \frac{2}{\sqrt{T}(\log 2T)^{\frac{1}{4}}}$ for
 %$K\geq 2$. Since Corollary \ref{Result:Corollary:1} holds for all $\Delta \geq \sqrt{\frac{e}{T}} > \frac{2}{\sqrt{T}(\log 2T)^{\frac{1}{4}}}$, it can be clearly seen that for all $\sqrt{\frac{e}{T}} \leq \Delta\leq 1$ and $K\geq 2$, the gap-dependent bound is better than MOSS.
-
-Since Corollary \ref{Result:Corollary:1} holds for all $\Delta \geq \sqrt{\frac{K}{14 T}} $, it can be clearly seen that for all $\sqrt{\frac{K}{14 T}} \leq \Delta\leq 1$ and $K\geq 2$, the gap-dependent bound is better than that of MOSS and UCB-Improved. 
+Since Corollary \ref{Result:Corollary:1} holds for all $\Delta \geq \sqrt{\frac{K}{14 T}} $, it can be clearly seen that for all $\sqrt{\frac{K}{14 T}} \leq \Delta\leq 1$ and $K\geq 2$, the gap-dependent bound is better than that of UCB1, UCB-Improved and MOSS (see Table~\ref{tab:regret-bds}). 
 
 %Also, the gap-independent bound of UCB-Improved holds for $ \sqrt{\frac{K\log K}{T}} \Delta \leq 1$, 
 

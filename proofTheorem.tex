@@ -66,7 +66,7 @@ We consider an arbitrary sub-optimal arm ${i}$ and analyze the contribution to t
 %\todos[inline]{Get rid of enumerate to save space. You could just have the case labels, say case a1 and such}
 \textbf{Case a1:} \textit{In round $\max(m_{i},g_{s_{k}})$, ${i} \in s^{*}$.}
 
-Similar to case (a) of \cite{auer2010ucb}, observe that when the following two conditions hold, arm $i$ gets eliminated:
+Similar to case (a) of \citet{auer2010ucb}, observe that when the following two conditions hold, arm $i$ gets eliminated:
 \begin{align}
 \hat{r}_{i}  \le r_{i} + c_{m_{i}} \text{ and } 
  \hat{r}^{*}\geq  r^{*} - c_{m_{i}}, \label{eq:armelim-casea1}
@@ -365,7 +365,7 @@ for all $b\geq\sqrt{\frac{K}{14 T}}$. In the above, $C_1, C_2$ are as defined in
 See Appendix \ref{App:A}.
 \end{proof}
 
-EClusucb has the same regret guarantees as ClusUCB and its regret upper bound is shown in Theorem \ref{Result:Theorem:2} in Appendix \ref{App:EClusUCB}. Also the simple regret guarantee of EClusUCB is weaker than CCB\cite{liu2016modification} which is shown in Corollary \ref{Result:Corollary:3} in Appendix \ref{App:SR_EClusUCB}. But, this is expected as EClusUCB is geared towards minimizing cumulative regret whereas CCB is made for minimizing simple regret. Also we know from \cite{bubeck2009pure} that algorithms that tend to minimize cumulative regret necessarily ends up having a poorer simple regret guarantee.  
+EClusucb has the same regret guarantees as ClusUCB and its regret upper bound is shown in Theorem \ref{Result:Theorem:2} in Appendix \ref{App:EClusUCB}. Also the simple regret guarantee of EClusUCB is weaker than CCB\cite{liu2016modification} which is shown in Theorem \ref{Result:Theorem:3} and Corollary \ref{Result:Corollary:3} in Appendix \ref{App:SR_EClusUCB}. But, this is expected as EClusUCB is geared towards minimizing cumulative regret whereas CCB is made for minimizing simple regret. Also we know from \citet{bubeck2009pure} that algorithms that tend to minimize cumulative regret necessarily ends up having a poorer simple regret guarantee.  
 
 
 
