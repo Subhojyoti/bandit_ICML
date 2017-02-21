@@ -8,6 +8,18 @@ The Appendix is organized as follows. In Appendix \ref{App:A} we prove Propositi
 \section{Proof of Proposition 1}
 \label{App:A}
 
+\begin{proposition}
+\label{proofTheorem:Prop:1}
+The regret $R_T$ for ClusUCB-AE satisfies
+\begin{align*}
+&\E [R_{T}]\leq \sum\limits_{\substack{i\in A\\\Delta_{i} > b}}\bigg\lbrace\frac{C_{1}(\rho_{a})T^{1-\rho_{a}}}{\Delta_{i}^{4\rho_{a}-1}} + \Delta_{i}+\frac{32\rho_{a}\log{(\frac{\psi  T\Delta_{i}^{4}}{16\rho_{a}^{2}})}}{\Delta_{i}}
+ +  \frac{C_{2}(\rho_{a})T^{1-\rho_{a}}}{\Delta_{i}^{4\rho_{a} -1}}  \bigg \rbrace +\sum\limits_{\substack{i\in A\\0 <\Delta_{i}\leq b}}\frac{C_{2}(\rho_{a})T^{1-\rho_{a}}}{b^{4\rho_{a} -1}}  + \max_{\substack{i\in A: \\ \Delta_{i}\leq b}}\Delta_{i}T,
+\end{align*}
+for all $b\geq\sqrt{\frac{K}{14 T}}$. In the above, $C_1, C_2$ are as defined in Theorem \ref{Result:Theorem:1}.
+% (x) = \frac{2^{1+4x}x^{2x}}{\psi^{x}}$,  $C_2(x) = \frac{2^{2x+\frac{3}{2}}x^{2x}}{\psi^{x}}$, $\rho_{a}=\frac{1}{2}$ is the arm elimination parameter, $\psi=K^{2}T$ is the exploration regulatory factor, $p$ is the number of clusters and $T$ is the horizon.
+\end{proposition}
+
+
 \begin{proof}
 Let $p=1$ such that all the arms in set $A$ belongs to a single cluster. So, for each sub-optimal arm ${i}$, $m_{i}=\min{\lbrace m|\sqrt{\rho_{a}\epsilon_{m}} < \dfrac{\Delta_{i}}{2} \rbrace}$. Also $\rho_{a}\in (0,1]$ is a constant in this proof. Let $A^{'}=\lbrace i\in A: \Delta_{i} > b \rbrace$ and $A^{''}=\lbrace i\in A: \Delta_{i} > 0 \rbrace$.
 

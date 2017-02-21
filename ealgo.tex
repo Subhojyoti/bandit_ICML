@@ -1,3 +1,4 @@
+
 \begin{algorithm}[!h]
 \caption{EClusUCB}
 \label{alg:eclusucb}
@@ -19,8 +20,8 @@
 \ClusElim
 \State Delete cluster $s_{k}\in S_{m}$ and remove all arms $i\in s_{k}$ from $B_{m}$ if 
 \begin{align*}
- \max_{{i}\in s_{k}}\bigg\lbrace\hat{r}_{i} + \sqrt{\frac{\rho_{s}\log{(\psi T\epsilon_{m}^{2})}}{2 z_{i}}}\bigg\rbrace \\
- < \max_{{j}\in B_{m}} \bigg\lbrace\hat{r}_{j} - \sqrt{\frac{\rho_{s} \log{(\psi T\epsilon_{m}^{2})}}{2 z_{j}}}\bigg\rbrace.
+ \max_{{i}\in s_{k}}\left\lbrace\hat{r}_{i} + \sqrt{\frac{\rho_{s}\log{(\psi T\epsilon_{m}^{2})}}{2 z_{i}}}\right\rbrace \\
+ < \max_{{j}\in B_{m}} \left\lbrace\hat{r}_{j} - \sqrt{\frac{\rho_{s} \log{(\psi T\epsilon_{m}^{2})}}{2 z_{j}}}\right\rbrace.
 \end{align*}
 %  and remove all such arms in the cluster $s_{k}$ from $B_{m}$ to obtain $B_{m+1}$.
 \EndClusElim
@@ -38,6 +39,7 @@
 \EndFor
 \end{algorithmic}
 \end{algorithm}
+
 
 %In ClusUCB we modified UCB-Improved to reduce early exploration and do faster elimination of sub-optimal arms and clusters with the help of clustering and careful choosing of exploration parameters  $\psi$, $\rho_{a}$ and $\rho_{s}$. 
 One principal disadvantage with ClusUCB is that it is a round-based algorithm. %which samples all remaining arms equally in each round (still less compared to UCB-Improved). 
