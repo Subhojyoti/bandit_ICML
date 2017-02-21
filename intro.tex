@@ -49,17 +49,17 @@ While ClusUCB does not achieve the gap-dependent regret bound of OCUCB, the theo
 % 	To counter early exploration in \cite{liu2016modification} as well as in our algorithm we propose an exploration regulatory factor to control exploration. \textit{Our algorithm is also not an anytime algorithm}(neither is MOSS, UCB-Improved) and in this context we point out that knowledge of the horizon actually facilitates learning as it can exploit more information(as stated in \cite{lattimore2015optimally}). We also employ a couple of more strategies to bring down our regret as summarized below:-
 
 \begin{table}
-\caption{Comparison of different algorithms against EClusUCB. The \checkmark indicates better performance (or bound). }
+\caption{Comparison of different algorithms against EClusUCB. The \checkmark indicates EClusUCB outperforms baseline. }
 \label{tab:comp-bds}
 \begin{center}
 \begin{tabular}{|c|c|c|c|c|}
 \toprule
 Algorithm  & Gap-Dep & Gap-Ind & Expt1 & Expt2 \\
 \midrule
-UCB1        &\xmark &\xmark &\xmark &\xmark \\\midrule
-UCB-Imp 		&\xmark &\xmark &\xmark &\xmark \\\midrule
-MOSS	     	&\xmark &\checkmark &\xmark &\xmark \\\midrule
-OCUCB     	&\checkmark &\checkmark &\xmark &\xmark \\\midrule
+UCB1        &\checkmark &\checkmark &\checkmark &\checkmark \\\midrule
+UCB-Imp 		&\checkmark &\checkmark &\checkmark &\checkmark \\\midrule
+MOSS	     	&\checkmark &\xmark &\checkmark &\checkmark \\\midrule
+OCUCB     	&\xmark &\xmark &\checkmark &\checkmark \\\midrule
 %EClusUCB      &\checkmark &\checkmark &\checkmark &\checkmark \\\bottomrule
 \end{tabular}
 \end{center}

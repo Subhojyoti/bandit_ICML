@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.1415926-1.40.10 (TeX Live 2009/Debian) (format=pdflatex 2016.9.30)  21 FEB 2017 14:46
+This is pdfTeX, Version 3.1415926-1.40.10 (TeX Live 2009/Debian) (format=pdflatex 2016.9.30)  21 FEB 2017 14:59
 entering extended mode
  %&-line parsing enabled.
 **clustered_ucb.tex
@@ -2286,7 +2286,7 @@ texlive/fonts/type1/urw/courier/ucrr8a.pfb></usr/share/texmf-texlive/fonts/type
 pfb></usr/share/texmf-texlive/fonts/type1/urw/times/utmr8a.pfb></usr/share/texm
 f-texlive/fonts/type1/urw/times/utmri8a.pfb></usr/share/texmf-texlive/fonts/typ
 e1/urw/zapfding/uzdr.pfb>
-Output written on clustered_ucb.pdf (25 pages, 509748 bytes).
+Output written on clustered_ucb.pdf (25 pages, 509693 bytes).
 PDF statistics:
  594 PDF objects out of 1000 (max. 8388607)
  115 named destinations out of 1000 (max. 500000)
