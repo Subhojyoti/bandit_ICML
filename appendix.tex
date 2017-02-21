@@ -1,9 +1,26 @@
 
 %\newpage
 \appendix
-The Appendix is organized as follows. In Appendix \ref{App:A} we prove Proposition \ref{proofTheorem:Prop:1}. In Appendix \ref{App:Proof:Corollary:1} we prove Corollary \ref{Result:Corollary:1} and in Appendix \ref{App:Proof:Corollary:2} we prove Corollary \ref{Result:Corollary:2}. Appendix \ref{App:E} deals with the idea of why we do clustering and Appendix \ref{App:EClusUCB} proves the cumulative regret upper bound of EClusUCB. The simple regret bound of EClusUCB and its associated Corollary is proved in \ref{App:SR_EClusUCB}. Algorithm \ref{alg:aclusucb}, Adaptive Clustered UCB is shown in Appendix \ref{App:AClusUCB}. More experiments are shown in Appendix \ref{App:MoreExp}.
+The Appendix is organized as follows. In Appendix~\ref{App:Table} we show the regret bound Table. In Appendix \ref{App:A} we prove Proposition \ref{proofTheorem:Prop:1}. In Appendix \ref{App:Proof:Corollary:1} we prove Corollary \ref{Result:Corollary:1} and in Appendix \ref{App:Proof:Corollary:2} we prove Corollary \ref{Result:Corollary:2}. Appendix \ref{App:E} deals with the idea of why we do clustering and Appendix \ref{App:EClusUCB} proves the cumulative regret upper bound of EClusUCB. The simple regret bound of EClusUCB and its associated Corollary is proved in \ref{App:SR_EClusUCB}. Algorithm \ref{alg:aclusucb}, Adaptive Clustered UCB is shown in Appendix \ref{App:AClusUCB}. More experiments are shown in Appendix \ref{App:MoreExp}.
 
-
+\section{Regret Bound Table}
+\label{App:Table}
+\begin{table}[!h]
+\caption{Gap-dependent regret bounds for different bandit algorithms}
+\label{tab:regret-bds}
+\begin{center}
+\begin{tabular}{|c|c|}
+\toprule
+Algorithm  & Upper bound \\
+\midrule
+UCB1         &$O\left(\frac{K\log T}{\Delta}\right)$ \\\midrule
+UCB-Improved &$O\left(\frac{K\log (T\Delta^{2})}{\Delta}\right)$ \\\midrule
+MOSS	     &$O\left(\frac{K^{2}\log\left(T\Delta^{2}/K\right)}{\Delta}\right)$\\\midrule
+ClusUCB$\big /$EClusUCB      &$O\left(\frac{K\log\left(\frac{T\Delta^{2}}{\sqrt{\log (K)}}\right)}{\Delta}\right)$\\\bottomrule
+\end{tabular}
+\end{center}
+\vspace*{-2em}
+\end{table}
 
 \section{Proof of Proposition 1}
 \label{App:A}
